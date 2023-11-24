@@ -1,4 +1,4 @@
-require('colors')
+import 'colors'
 
 const message = (port) => {
     console.log(`
@@ -33,4 +33,4 @@ ${'======================================= \n'.blue}
 ░░░░░░░█─█████─██──███──███─██─█░░░░░░░░\n`.yellow)
 }
 
-module.exports = message
+export default message

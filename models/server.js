@@ -1,7 +1,7 @@
-const express = require('express')
-const cors = require('cors')
-const connection = require('../dataBase/connection')
-const message = require('../helpers/message')
+import express, { json } from 'express'
+import cors from 'cors'
+import conection from '../dataBase/config.js'
+import message from '../helpers/message.js'
 
 
 class Server {
@@ -16,10 +16,10 @@ class Server {
 
     middlewares() {
         this.app.use(cors())
-        this.app.use(express.json())
+        this.app.use(json())
     }
-    async dataBase () {
-        await connection()
+    async dataBase() {
+        await conection()
     }
 
     listen() {
@@ -28,4 +28,4 @@ class Server {
 }
 
 
-module.exports = Server
+export default Server

@@ -1,15 +1,16 @@
 {
-  "name": "c15-04-m-node-react",
+  "name": "no-country",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "proyecto no country huella de carbono",
+  "type": "module",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --env-file .env --watch app.js",
     "start": "node --env-file .env app.js"
   },
   "keywords": [],
-  "author": "Patricia Caicedo, Edith Escarlon, Santiago Ariel, Agustin Lucentini, Michael Gonzalez, Brandon Sanches, Nehuen Grosso, Alejandro Quiñones",
+  "author": "Patricia Caicedo, Edith Escarlon, Santiago Ariel, Agustin Lucentini, Michael Gonzalez, Brandon Sanches, Alejandro Quiñones",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
