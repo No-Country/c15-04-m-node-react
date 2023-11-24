@@ -9,6 +9,7 @@
 * Agustin Lucentini
 * Michael Gonzalez
 * Brandon Sanches
+* Nehuen Grosso
 * Alejandro Quiñones
 <br>
 

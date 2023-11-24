@@ -9,7 +9,7 @@
     "start": "node --env-file .env app.js"
   },
   "keywords": [],
-  "author": "Patricia Caicedo, Edith Escarlon, Santiago Ariel, Agustin Lucentini, Michael Gonzalez, Brandon Sanches, Alejandro Quiñones",
+  "author": "Patricia Caicedo, Edith Escarlon, Santiago Ariel, Agustin Lucentini, Michael Gonzalez, Brandon Sanches, Nehuen Grosso, Alejandro Quiñones",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
