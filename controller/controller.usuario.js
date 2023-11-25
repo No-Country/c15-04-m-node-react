@@ -1,6 +1,7 @@
 const { request, response } = require('express')
 const bycript = require('bcryptjs')
 const Usuario = require('../models/usuario')
+const genToken = require('../helpers/jwt')
 
 
 const signUp = async (req = request, res = response) => {
@@ -10,8 +11,11 @@ const signUp = async (req = request, res = response) => {
         const usuario = new Usuario({ nombre, correo, password, ...rest })
         usuario.password = bycript.hashSync(password, salt)
         await usuario.save()
+        const token = await genToken(usuario._id)
+
         res.status(201).json({
-            message: `Gracias por Inscribirte ${nombre}`
+            message: `Gracias por Inscribirte ${nombre}`,
+            token
         })
 
     } catch(e) {
