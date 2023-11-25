@@ -27,6 +27,27 @@ const signUp = async (req = request, res = response) => {
     }
 }
 
+const logIn = async(req = request, res = response) => {
+
+    const { correo, password } = req.body
+    const usuario = await Usuario.findOne({ correo, estado: true })
+    if(!usuario) return res.status(404).json({
+        message: 'No existe este usuario'
+    })
+
+    const noCrypt = bycript.compareSync(password, usuario.password)
+    if(!noCrypt) return res.status(400).json({
+        message: 'Contraseña incorrecta'
+    })
+
+    const token = await genToken(usuario._id)
+    res.status(200).json({
+        message: `Gracias por volver ${usuario.nombre}`,
+        token
+    })
+}
+
 module.exports = {
-    signUp
+    signUp,
+    logIn
 }
