@@ -1,7 +1,7 @@
 const { check } = require('express-validator')
 const validarCampos = require('../../middleware/validarCampos')
 
-const POST_LOGIN = [
+const POST_SIGN_UP = [
     check('nombre')
         .notEmpty().withMessage('Nombre de usuario es requerido')
         .isLength({ min: 6 }).withMessage('nombre debe tener al menos 6 caracteres'),
@@ -14,4 +14,4 @@ const POST_LOGIN = [
     validarCampos
 ]
 
-module.exports = POST_LOGIN
+module.exports = POST_SIGN_UP
