@@ -30,24 +30,31 @@ const signUp = async (req = request, res = response) => {
 }
 
 const logIn = async (req = request, res = response) => {
+    try {
+        const { correo, password } = req.body
+        const usuario = await Usuario.findOne({ correo, estado: true })
+        if (!usuario) return res.status(404).json({
+            message: 'No existe este usuario'
+        })
 
-    const { correo, password } = req.body
-    const usuario = await Usuario.findOne({ correo, estado: true })
-    if (!usuario) return res.status(404).json({
-        message: 'No existe este usuario'
-    })
+        const noCrypt = bycript.compareSync(password, usuario.password)
+        if (!noCrypt) return res.status(400).json({
+            message: 'Contraseña incorrecta'
+        })
 
-    const noCrypt = bycript.compareSync(password, usuario.password)
-    if (!noCrypt) return res.status(400).json({
-        message: 'Contraseña incorrecta'
-    })
-
-    const token = await genToken(usuario.id)
-    res.status(200).json({
-        message: `Gracias por volver ${usuario.nombre}`,
-        usuario,
-        token
-    })
+        const token = await genToken(usuario.id)
+        res.status(200).json({
+            message: `Gracias por volver ${usuario.nombre}`,
+            usuario,
+            token
+        })
+    } catch (e) {
+        console.log('Error! no se pudo hacer Log-in'.red, e)
+        res.status(400).json({
+            message: 'No fué posible hacer Log-in',
+            error: e.message
+        })
+    }
 }
 
 
