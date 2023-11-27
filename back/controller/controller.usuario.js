@@ -18,16 +18,13 @@ const signUp = async (req = request, res = response) => {
                 estado: true,
                 ...rest
             }
-
             usuario = await Usuario.findByIdAndUpdate(noNew.id, update, { new: true })
-            token = await genToken(usuario.id)
         } else {
             usuario = new Usuario({ nombre, correo, password, ...rest })
             usuario.password = bycript.hashSync(password, salt)
             await usuario.save()
-            token = await genToken(usuario.id)
         }
-
+        token = await genToken(usuario.id)
         res.status(201).json({
             message: `Gracias por Inscribirte ${nombre}`,
             usuario,
@@ -55,7 +52,6 @@ const logIn = async (req = request, res = response) => {
         if (!noCrypt) return res.status(400).json({
             message: 'Contraseña incorrecta'
         })
-
         const token = await genToken(usuario.id)
         res.status(200).json({
             message: `Gracias por volver ${usuario.nombre}`,
