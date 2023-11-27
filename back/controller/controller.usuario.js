@@ -61,9 +61,10 @@ const logIn = async (req = request, res = response) => {
 const update = async (req = request, res = response) => {
     try {
         const Authorization = req.header('Authorization')
+        const token = Authorization.split('Bearer ')[1]
         const { correo, nombre, estado, ...rest } = req.body
         const data = rest
-        const { uid: _id } = jwt.verify(Authorization, process.env.TOKEN_USER)
+        const { uid: _id } = jwt.verify(token, process.env.TOKEN_USER)
         const usuario = await Usuario.findByIdAndUpdate(_id, data, { new: true })
         res.status(200).json({
             message: `Hemos actualizado tus datos ${usuario.nombre} correctamente`,
@@ -82,7 +83,8 @@ const update = async (req = request, res = response) => {
 const eliminar = async (req = request, res = response) => {
     try {
         const Authorization = req.header('Authorization')
-        const { uid: _id } = jwt.verify(Authorization, process.env.TOKEN_USER)
+        const token = Authorization.split('Bearer ')[1]
+        const { uid: _id } = jwt.verify(token, process.env.TOKEN_USER)
         const usuario = await Usuario.findByIdAndUpdate(_id, { estado: false })
         res.status(200).json({
             message: `Gracias por haber estado con nosotros ${usuario.nombre}, tus datos se han eliminado correctamente`
@@ -92,7 +94,7 @@ const eliminar = async (req = request, res = response) => {
         res.status(500).json({
             message: 'No fué posible eliminar el perfil',
             error: e.message
-        })
+        })  
     }
 }
 

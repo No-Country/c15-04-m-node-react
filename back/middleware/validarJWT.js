@@ -6,10 +6,11 @@ const Usuario = require('../models/usuario')
 const validarJWT = async (req = request, res = response, next) => {
     try {
         const Authorization = req.header('Authorization')
-        if (!Authorization) return res.status(401).json({
+        const token = Authorization.split('Bearer ')[1]
+        if (!token) return res.status(401).json({
             message: "No existe token"
         })
-        const { uid: _id } = jwt.verify(Authorization, process.env.TOKEN_USER)
+        const { uid: _id } = jwt.verify(token, process.env.TOKEN_USER)
         const usuario = await Usuario.findOne({ _id, estado: true })
         if (!usuario) return res.status(400).json({
             message: 'No existe este usuario'
