@@ -1,5 +1,4 @@
 import React from "react";
-import { PersonFill, LockFill, Envelope } from "react-bootstrap-icons";
 
 const Register = () => {
   return (
@@ -7,7 +6,7 @@ const Register = () => {
       <div className="bg-white rounded-lg shadow-lg p-8">
         <h3 className="text-xl font-bold mb-8 text-center">Register</h3>
         <label htmlFor="username" className="flex items-center mb-4">
-          <PersonFill className="mr-2" /> Username:
+          Username:
         </label>
         <input
           type="text"
@@ -15,7 +14,7 @@ const Register = () => {
           className="border border-gray-300 rounded-lg px-4 py-2 mb-4"
         />
         <label htmlFor="email" className="flex items-center mb-4">
-          <Envelope className="mr-2" /> Email:
+          Email:
         </label>
         <input
           type="email"
@@ -23,7 +22,7 @@ const Register = () => {
           className="border border-gray-300 rounded-lg px-4 py-2 mb-4"
         />
         <label htmlFor="password" className="flex items-center mb-4">
-          <LockFill className="mr-2" /> Password:
+          Password:
         </label>
         <input
           type="password"
@@ -31,7 +30,7 @@ const Register = () => {
           className="border border-gray-300 rounded-lg px-4 py-2 mb-4"
         />
         <label htmlFor="confirm-password" className="flex items-center mb-4">
-          <LockFill className="mr-2" /> Confirm Password:
+          Confirm Password:
         </label>
         <input
           type="password"

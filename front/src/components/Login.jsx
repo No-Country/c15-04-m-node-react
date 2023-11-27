@@ -1,4 +1,4 @@
-import { PersonFill, LockFill } from "react-bootstrap-icons";
+import React from "react";
 
 const Login = () => {
   return (
@@ -6,7 +6,7 @@ const Login = () => {
       <div className="bg-white rounded-lg shadow-lg p-8">
         <h3 className="text-xl font-bold mb-8 text-center">Login</h3>
         <label htmlFor="username" className="flex items-center mb-4">
-          <PersonFill className="mr-2" /> Username:
+          Username:
         </label>
         <input
           type="text"
@@ -14,7 +14,7 @@ const Login = () => {
           className="border border-gray-300 rounded-lg px-4 py-2 mb-4"
         />
         <label htmlFor="password" className="flex items-center mb-4">
-          <LockFill className="mr-2" /> Password:
+          Password:
         </label>
         <input
           type="password"
