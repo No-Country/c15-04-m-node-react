@@ -15,7 +15,7 @@ const signUp = async (req = request, res = response) => {
             const update = {
                 nombre,
                 password: bycript.hashSync(password, salt),
-                estad: true,
+                estado: true,
                 ...rest
             }
 
