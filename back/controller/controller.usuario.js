@@ -9,10 +9,24 @@ const signUp = async (req = request, res = response) => {
     try {
         const { nombre, correo, password, ...rest } = req.body
         const salt = bycript.genSaltSync()
-        const usuario = new Usuario({ nombre, correo, password, ...rest })
-        usuario.password = bycript.hashSync(password, salt)
-        await usuario.save()
-        const token = await genToken(usuario.id)
+        let usuario, token
+        const noNew = await Usuario.findOne({ correo, estado: false })
+        if (noNew) {
+            const update = {
+                nombre,
+                password: bycript.hashSync(password, salt),
+                estad: true,
+                ...rest
+            }
+
+            usuario = await Usuario.findByIdAndUpdate(noNew.id, update, { new: true })
+            token = await genToken(usuario.id)
+        } else {
+            usuario = new Usuario({ nombre, correo, password, ...rest })
+            usuario.password = bycript.hashSync(password, salt)
+            await usuario.save()
+            token = await genToken(usuario.id)
+        }
 
         res.status(201).json({
             message: `Gracias por Inscribirte ${nombre}`,
@@ -94,7 +108,7 @@ const eliminar = async (req = request, res = response) => {
         res.status(500).json({
             message: 'No fué posible eliminar el perfil',
             error: e.message
-        })  
+        })
     }
 }
 
