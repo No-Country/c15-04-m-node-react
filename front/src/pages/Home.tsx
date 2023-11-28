@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
+import Register from "@/components/Register/Register";
 
 function Home() {
 	return (
 		<div>
-			<Button>Home</Button>
+			<Register />
 		</div>
 	);
 }
