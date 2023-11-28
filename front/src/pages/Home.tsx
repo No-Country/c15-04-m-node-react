@@ -1,8 +1,8 @@
-import Register from "@/components/Register/Register";
+import Register from "@/components/Register/RegisterForm";
 
 function Home() {
 	return (
-		<div>
+		<div className="flex justify-center bg-[#00FFA3]">
 			<Register />
 		</div>
 	);
