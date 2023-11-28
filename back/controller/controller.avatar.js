@@ -1,5 +1,5 @@
-const Avatar = require('../models/avatars')
 const { response } = require('express')
+const Avatar = require('../models/avatars')
 require('colors')
 
 const getAvatars = async ( _, res = response) => {
