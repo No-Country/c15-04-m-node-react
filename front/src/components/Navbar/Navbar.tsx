@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 function Navbar() {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = React.useState(false);
 
 	const toggleNavbar = () => {
 		setIsOpen(!isOpen);
