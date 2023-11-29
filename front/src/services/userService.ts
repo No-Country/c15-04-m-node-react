@@ -17,18 +17,18 @@ export const getWelcome = async (): Promise<string> => {
 };
 
 export const getAvatars = async (): Promise<Avatar[]> => {
-	const response = await api.get<AvatarResponse>("/api/usuario/sign-up");
+	const response = await api.get<AvatarResponse>("/usuario/sign-up");
 	return response.data?.avatars || [];
 };
 
 export const signUp = async (data: UserSignUp): Promise<UserSignUpResponse> => {
-	const response = await api.post<UserSignUpResponse>("/api/usuario/sign-up", data);
+	const response = await api.post<UserSignUpResponse>("/usuario/sign-up", data);
 	api.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
 	return response.data;
 };
 
 export const logIn = async (data: UserLogin): Promise<UserLoginResponse> => {
-	const response = await api.post<UserLoginResponse>("/api/usuario/log-in", data);
+	const response = await api.post<UserLoginResponse>("/usuario/log-in", data);
 	const { token } = response.data;
 
 	localStorage.setItem("token", token);
@@ -39,11 +39,11 @@ export const logIn = async (data: UserLogin): Promise<UserLoginResponse> => {
 };
 
 export const updateUser = async (data: UserUpdate): Promise<UserUpdateResponse> => {
-	const response = await api.put<UserUpdateResponse>("/api/usuario/actualizar", data);
+	const response = await api.put<UserUpdateResponse>("/usuario/actualizar", data);
 	return response.data;
 };
 
 export const deleteUser = async (): Promise<UserDeleteResponse> => {
-	const response = await api.delete<UserDeleteResponse>("/api/usuario/eliminar");
+	const response = await api.delete<UserDeleteResponse>("/usuario/eliminar");
 	return response.data;
 };
