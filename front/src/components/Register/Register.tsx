@@ -3,11 +3,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
 
 const formSchema = z.object({
 	username: z.string().min(2, {
@@ -92,7 +91,7 @@ const RegisterForm = () => {
 					name="password2"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Confirmar Contraseña:</FormLabel>
+							<FormLabel>Confirma tu contraseña:</FormLabel>
 							<FormControl>
 								<Input placeholder="Confirma tu contraseña" {...field} />
 							</FormControl>
@@ -100,14 +99,11 @@ const RegisterForm = () => {
 						</FormItem>
 					)}
 				/>
-
-				<div className="flex mt-5 justify-center">
-					<Button className="bg-green-500" type="submit">
+				<div className="flex flex-col items-center justify-center gap-3 mt-6">
+					<Button className="bg-green-700" type="submit">
 						Crear Cuenta
 					</Button>
-				</div>
-				<div className="flex flex-col items-center">
-					<p>¿Ya tienes cuenta?</p>
+					<h3>¿Ya tienes cuenta?</h3>
 					<Link className="hover:underline" to="/login">
 						Iniciar Sesión
 					</Link>
