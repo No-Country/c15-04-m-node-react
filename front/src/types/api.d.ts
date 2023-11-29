@@ -15,6 +15,11 @@ export interface UserResponse {
 	usuario: User;
 }
 
+export interface UserResponseError {
+	message: string;
+	error: string | string[];
+}
+
 export interface UserLogin {
 	correo: string;
 	password: string;

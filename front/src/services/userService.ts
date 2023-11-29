@@ -1,4 +1,3 @@
-import api from "./api";
 import {
 	Avatar,
 	AvatarResponse,
@@ -10,6 +9,7 @@ import {
 	UserUpdate,
 	UserUpdateResponse,
 } from "../types/api";
+import api from "./api";
 
 export const getWelcome = async (): Promise<string> => {
 	const response = await api.get<string>("/");
@@ -23,12 +23,16 @@ export const getAvatars = async (): Promise<Avatar[]> => {
 
 export const signUp = async (data: UserSignUp): Promise<UserSignUpResponse> => {
 	const response = await api.post<UserSignUpResponse>("/usuario/sign-up", data);
-	api.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
+	const { token } = response.data;
+
+	localStorage.setItem("token", token);
+
+	api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 	return response.data;
 };
 
 export const logIn = async (data: UserLogin): Promise<UserLoginResponse> => {
-	const response = await api.post<UserLoginResponse>("/usuario/log-in", data);
+	const response = await api.post<UserLoginResponse>("/usuario/login", data);
 	const { token } = response.data;
 
 	localStorage.setItem("token", token);
