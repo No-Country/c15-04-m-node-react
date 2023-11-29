@@ -4,6 +4,7 @@ import * as userService from "@/services/userService";
 
 import { Avatar, User, UserSignUp, UserUpdate } from "@/types/api";
 import { AxiosError } from "axios";
+import { useToast } from "@/components/ui/use-toast";
 
 export type UserContextProps = {
 	user: User | null;
@@ -20,14 +21,33 @@ export const UserContext = React.createContext<UserContextProps>(null);
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	const [user, setUser] = React.useState<User | null>(null);
 	const [avatars, setAvatars] = React.useState<Avatar[]>([]);
+	const { toast } = useToast();
 
 	const logIn = async (correo: string, password: string) => {
 		try {
 			const user = await userService.logIn({ correo, password });
 			setUser(user.usuario);
+			toast({
+				title: "Success",
+				description: "Inicio de sesión exitoso",
+				variant: "default",
+			});
 		} catch (error) {
 			if (error instanceof AxiosError && error.response?.data) {
-				console.log(error.response.data);
+				const data = error.response.data;
+				if (data.message) {
+					toast({
+						title: "Error",
+						description: data.message,
+						variant: "destructive",
+					});
+				} else if (data.errors?.errors) {
+					toast({
+						title: "Error",
+						description: data.errors.errors[0]?.msg,
+						variant: "destructive",
+					});
+				}
 			}
 		}
 	};
@@ -38,7 +58,20 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 			setUser(user.usuario);
 		} catch (error) {
 			if (error instanceof AxiosError && error.response?.data) {
-				console.log(error.response.data);
+				const data = error.response.data;
+				if (data.message) {
+					toast({
+						title: "Error",
+						description: data.message,
+						variant: "destructive",
+					});
+				} else if (data.errors?.errors) {
+					toast({
+						title: "Error",
+						description: data.errors.errors.map((err: { msg?: string }) => err?.msg ?? "-").join(", "),
+						variant: "destructive",
+					});
+				}
 			}
 		}
 	};
