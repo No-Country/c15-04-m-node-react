@@ -1,5 +1,3 @@
-import React from "react";
-
 const HeroSection = () => {
 	return (
 		<div className="text-left p-6 md:flex md:items-center md:w-3/4">
