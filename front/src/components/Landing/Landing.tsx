@@ -1,5 +1,6 @@
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import Sustainableworld from "../sections/Sustainableworld/Sustainableworld";
 
 const Landing = () => {
 	return (
@@ -17,6 +18,7 @@ const Landing = () => {
 					<img src="https://placehold.it/300" alt="" />
 					<h5 className="text-sm p-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h5>
 				</div>
+				<Sustainableworld />
 			</body>
 			<Footer />
 		</div>
