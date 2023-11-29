@@ -1,10 +1,10 @@
-import Register from "@/components/Register/Register";
+import LoginForm from "@/components/Login/LoginForm";
 
-function Home() {
+function Login() {
 	return (
 		<div class="fixed top-0 left-0 flex items-center justify-center w-screen h-screen">
-			<Register />
+			<LoginForm />
 		</div>
 	);
 }
-export default Home;
+export default Login;

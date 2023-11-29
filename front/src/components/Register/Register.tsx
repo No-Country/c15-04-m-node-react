@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -42,13 +42,17 @@ const RegisterForm = () => {
 				onSubmit={form.handleSubmit(onSubmit)}
 				className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:w-[347px] md:[802px]"
 			>
-				<img className="w-[50%] m-auto" src="logo.png" alt="" />
+				<img
+					className="w-[50%] m-auto"
+					src="https://lh3.googleusercontent.com/drive-viewer/AK7aPaDNIP9_zcZgI39HIO92M_u4qKEDGeOHWDYbSwk_8ORsiQW45EqGTRCjb2_bbPsZBPtQYm7Lzonq75Ph4cTQ5vPC2TQG6A=s2560"
+					alt=""
+				/>
 				<FormField
 					control={form.control}
 					name="username"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Username:</FormLabel>
+							<FormLabel>Nombre de usuario:</FormLabel>
 							<FormControl>
 								<Input placeholder="Ingresa tu nombre de usuario" {...field} />
 							</FormControl>
@@ -74,7 +78,7 @@ const RegisterForm = () => {
 					name="password"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Password:</FormLabel>
+							<FormLabel>Contraseña:</FormLabel>
 							<FormControl>
 								<Input placeholder="Ingresa tu contraseña" {...field} />
 							</FormControl>
@@ -87,7 +91,7 @@ const RegisterForm = () => {
 					name="password2"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Confirm Password:</FormLabel>
+							<FormLabel>Confirma tu contraseña:</FormLabel>
 							<FormControl>
 								<Input placeholder="Confirma tu contraseña" {...field} />
 							</FormControl>
@@ -95,8 +99,15 @@ const RegisterForm = () => {
 						</FormItem>
 					)}
 				/>
-
-				<Button type="submit">Crear</Button>
+				<div className="flex flex-col items-center justify-center gap-3 mt-6">
+					<Button className="bg-green-700" type="submit">
+						Crear Cuenta
+					</Button>
+					<h3>¿Ya tienes cuenta?</h3>
+					<Link className="hover:underline" to="/login">
+						Iniciar Sesión
+					</Link>
+				</div>
 			</form>
 		</Form>
 	);
