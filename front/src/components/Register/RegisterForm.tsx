@@ -48,7 +48,7 @@ const RegisterForm = () => {
 					name="username"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Username:</FormLabel>
+							<FormLabel>Nombre de usuario:</FormLabel>
 							<FormControl>
 								<Input placeholder="Ingresa tu nombre de usuario" {...field} />
 							</FormControl>
@@ -74,7 +74,7 @@ const RegisterForm = () => {
 					name="password"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Password:</FormLabel>
+							<FormLabel>Contraseña:</FormLabel>
 							<FormControl>
 								<Input placeholder="Ingresa tu contraseña" {...field} />
 							</FormControl>
@@ -87,7 +87,7 @@ const RegisterForm = () => {
 					name="password2"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Confirm Password:</FormLabel>
+							<FormLabel>Confirmar Contraseña:</FormLabel>
 							<FormControl>
 								<Input placeholder="Confirma tu contraseña" {...field} />
 							</FormControl>
@@ -96,7 +96,15 @@ const RegisterForm = () => {
 					)}
 				/>
 
-				<Button type="submit">Crear</Button>
+				<div className="flex mt-5 justify-center">
+					<Button className="bg-green-500" type="submit">
+						Crear Cuenta
+					</Button>
+				</div>
+				<div className="flex flex-col items-center">
+					<p>¿Ya tienes cuenta?</p>
+					<a href="#">Iniciar Sesión</a>
+				</div>
 			</form>
 		</Form>
 	);
