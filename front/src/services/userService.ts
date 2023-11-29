@@ -16,7 +16,7 @@ export const getWelcome = async (): Promise<string> => {
 	return response.data;
 };
 
-export const getAvatars = async (): Promise<Avatar> => {
+export const getAvatars = async (): Promise<Avatar[]> => {
 	const response = await api.get<AvatarResponse>("/api/usuario/sign-up");
 	return response.data?.avatars || [];
 };

@@ -56,5 +56,5 @@ export interface Avatar {
 }
 
 export interface AvatarResponse {
-	avatars: Avatar;
+	avatars: Avatar[];
 }
