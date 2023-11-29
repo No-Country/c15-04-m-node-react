@@ -9,16 +9,14 @@ function Navbar() {
 
 	return (
 		<nav className="bg-white drop-shadow">
-			{/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
 			<div className="px-4 sm:px-6 lg:px-8">
-				<div className="flex justify-between h-16">
+				<div className="flex justify-between h-20">
 					<div className="flex items-center">
 						<div className="flex-shrink-0">
-							<img className="block md:hidden" src="src/assets/img/greentracelogo.png" width={"70px"} alt="" />
+							<img className="block md:hidden" src="src/assets/img/greentracelogo.png" width={"80px"} alt="" />
 							<img className="hidden md:block" src="src/assets/img/greentracelogo_desktop.png" width={"200px"} alt="" />
 						</div>
 					</div>
-					<div></div>
 					<div className="hidden md:flex justify-center items-center">
 						<div className="space-x-4 text-lg ">
 							<a href="/" className="text-black px-3 py-2 rounded-md text-base font-medium hover:underline">
@@ -37,7 +35,7 @@ function Navbar() {
 							<span className="sr-only">Open main menu</span>
 							{!isOpen ? (
 								<svg
-									className="block h-8 w-8"
+									className="block h-10 w-10"
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
 									viewBox="0 0 24 24"
@@ -47,7 +45,7 @@ function Navbar() {
 								</svg>
 							) : (
 								<svg
-									className="block h-8 w-8"
+									className="block h-10 w-10"
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
 									viewBox="0 0 24 24"
