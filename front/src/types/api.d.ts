@@ -14,12 +14,13 @@ export interface UserResponse {
 	message: string;
 	usuario: User;
 }
-
-export interface UserResponseError {
-	message: string;
-	error: string | string[];
+export interface ResponseErrorMessage {
+	msg: string;
 }
-
+export interface UserResponseError {
+	message?: string;
+	errors?: { errors: ResponseErrorMessage[] };
+}
 export interface UserLogin {
 	correo: string;
 	password: string;
