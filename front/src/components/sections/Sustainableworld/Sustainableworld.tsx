@@ -1,6 +1,6 @@
 const Sustainableworld = () => {
 	return (
-		<div className="md:flex">
+		<div className="md:flex bg-white shadow-lg rounded-lg p-4 x border border-gray-200 text-center flex-col md:flex-row">
 			<img src="./src/assets/img/colorfulgraphics.svg" alt="colorfull graphics" />
 			<div className="md:flex-row justify-between w-25">
 				<h3 className="font-bold text-2xl my-5 p-10">Por un mundo mas sustentable</h3>

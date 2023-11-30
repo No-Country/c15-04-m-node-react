@@ -111,8 +111,8 @@ const RegisterForm = () => {
 						Crear Cuenta
 					</Button>
 				</div>
-				<div className="flex flex-col items-center">
-					<p>¿Ya tienes cuenta?</p>
+				<div className="flex flex-col items-center pt-4">
+					<p className="p-4">¿Ya tienes cuenta?</p>
 					<Link className="hover:underline" to="/login">
 						Iniciar Sesión
 					</Link>

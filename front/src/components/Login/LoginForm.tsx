@@ -76,7 +76,7 @@ const LoginForm = () => {
 					<Button className="bg-green-700 text-lg" type="submit">
 						Iniciar Sesión
 					</Button>
-					<h3>¿No tienes cuenta?</h3>
+					<p>¿No tienes cuenta?</p>
 					<Link className="hover:underline" to="/signup">
 						Registrarse
 					</Link>
