@@ -9,14 +9,14 @@ const Landing = () => {
 	return (
 		<div className="landing-container">
 			<Navbar />
-			<body className="flex flex-col items-center ">
+			<div className="flex flex-col items-center ">
 				<HeroSection />
 				<Presentation />
 				<VideoCard />
 				<div className="hero flex flex-col items-center justify-center">
 					<Sustainableworld />
 				</div>
-			</body>
+			</div>
 		</div>
 	);
 };

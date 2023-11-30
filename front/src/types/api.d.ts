@@ -64,3 +64,15 @@ export interface Avatar {
 export interface AvatarResponse {
 	avatars: Avatar[];
 }
+
+export interface AuthResponse {
+	message: string;
+	isTokenValid: boolean;
+	usuario: string;
+	img: string;
+}
+
+export interface AuthResponseError {
+	message: string;
+	isTokenValid?: boolean;
+}

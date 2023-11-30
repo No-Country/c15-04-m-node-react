@@ -5,6 +5,7 @@ import * as userService from "@/services/userService";
 import { useToast } from "@/components/ui/use-toast";
 import { Avatar, User, UserResponseError, UserSignUp, UserUpdate } from "@/types/api";
 import { AxiosError } from "axios";
+import { GlobalConstants } from "@/constants";
 
 export type UserContextProps = {
 	user: User | null;
@@ -91,6 +92,25 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 		const avatars = await userService.getAvatars();
 		setAvatars(avatars);
 	};
+
+	React.useEffect(() => {
+		userService
+			.getAuth()
+			.then((user) => {
+				toast({
+					title: `Bienvenido ${user.usuario}`,
+				});
+			})
+			.catch((err: AxiosError) => {
+				if (err.response?.status === 401) {
+					localStorage.removeItem(GlobalConstants.TOKEN);
+					toast({
+						title: "Sesión expirada",
+						variant: "destructive",
+					});
+				}
+			});
+	}, [toast]);
 
 	return (
 		<UserContext.Provider
