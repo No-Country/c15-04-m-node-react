@@ -108,8 +108,7 @@ const eliminar = async (req = request, res = response) => {
     }
 }
 
-const auth = async (req = request, res = response) => {
-    
+const auth = async (req = request, res = response) => {   
     try {
         const Authorization = req.header('Authorization')
         const token = Authorization.split('Bearer ')[1]
@@ -130,21 +129,21 @@ const auth = async (req = request, res = response) => {
 
     } catch (e) {
         const err = "Cannot read properties of undefined (reading 'split')"
+        const noValid = ['jwt expired', 'invalid token', 'invalid signature', 'jwt malformed']
         console.log('ERROR!, HUBO UN PROBLEMA'.red, e.message)
 
         if (e.message === err) return res.status(400).json({
-            message: "No existe Token"
+            message: "No existe Token",
+            isTokenValid: false
         })
-
-        if (e.name === 'TokenExpiredError') return res.status(401).json({
-            message: 'El token ha expirado',
+        if (noValid.includes(e.message)) return res.status(401).json({
+            message: e.message,
             isTokenValid: false
         })
 
         res.status(500).json({
             message: e.message
         })
-
     }
 }
 
