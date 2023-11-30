@@ -1,4 +1,3 @@
-"use client";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -6,6 +5,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useUserContext } from "@/hooks/useExample/useUserContext";
 
 const formSchema = z.object({
 	email: z.string().min(2, {
@@ -16,6 +16,8 @@ const formSchema = z.object({
 	}),
 });
 const LoginForm = () => {
+	const { logIn } = useUserContext();
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -23,10 +25,10 @@ const LoginForm = () => {
 		},
 	});
 	// 2. Define a submit handler.
-	function onSubmit(values: z.infer<typeof formSchema>) {
+	async function onSubmit(values: z.infer<typeof formSchema>) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
-		console.log(values);
+		await logIn(values.email, values.password);
 	}
 
 	return (

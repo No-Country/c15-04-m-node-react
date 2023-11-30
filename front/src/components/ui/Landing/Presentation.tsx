@@ -1,5 +1,3 @@
-import React from "react";
-
 const Presentation = () => {
 	return (
 		<div className="px-6 py-2 md:w-3/4">
