@@ -35,7 +35,7 @@ const LoginForm = () => {
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:w-[347px] md:[802px]"
+				className="max-w-sm p-6 text-lg bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:w-[347px] md:[802px]"
 			>
 				<img
 					className="w-[50%] m-auto"
@@ -47,7 +47,9 @@ const LoginForm = () => {
 					name="email"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Email:</FormLabel>
+							<FormLabel>
+								<h3 className="text-lg">Email:</h3>
+							</FormLabel>
 							<FormControl>
 								<Input placeholder="Ingresa tu email" {...field} />
 							</FormControl>
@@ -60,7 +62,9 @@ const LoginForm = () => {
 					name="password"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Contraseña:</FormLabel>
+							<FormLabel>
+								<h3 className="text-lg">Contraseña:</h3>
+							</FormLabel>
 							<FormControl>
 								<Input placeholder="Ingresa tu contraseña" {...field} />
 							</FormControl>
@@ -69,7 +73,7 @@ const LoginForm = () => {
 					)}
 				/>
 				<div className="flex flex-col items-center justify-center gap-3 mt-6">
-					<Button className="bg-green-700" type="submit">
+					<Button className="bg-green-700 text-lg" type="submit">
 						Iniciar Sesión
 					</Button>
 					<h3>¿No tienes cuenta?</h3>
