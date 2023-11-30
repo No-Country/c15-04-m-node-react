@@ -1,38 +1,22 @@
-import VideoPlayer from "@/components/Videoplayer/VideoPlayer";
+import ReactPlayer from "react-player";
 
 const VideoCard = () => {
 	return (
-		<div>
-			<div className="mobilecard md:hidden flex justify-center p-10 mb-4">
-				<div className="bg-white shadow-lg rounded-lg p-4 flex border border-gray-200 w-fulljustify-between">
-					<div>
-						<div className=" flex flex-col justify-center">
-							<h2 className="text-l font-bold flex justify-center mb-4">Pero, ¿Qué es la huella de carbono?</h2>
-							<p className="text-sm mb-4">
-								Es un indicador ambiental que pretende reflejar la totalidad de gases de efecto invernadero emitidos por
-								efecto directo o indirecto de un individuo, organización, evento o producto.
-							</p>
-							<div>
-								<VideoPlayer embedId="nQ1pPLb1Fo4" />
-							</div>
-						</div>
-					</div>
+		<div className="px-6 py-2 md:w-3/4 ">
+			<div className="flex bg-white shadow-lg rounded-lg p-4 x border border-gray-200 text-center flex-col md:flex-row">
+				<div className="block sm:hidden">
+					<ReactPlayer url="https://www.youtube.com/watch?v=nQ1pPLb1Fo4" width={"100%"} height={"100%"} />
 				</div>
-			</div>
-			<div className="desktopcard hidden md:flex justify-center p-10 mb-4">
-				<div className="bg-white shadow-lg rounded-lg p-4 flex border border-gray-200 w-1/2 ml-4">
-					<div>
-						<div className=" flex ">
-							<VideoPlayer embedId="nQ1pPLb1Fo4" />
-							<div className="ml-4">
-								<h2 className="text-l font-bold flex justify-center mb-4">Pero, ¿Qué es la huella de carbono?</h2>
-								<p className="text-sm mb-4">
-									Es un indicador ambiental que pretende reflejar la totalidad de gases de efecto invernadero emitidos
-									por efecto directo o indirecto de un individuo, organización, evento o producto.
-								</p>
-							</div>
-						</div>
-					</div>
+				<div className="hidden md:block">
+					<ReactPlayer url="https://www.youtube.com/watch?v=nQ1pPLb1Fo4" />
+				</div>
+				<div className="px-6 flex flex-col justify-center align-center">
+					<h1 className="text-2xl font-bold py-4">Pero, ¿Qué es la huella de carbono?</h1>
+					<p className="text-md font-semibold py-2">
+						Es un indicador ambiental que pretende reflejar la totalidad de gases de{" "}
+						<span className="text-emerald-500">efecto invernadero</span> emitidos por efecto directo o indirecto de un
+						individuo, organización, evento o producto.
+					</p>
 				</div>
 			</div>
 		</div>
