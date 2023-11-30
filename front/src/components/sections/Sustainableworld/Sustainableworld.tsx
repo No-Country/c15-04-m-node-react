@@ -1,10 +1,10 @@
 const Sustainableworld = () => {
 	return (
-		<section>
+		<div className="md:flex">
 			<img src="./src/assets/img/colorfulgraphics.svg" alt="colorfull graphics" />
-			<div>
-				<h3>Por un mundo mas sustentable</h3>
-				<p>
+			<div className="md:flex-row justify-between w-25">
+				<h3 className="font-bold text-2xl my-5 p-10">Por un mundo mas sustentable</h3>
+				<p className="text-md text-left p-10">
 					Desarrollamos una webapp donde podrás llevar un registro de tu emisión de carbono y asi poder conocer tu
 					huella, cada actividad que realizas en tu dia a dia afecta a nuestro planeta, algunas mas y otras menos. Para
 					conocer cuales son las actividades que mas afectan y cuales menos te invitamos a que utilices nuestra
@@ -15,7 +15,7 @@ const Sustainableworld = () => {
 					recuerda, por cada árbol reduces entre 10kg y 30 Kg de CO2 al año!
 				</p>
 			</div>
-		</section>
+		</div>
 	);
 };
 export default Sustainableworld;

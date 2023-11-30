@@ -1,5 +1,4 @@
 import VideoPlayer from "@/components/Videoplayer/VideoPlayer";
-import react from "react";
 
 const VideoCard = () => {
 	return (
