@@ -1,4 +1,5 @@
 import React from "react";
+import { ModeToggle } from "../mode-toggle";
 
 function Navbar() {
 	const [isOpen, setIsOpen] = React.useState(false);
@@ -28,6 +29,7 @@ function Navbar() {
 							<a href="/" className="text-black px-3 py-2 rounded-md text-base font-medium hover:underline">
 								Contact
 							</a>
+							<ModeToggle />
 						</div>
 					</div>
 					<div className=" flex md:hidden">
@@ -73,6 +75,7 @@ function Navbar() {
 								Login
 							</a>
 						</div>
+						<ModeToggle />
 					</div>
 				)}
 			</div>
