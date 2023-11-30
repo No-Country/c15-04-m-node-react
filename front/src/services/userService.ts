@@ -8,6 +8,7 @@ import {
 	UserSignUpResponse,
 	UserUpdate,
 	UserUpdateResponse,
+	AuthResponse,
 } from "../types/api";
 import api from "./api";
 
@@ -49,5 +50,10 @@ export const updateUser = async (data: UserUpdate): Promise<UserUpdateResponse> 
 
 export const deleteUser = async (): Promise<UserDeleteResponse> => {
 	const response = await api.delete<UserDeleteResponse>("/usuario/eliminar");
+	return response.data;
+};
+
+export const getAuth = async (): Promise<AuthResponse> => {
+	const response = await api.get<AuthResponse>("/usuario/auth");
 	return response.data;
 };
