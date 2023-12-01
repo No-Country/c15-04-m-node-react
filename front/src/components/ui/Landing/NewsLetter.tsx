@@ -11,8 +11,8 @@ const NewsLetter: React.FC = () => {
 	};
 
 	return (
-		<div className="px-6 py-2 md:w-3/4 ">
-			<div className="flex justify-center  bg-white shadow-lg rounded-lg p-4 x border border-gray-200 text-center md:flex-rowd">
+		<div className="px-6 py-2 md:w-3/4 w-full">
+			<div className="flex justify-center  bg-white shadow-lg rounded-lg p-4 x border border-gray-200 text-center md:flex-row">
 				<div className="md:flex-row w-full md:w-3/4">
 					<h2 className="text-xl font-bold mb-4 px-10 pt-4 md:text-2xl">
 						Subscribete a nuestro <br /> newsletter
