@@ -1,13 +1,15 @@
 const { request, response } = require('express')
-const { countryEmission } = require('../helpers/carbon_footprint')
+const carbonFP = require('../helpers/carbon_footprint')
 
 const getElectricityCFP = (req = request, res = response) => {
-	const { kwh, pais } = req.body;
-	const hc = kwh * countryEmission[pais]; // KgCO2 * 0.001 -> tCO2 
+	const { kwh, energia_renovable, pais } = req.body;
+	let carbonReport = new carbonFP();
+
+	carbonReport.setElectricityParameters(kwh, energia_renovable, pais);
+	const carbonOffset = carbonReport.getElectricityCarbonOffset();
 
 	res.status(201).json({
-            message: `Huella de Carbono: ${hc} kgCO2`,
-            hc
+            carbonOffset
     })
 }
 
