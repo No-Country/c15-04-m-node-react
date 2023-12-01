@@ -1,5 +1,4 @@
-import { Separator } from "@radix-ui/react-select";
-
+import { Icon } from "@iconify/react";
 const Footer = () => {
 	return (
 		<footer className=" py-4 w-full shadow-xl bg-footer">
@@ -12,22 +11,23 @@ const Footer = () => {
 				</div>
 				{/* <Separator className="bg-[#E5E5E5] h-[1px] w-full dark:bg-[#E5E5E5] mb-4" /> */}
 			</div>
-			<div className="container mx-auto text-center md:flex md:gap-4 md:justify-between">
-				<p className="py-5">&copy; 2023 Soluciones de tecnologías climáticas</p>
-				<p className="py-5">Política de privacidad</p>
-				<p className="py-5">Términos de uso</p>
-				<div className="flex justify-center gap-4 py-20 md:py-0 md:px-10 m">
-					<a href="#">
-						<img src="./src/assets/img/socials/linkedin.svg" alt="linkedin" width={"40x"} className="dark:invert" />
+			<div className="container mx-auto text-center">
+				<p className="pt-2 pb-4 border-t-2 border-slate-200"></p>
+				<p className="pb-4 pt-4">&copy; 2023 Soluciones de tecnologias climaticas</p>
+				<p className="pb-4">Privacy policy</p>
+				<p className="pb-6">Terms of use</p>
+				<div className="flex container mx-auto justify-center">
+					<a href="https://co.linkedin.com/" className="mr-4" target="_blank" rel="noopener noreferrer">
+						<Icon icon="entypo-social:linkedin-with-circle" style={{ height: "30px", width: "30px" }} />
 					</a>
-					<a href="#">
-						<img src="./src/assets/img/socials/facebook.svg" alt="facebook" width={"40x"} className="dark:invert" />
+					<a href="https://www.facebook.com/?locale=es_LA" className="mr-4" target="_blank" rel="noopener noreferrer">
+						<Icon icon="formkit:facebook" style={{ height: "30px", width: "30px" }} />
 					</a>
-					<a href="#">
-						<img src="./src/assets/img/socials/twitter.svg" alt="twitter" width={"40px"} className="dark:invert" />
+					<a href="https://twitter.com/?lang=es" className="mr-4" target="_blank" rel="noopener noreferrer">
+						<Icon icon="formkit:twitter" style={{ height: "30px", width: "30px" }} />
 					</a>
-					<a href="#">
-						<img src="./src/assets/img/socials/instagram.svg" alt="instagram" width={"40px"} className="dark:invert" />
+					<a href="https://www.instagram.com/" className="mr-4" target="_blank" rel="noopener noreferrer">
+						<Icon icon="uil:instagram-alt" style={{ height: "30px", width: "30px" }} />
 					</a>
 				</div>
 			</div>

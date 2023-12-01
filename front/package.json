@@ -45,6 +45,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@iconify/react": "^4.1.1",
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
