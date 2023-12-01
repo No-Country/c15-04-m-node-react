@@ -108,9 +108,50 @@ const eliminar = async (req = request, res = response) => {
     }
 }
 
+const auth = async (req = request, res = response) => {   
+    try {
+        const Authorization = req.header('Authorization')
+        const token = Authorization.split('Bearer ')[1]
+
+        const tokenDecoded = jwt.verify(token, process.env.TOKEN_USER)
+        const usuario = await Usuario.findOne({ _id: tokenDecoded.id, estado: true })
+
+        if (!usuario) return res.status(404).json({
+            message: 'No existe este usuario'
+        })
+
+        res.status(200).json({
+            message: 'El token está valido',
+            isTokenValid: true,
+            usuario: usuario.nombre,
+            img: usuario.img
+        })
+
+    } catch (e) {
+        const err = "Cannot read properties of undefined (reading 'split')"
+        const noValid = ['jwt expired', 'invalid token', 'invalid signature', 'jwt malformed']
+        console.log('ERROR!, HUBO UN PROBLEMA'.red, e.message)
+
+        if (e.message === err) return res.status(400).json({
+            message: "No existe Token",
+            isTokenValid: false
+        })
+        if (noValid.includes(e.message)) return res.status(401).json({
+            message: e.message,
+            isTokenValid: false
+        })
+
+        res.status(500).json({
+            message: e.message
+        })
+    }
+}
+
+
 module.exports = {
     signUp,
     logIn,
     update,
-    eliminar
+    eliminar,
+    auth
 }
