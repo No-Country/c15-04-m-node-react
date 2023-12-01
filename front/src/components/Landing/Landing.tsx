@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import VideoCard from "../ui/Landing/VideoCard";
 import Sustainableworld from "../ui/Landing/Sustainableworld";
 import Presentation from "../ui/Landing/Presentation";
+import NewsLetter from "../ui/Landing/NewsLetter";
 
 const Landing = () => {
 	return (
@@ -15,6 +16,7 @@ const Landing = () => {
 				<VideoCard />
 				<div className="hero flex flex-col items-center justify-center">
 					<Sustainableworld />
+					<NewsLetter />
 					<Footer />
 				</div>
 			</div>
