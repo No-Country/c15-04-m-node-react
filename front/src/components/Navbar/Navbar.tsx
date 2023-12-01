@@ -1,4 +1,5 @@
 import React from "react";
+import { ModeToggle } from "../mode-toggle";
 
 function Navbar() {
 	const [isOpen, setIsOpen] = React.useState(false);
@@ -8,7 +9,7 @@ function Navbar() {
 	};
 
 	return (
-		<nav className="bg-white drop-shadow">
+		<nav className="bg-white drop-shadow dark:bg-[#020817]">
 			<div className="px-4 sm:px-6 lg:px-8">
 				<div className="flex justify-between h-20">
 					<div className="flex items-center">
@@ -18,16 +19,17 @@ function Navbar() {
 						</div>
 					</div>
 					<div className="hidden md:flex justify-center items-center">
-						<div className="space-x-4 text-lg ">
-							<a href="/" className="text-black px-3 py-2 rounded-md text-base font-medium hover:underline">
+						<div className="space-x-4 text-lg">
+							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
 								Home
 							</a>
-							<a href="/" className="text-black px-3 py-2 rounded-md text-base font-medium hover:underline">
+							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
 								About
 							</a>
-							<a href="/" className="text-black px-3 py-2 rounded-md text-base font-medium hover:underline">
+							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
 								Contact
 							</a>
+							<ModeToggle />
 						</div>
 					</div>
 					<div className=" flex md:hidden">
@@ -73,6 +75,7 @@ function Navbar() {
 								Login
 							</a>
 						</div>
+						<ModeToggle />
 					</div>
 				)}
 			</div>
