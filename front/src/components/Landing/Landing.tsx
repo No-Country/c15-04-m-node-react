@@ -16,6 +16,7 @@ const Landing = () => {
 				<VideoCard />
 				<div className="hero flex flex-col items-center justify-center">
 					<Sustainableworld />
+
 					<NewsLetter />
 					<Footer />
 				</div>
