@@ -14,7 +14,7 @@ const NewsLetter: React.FC = () => {
 		<div className="px-6 py-2 md:w-3/4 w-full">
 			<div className="flex justify-center  bg-white shadow-lg rounded-lg p-4 x border border-gray-200 text-center md:flex-row">
 				<div className="md:flex-row w-full md:w-3/4">
-					<h2 className="text-xl font-bold mb-4 px-10 pt-4 md:text-2xl">
+					<h2 className="text-xl font-bold mb-4 px-10 pt-4 md:text-2xl dark:text-black">
 						Subscribete a nuestro <br /> newsletter
 					</h2>
 					<form onSubmit={handleSubmit} className=" p-4 flex flex-col items-center md:flex-row md:gap-4">
