@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 const NewsLetter: React.FC = () => {
-	const [name, setName] = useState<string>("Nombre");
-	const [email, setEmail] = useState<string>("Email");
+	const [name, setName] = useState<string>("");
+	const [email, setEmail] = useState<string>("");
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -21,7 +21,7 @@ const NewsLetter: React.FC = () => {
 						<div className="mb-4 border border-gray-200 shadow-lg rounded-lg text-slate-400 gap-10 w-full">
 							<input
 								type="text"
-								placeholder="Enter your name"
+								placeholder="Nombre"
 								className="w-full px-4 py-2 rounded-l-md"
 								value={name}
 								onChange={(e) => setName(e.target.value)}
@@ -30,7 +30,7 @@ const NewsLetter: React.FC = () => {
 						<div className="mb-4 border border-gray-200 shadow-lg rounded-lg text-slate-400 gap-10 w-full">
 							<input
 								type="email"
-								placeholder="Enter your email"
+								placeholder="Email"
 								className="w-full px-4 py-2 rounded-l-md"
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
