@@ -2,7 +2,7 @@ import { Separator } from "@radix-ui/react-select";
 
 const Footer = () => {
 	return (
-		<footer className=" py-4 w-full shadow-xl">
+		<footer className=" py-4 w-full shadow-xl bg-footer">
 			<div className="container mx-auto text-start d">
 				<img src="./src/assets/img/greentracelogo_desktop.png" alt="logo" width={"200px"} />
 				<div className="font-semibold ">
@@ -10,7 +10,7 @@ const Footer = () => {
 					<p className="py-2">Argentina</p>
 					<p className="py-2">hello@greentrace.com</p>
 				</div>
-				<Separator className="bg-[#E5E5E5] h-[1px] w-full dark:bg-[#E5E5E5] mb-4" />
+				{/* <Separator className="bg-[#E5E5E5] h-[1px] w-full dark:bg-[#E5E5E5] mb-4" /> */}
 			</div>
 			<div className="container mx-auto text-center md:flex md:gap-4 md:justify-between">
 				<p className="py-5">&copy; 2023 Soluciones de tecnologías climáticas</p>
