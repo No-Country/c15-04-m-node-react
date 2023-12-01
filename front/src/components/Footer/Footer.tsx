@@ -9,10 +9,8 @@ const Footer = () => {
 					<p className="py-2">Argentina</p>
 					<p className="py-2">hello@greentrace.com</p>
 				</div>
-				{/* <Separator className="bg-[#E5E5E5] h-[1px] w-full dark:bg-[#E5E5E5] mb-4" /> */}
 			</div>
 			<div className="container mx-auto text-center">
-				<p className="pt-2 pb-4 border-t-2 border-slate-200"></p>
 				<p className="pb-4 pt-4">&copy; 2023 Soluciones de tecnologias climaticas</p>
 				<p className="pb-4">Privacy policy</p>
 				<p className="pb-6">Terms of use</p>
