@@ -18,16 +18,16 @@ const Footer = () => {
 				<p className="py-5">Términos de uso</p>
 				<div className="flex justify-center gap-4 py-20 md:py-0 md:px-10 m">
 					<a href="#">
-						<img src="./src/assets/img/socials/linkedin.svg" alt="linkedin" width={"40x"} className="" />
+						<img src="./src/assets/img/socials/linkedin.svg" alt="linkedin" width={"40x"} className="dark:invert" />
 					</a>
 					<a href="#">
-						<img src="./src/assets/img/socials/facebook.svg" alt="facebook" width={"40x"} className="" />
+						<img src="./src/assets/img/socials/facebook.svg" alt="facebook" width={"40x"} className="dark:invert" />
 					</a>
 					<a href="#">
-						<img src="./src/assets/img/socials/twitter.svg" alt="twitter" width={"40px"} className="" />
+						<img src="./src/assets/img/socials/twitter.svg" alt="twitter" width={"40px"} className="dark:invert" />
 					</a>
 					<a href="#">
-						<img src="./src/assets/img/socials/instagram.svg" alt="instagram" width={"40px"} className="filter-white" />
+						<img src="./src/assets/img/socials/instagram.svg" alt="instagram" width={"40px"} className="dark:invert" />
 					</a>
 				</div>
 			</div>
