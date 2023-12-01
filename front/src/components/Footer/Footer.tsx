@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 const Footer = () => {
 	return (
-		<footer className=" text-black py-4 w-full fixed bottom-8">
+		<footer className="py-4 w-full  bottom-8">
 			<div className="container mx-auto flex-shrink-0 pb-4">
 				<img src="src/assets/img/greentracelogo_desktop.png" width={"200px"} alt="" />
 				<p className="py-2">Sirviendo al mundo desde el 2023</p>
