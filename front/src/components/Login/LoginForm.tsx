@@ -37,11 +37,7 @@ const LoginForm = () => {
 				onSubmit={form.handleSubmit(onSubmit)}
 				className="max-w-sm p-6 text-lg bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:w-[347px] md:[802px]"
 			>
-				<img
-					className="w-[50%] m-auto"
-					src="https://lh3.googleusercontent.com/drive-viewer/AK7aPaDNIP9_zcZgI39HIO92M_u4qKEDGeOHWDYbSwk_8ORsiQW45EqGTRCjb2_bbPsZBPtQYm7Lzonq75Ph4cTQ5vPC2TQG6A=s2560"
-					alt=""
-				/>
+				<img className="w-[50%] m-auto" src="./src/assets/img/greentracelogo.png" alt="logo" />
 				<FormField
 					control={form.control}
 					name="email"

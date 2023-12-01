@@ -60,18 +60,18 @@ function Navbar() {
 					</div>
 				</div>
 				{isOpen && (
-					<div className="md:hidden absolute bg-white w-full left-0" id="mobile-menu">
-						<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-							<a href="/" className="text-black block px-3 py-3 rounded-md text-xl font-medium">
+					<div className="md:hidden absolute bg-white dark:bg-[#020817]  w-full left-0" id="mobile-menu">
+						<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 dark:text-white">
+							<a href="/" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
 								Home
 							</a>
-							<a href="/" className="text-black block px-3 py-3 rounded-md text-xl font-medium">
+							<a href="/" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
 								About
 							</a>
-							<a href="/" className="text-black block px-3 py-3 rounded-md text-xl  font-medium">
+							<a href="/" className="text-black dark:text-white  block px-3 py-3 rounded-md text-xl  font-medium">
 								Contact
 							</a>
-							<a href="/login" className="text-black block px-3 py-3 rounded-md text-xl  font-medium">
+							<a href="/login" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl  font-medium">
 								Login
 							</a>
 						</div>
