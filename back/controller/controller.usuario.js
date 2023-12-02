@@ -3,10 +3,11 @@ const jwt = require('jsonwebtoken')
 const bycript = require('bcryptjs')
 const Usuario = require('../models/usuario')
 const genToken = require('../helpers/jwt')
+const transport = require('../helpers/emissions/calculator/transport')
 
 const signUp = async (req = request, res = response) => {
     try {
-        const { nombre, correo, password, ...rest } = req.body
+        const { nombre, correo, password, transporte, ...rest } = req.body
         const salt = bycript.genSaltSync()
         let usuario
         const noNew = await Usuario.findOne({ correo, estado: false })
@@ -15,11 +16,20 @@ const signUp = async (req = request, res = response) => {
                 nombre,
                 password: bycript.hashSync(password, salt),
                 estado: true,
+                transporte: transport(transporte),
                 ...rest,
             }
             usuario = await Usuario.findByIdAndUpdate(noNew.id, update, { new: true })
         } else {
-            usuario = new Usuario({ nombre, correo, password, ...rest })
+            usuario = new Usuario(
+                {
+                    nombre,
+                    correo,
+                    password,
+                    transporte: transport(transporte),
+                    ...rest
+                }
+            )
             usuario.password = bycript.hashSync(password, salt)
             await usuario.save()
         }
@@ -74,6 +84,7 @@ const update = async (req = request, res = response) => {
         const Authorization = req.header('Authorization')
         const token = Authorization.split('Bearer ')[1]
         const { correo, nombre, estado, ...rest } = req.body
+        if('transporte' in rest) rest.transporte = transport(rest.transporte)
         const data = rest
         const { id } = jwt.verify(token, process.env.TOKEN_USER)
         const usuario = await Usuario.findByIdAndUpdate(id, data, { new: true })
@@ -108,7 +119,7 @@ const eliminar = async (req = request, res = response) => {
     }
 }
 
-const auth = async (req = request, res = response) => {   
+const auth = async (req = request, res = response) => {
     try {
         const Authorization = req.header('Authorization')
         const token = Authorization.split('Bearer ')[1]
