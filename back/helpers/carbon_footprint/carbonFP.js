@@ -1,35 +1,25 @@
-const electricityCarbonFP = require('./electricity')
+const { countryEmission } = require('./electricity')
 const { carbonOffset } = require('./offset')
 
-class carbonFP {
-	constructor(){
-		this.electricity = null;
-	}
+const carbonFP = {
+  
+   getElectricity: function (electricity) {
+   	const { kwh, energia_renovable, pais } = electricity;
 
-	setElectricityParameters(kwh, renewableSource, country){
-		this.electricity = new electricityCarbonFP(kwh, renewableSource, country);
-	}
+	return energia_renovable ? 0 : kwh * countryEmission[pais];
+   },
 
-	getElectricityCarbonFP(){
-		return this.electricity.getCarbonFootprint(); //KgCO2eq * 0.001 -> tCO2
-	}
+   getCarbonOffset: function (carbon_footprint) {
+   	let offsets = [];
+   	const minTrees = Math.round(carbon_footprint / carbonOffset.treePerYear);
 
-	getTotalCarbonFootprint(){}
+   	if(minTrees > 0){
+   		offsets.push('Necesitarías plantar un mínimo de ' + minTrees + (minTrees > 1 ? ' arboles ' : ' arbol ') + 'para compensar tu huella.');
+   	}
 
-	getTotalCarbonOffset(){}
-
-	getElectricityCarbonOffset(){
-		if(this.electricity == null) return;
-
-		const ehc = this.getElectricityCarbonFP();
-		let minTrees = 0;
-
-		if(ehc != 0){
-			minTrees = Math.round(ehc / carbonOffset.treePerYear);
-		}
-
-		return { ehc, minTrees }
-	}
+   	return offsets;
+   }
+  
 }
 
 module.exports = carbonFP

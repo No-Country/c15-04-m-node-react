@@ -2,13 +2,13 @@ const { request, response } = require('express')
 const carbonFP = require('../helpers/carbon_footprint')
 
 const getElectricityCFP = (req = request, res = response) => {
-	const { kwh, energia_renovable, pais } = req.body;
-	let carbonReport = new carbonFP();
+	const { electricidad } = req.body;
 
-	carbonReport.setElectricityParameters(kwh, energia_renovable, pais);
-	const carbonOffset = carbonReport.getElectricityCarbonOffset();
+	const carbon_footprint = carbonFP.getElectricity(electricidad);
+	const carbonOffset = carbonFP.getCarbonOffset(carbon_footprint);
 
 	res.status(201).json({
+            carbon_footprint,
             carbonOffset
     })
 }
