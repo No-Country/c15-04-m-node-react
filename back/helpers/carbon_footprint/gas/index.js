@@ -1,19 +1,20 @@
 const gas = {
-  type: {
     naturalGas: {
-      cubicMeter_emission: 1.94,
-      therm_emission: 5.50,
-      fullname: 'gas_natural'
+      cubic_meter: 1.94,
+      therm: 5.50,
+      type: 'gas_natural'
     },
     propane: {
-    	therm_emission: 7.15,
-    	cubicMeter_emission: 6.39,
-    	fullname: 'gas_propano'
-    }
-  },
-  getByType: function(fullname) {
-    for(const type in this.type){
-      if(this.type[type].fullname == fullname) return this.type[type];
+    	therm: 7.15,
+    	cubic_meter: 6.39,
+    	type: 'gas_propano'
+    },
+  getEmissionFactor: function(type, unit) {
+    for(const prop in this){
+      if(typeof this[prop] === 'function') continue;
+      if(this[prop].type == type) return this[prop][unit];
     }
   }
 }
+
+module.exports = gas

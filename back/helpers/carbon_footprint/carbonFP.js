@@ -1,4 +1,5 @@
 const { countryEmission } = require('./electricity')
+const gasEmission = require('./gas')
 const { carbonOffset } = require('./offset')
 
 const carbonFP = {
@@ -7,6 +8,13 @@ const carbonFP = {
    	const { kwh, energia_renovable, pais } = electricity;
 
 	return energia_renovable ? 0 : kwh * countryEmission[pais];
+   },
+
+   getGas: function (gas) {
+   	const { tipo_gas, unidad, cantidad_consumida } = gas;
+   	const emission_factor = gasEmission.getEmissionFactor(tipo_gas, unidad);
+
+   	return cantidad_consumida * emission_factor;
    },
 
    getCarbonOffset: function (carbon_footprint) {
