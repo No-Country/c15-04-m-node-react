@@ -1,5 +1,6 @@
 import React from "react";
 import { ModeToggle } from "../mode-toggle";
+import { LoginDialog } from "../LoginDialog";
 
 function Navbar() {
 	const [isOpen, setIsOpen] = React.useState(false);
@@ -29,6 +30,7 @@ function Navbar() {
 							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
 								Contact
 							</a>
+							<LoginDialog />
 							<ModeToggle />
 						</div>
 					</div>
