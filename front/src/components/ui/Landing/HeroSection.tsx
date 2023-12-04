@@ -11,10 +11,14 @@ const HeroSection = () => {
 				</p>
 				<div className="store-icons flex gap-5 mt-6">
 					<a href="">
-						<img className="object-contain" src="./src/assets/img/hero/appstore.svg" alt="App Store" />
+						<div className="bg-white rounded-sm">
+							<img className="object-contain" src="./src/assets/img/hero/appstore.svg" alt="App Store" />
+						</div>
 					</a>
 					<a href="">
-						<img className="object-contain" src="./src/assets/img/hero/googleplay.svg" alt="Google Play Store" />
+						<div className="bg-white rounded-sm">
+							<img className="object-contain" src="./src/assets/img/hero/googleplay.svg" alt="Google Play Store" />
+						</div>
 					</a>
 				</div>
 			</div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { ModeToggle } from "../mode-toggle";
 import { LoginDialog } from "../LoginDialog";
+import Avatar from "../ui/avatar";
 
 function Navbar() {
 	const [isOpen, setIsOpen] = React.useState(false);
@@ -30,9 +31,14 @@ function Navbar() {
 							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
 								Contact
 							</a>
+
 							<LoginDialog />
+
 							<ModeToggle />
 						</div>
+						<a className="px-4" href="#">
+							<Avatar useravatar="https://placehold.co/100x100" imagesize={40} />
+						</a>
 					</div>
 					<div className=" flex md:hidden">
 						<button onClick={toggleNavbar} type="button" className="" aria-controls="mobile-menu" aria-expanded="false">

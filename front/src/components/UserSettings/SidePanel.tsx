@@ -60,7 +60,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 				isOpen ? "translate-x" : "translate-x-full  "
 			} transition-transform duration-300 ease-in-out`}
 		>
-			<HeaderPanel panelName="Perfil" />
+			<HeaderPanel panelName="Perfil" goback={false} />
 			<div className="flex items-center justify-center pt-4 ">
 				<Avatar useravatar={"https://github.com/shadcn.png"} imagesize={100} />
 			</div>
