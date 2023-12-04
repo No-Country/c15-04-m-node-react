@@ -1,11 +1,3 @@
-/**  
- *  hc de Consumo electrico (KgCO2eq)
- *	hc = consumo electrico (kwh) x countryEmission
-**/
-const { countryEmission } = require('./electricity');
-const { country } = require('./enum/country');
+const carbonFP = require('./carbonFP');
 
-module.exports = {
-  countryEmission,
-  country
-};
+module.exports = carbonFP
