@@ -7,7 +7,7 @@ const {
     auth
 } = require('../controller/controller.usuario')
 const getAvatars = require('../controller/controller.avatar')
-const { electricityCalculator, gasCalculator, carbonOffsetCalculator } = require('../controller/controller.carbonfp')
+const { electricityCalculator, gasCalculator, carbonOffsetCalculator, transportCalculator } = require('../controller/controller.carbonfp')
 const { POST_LOGIN, POST_SIGN_UP, TOKEN, ECFP_VALIDATION } = require('../helpers/checks')
 const router = Router()
 
@@ -20,6 +20,7 @@ router.put('/actualizar', TOKEN, update)
 router.delete('/eliminar', TOKEN, eliminar)
 router.post('/calculadora/electricidad', electricityCalculator)
 router.post('/calculadora/gas', gasCalculator)
+router.post('/calculadora/transporte', transportCalculator)
 router.post('/calculadora/offset', carbonOffsetCalculator)
 
 module.exports = router
