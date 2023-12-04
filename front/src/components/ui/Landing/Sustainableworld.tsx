@@ -1,12 +1,12 @@
 const Sustainableworld = () => {
 	return (
 		<div className="px-6 py-2 md:w-3/4 ">
-			<div className="flex justify-center bg-white shadow-lg rounded-lg p-4 x border border-gray-200 text-center w-full">
+			<div className="flex ">
 				<div className="md:flex">
 					<img src="./src/assets/img/colorfulgraphics.svg" className="py-4" alt="colorfull graphics" width={"500px"} />
 					<div className="justify-between w-25">
-						<h3 className="font-bold text-2xl dark:text-black md:text-start md:px-10">Por un mundo mas sustentable</h3>
-						<p className="text-md text-left font-semibold p-6 md:px-10 dark:text-black">
+						<h3 className="font-bold text-2xl md:text-start md:px-10">Por un mundo mas sustentable</h3>
+						<p className="text-md text-left font-semibold p-6 md:px-10">
 							Desarrollamos una webapp donde podrás llevar un registro de tu emisión de carbono y asi poder conocer tu
 							huella, cada actividad que realizas en tu dia a dia afecta a nuestro planeta, algunas mas y otras menos.
 							Para conocer cuales son las actividades que mas afectan y cuales menos te invitamos a que utilices nuestra
