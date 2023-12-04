@@ -3,7 +3,6 @@ const cors = require('cors')
 const connection = require('../dataBase/connection')
 const message = require('../helpers/message')
 
-
 class Server {
 
     #PORT = process.env.PORT
