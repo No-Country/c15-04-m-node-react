@@ -64,6 +64,18 @@
 		--input: 217.2 32.6% 17.5%;
 		--ring: 212.7 26.8% 83.9%;
 	}
+	.bg-footer {
+		@apply after:bg-[url('./src/assets/img/wave-haikei.svg')] 
+	 after:dark:bg-[url('./src/assets/img/wave-haikei.svg')] 
+	 after:content-[""]
+	 after:fixed  /*it stays fixed on the screen*/
+	 after:bottom-0 after:left-0
+	 after:w-full after:h-full
+	 after:-z-10
+	 after:bg-cover
+	  after:bg-center
+	  after:bg-no-repeat;
+	}
 }
 
 @layer base {
