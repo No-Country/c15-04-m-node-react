@@ -1,9 +1,8 @@
-/* Validacion de los campos de la huella de carbon del consumo electrico */
 const { check } = require('express-validator')
 const validarCampos = require('../../middleware/validarCampos')
 
 const ECFP_VALIDATION = [
-    /*check('kwh')
+    check('kwh')
         .notEmpty().withMessage('Este es un campo requerido.')
         .isNumeric().withMessage('Este campo admite solamente números.')
         .custom(val => {
@@ -13,7 +12,7 @@ const ECFP_VALIDATION = [
     		return true;
         }),
     check('pais')
-        .notEmpty().withMessage('Este es un campo requerido.'),*/
+        .notEmpty().withMessage('Este es un campo requerido.'),
     validarCampos
 ]
 
