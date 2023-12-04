@@ -17,11 +17,11 @@ const UsuarioSchema = Schema({
 
     edad: { type: Number },
 
-    electricidad: {type: String },
+    electricidad: {type: String},
 
-    gas: { type: String },
+    gas: { type: String},
 
-    transporte: { type: String },
+    transporte: { type: String},
 
     estado: { type: Boolean, default: true },
 
