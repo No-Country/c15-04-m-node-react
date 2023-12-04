@@ -1,5 +1,6 @@
 import React from "react";
 import { ModeToggle } from "../mode-toggle";
+import Avatar from "../ui/avatar";
 
 function Navbar() {
 	const [isOpen, setIsOpen] = React.useState(false);
@@ -18,7 +19,7 @@ function Navbar() {
 							<img className="hidden md:block" src="src/assets/img/greentracelogo_desktop.png" width={"200px"} alt="" />
 						</div>
 					</div>
-					<div className="hidden md:flex justify-center items-center">
+					<div className=" hidden md:flex justify-center items-center">
 						<div className="space-x-4 text-lg">
 							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
 								Home
@@ -29,7 +30,11 @@ function Navbar() {
 							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
 								Contact
 							</a>
-							<ModeToggle />
+
+							{/* <ModeToggle /> */}
+							<a href="">
+								<Avatar useravatar="https://placehold.co/100x100" imagesize={40} />
+							</a>
 						</div>
 					</div>
 					<div className=" flex md:hidden">
@@ -70,9 +75,6 @@ function Navbar() {
 							</a>
 							<a href="/" className="text-black dark:text-white  block px-3 py-3 rounded-md text-xl  font-medium">
 								Contact
-							</a>
-							<a href="/login" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl  font-medium">
-								Login
 							</a>
 						</div>
 						<ModeToggle />
