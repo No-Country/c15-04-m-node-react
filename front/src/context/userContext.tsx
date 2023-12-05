@@ -6,6 +6,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Avatar, User, UserResponseError, UserSignUp, UserUpdate } from "@/types/api";
 import { AxiosError } from "axios";
 import { GlobalConstants } from "@/constants";
+import { any } from "zod";
 
 export type UserContextProps = {
 	user: User | null;
@@ -100,6 +101,8 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 				toast({
 					title: `Bienvenido ${user.usuario}`,
 				});
+
+				setUser(user as any);
 			})
 			.catch((err: AxiosError) => {
 				if (err.response?.status === 401) {
