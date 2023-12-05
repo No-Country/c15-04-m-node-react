@@ -33,10 +33,7 @@ const LoginForm = () => {
 
 	return (
 		<Form {...form}>
-			<form
-				onSubmit={form.handleSubmit(onSubmit)}
-				className="max-w-sm p-6 text-lg bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:w-[347px] md:[802px]"
-			>
+			<form onSubmit={form.handleSubmit(onSubmit)} className="max-w-sm p-6 text-lg">
 				<img className="w-[50%] m-auto" src="./src/assets/img/greentracelogo.png" alt="logo" />
 				<FormField
 					control={form.control}

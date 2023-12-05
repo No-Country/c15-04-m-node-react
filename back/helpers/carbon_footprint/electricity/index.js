@@ -20,6 +20,7 @@ const chile = 0.116;
 const colombia = 0.140;
 const peru = 0.172;
 const uruguay = 0.78;
+const ecuador = paraguay = venezuela = (argentina + bolivia + brasil + chile + colombia + peru + uruguay + costa_rica + guatemala + honduras + nicaragua + panama + republica_dominicana + salvador) / 14;
 
 module.exports = {
 	countryEmission: {
@@ -37,6 +38,9 @@ module.exports = {
 		'chile': chile,
 		'colombia': colombia,
 		'peru': peru,
-		'uruguay': uruguay
+		'uruguay': uruguay,
+		'ecuador': ecuador,
+		'paraguay': paraguay,
+		'venezuela': venezuela
 	}
 };

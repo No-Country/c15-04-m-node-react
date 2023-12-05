@@ -1,4 +1,3 @@
-/* Validacion de los campos de la huella de carbon del consumo electrico */
 const { check } = require('express-validator')
 const validarCampos = require('../../middleware/validarCampos')
 

@@ -1,14 +1,48 @@
 const { request, response } = require('express')
-const { countryEmission } = require('../helpers/carbon_footprint')
+const carbonFP = require('../helpers/carbon_footprint')
+const transport = require('../helpers/emissions/calculator/transport')
 
-const getElectricityCFP = (req = request, res = response) => {
-	const { kwh, pais } = req.body;
-	const hc = kwh * countryEmission[pais]; // KgCO2 * 0.001 -> tCO2 
+const electricityCalculator = (req = request, res = response) => {
+	const { electricidad } = req.body;
+
+	const carbon_footprint = carbonFP.getElectricity(electricidad);
 
 	res.status(201).json({
-            message: `Huella de Carbono: ${hc} kgCO2`,
-            hc
+            carbon_footprint,
     })
 }
 
-module.exports = { getElectricityCFP }
+const gasCalculator = (req = request, res = response) => {
+	const { gas } = req.body;
+
+	const carbon_footprint = carbonFP.getGas(gas);
+
+	res.status(201).json({
+            carbon_footprint
+    })
+}
+
+const transportCalculator = (req = request, res = response) => {
+	const { transporte } = req.body;
+	const carbon_footprint = transport(transporte);
+
+	res.status(201).json({
+            carbon_footprint
+    })
+}
+
+const carbonOffsetCalculator = (req = request, res = response) => {
+	const { huella_carbono } = req.body;
+	const carbonOffset = carbonFP.getCarbonOffset(huella_carbono);
+
+	res.status(201).json({
+            carbonOffset
+    })
+}
+
+module.exports = { 
+	electricityCalculator,
+	gasCalculator,
+	transportCalculator,
+	carbonOffsetCalculator 
+}
