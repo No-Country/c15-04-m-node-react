@@ -5,6 +5,6 @@ import { CalculateTransportFootprintResponse, CalculateTransportFootprintPayload
 export const calculateTransportFootprint = async (
 	data: CalculateTransportFootprintPayload,
 ): Promise<CalculateTransportFootprintResponse> => {
-	const response = await api.post<CalculateTransportFootprintResponse>("/transport", data);
+	const response = await api.post<CalculateTransportFootprintResponse>("/calculadora/transporte", data);
 	return response.data;
 };
