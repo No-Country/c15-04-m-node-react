@@ -2,6 +2,7 @@ import React from "react";
 import { ModeToggle } from "../mode-toggle";
 import { LoginDialog } from "../LoginDialog";
 import Avatar from "../ui/avatar";
+import { Menu, X } from "lucide-react";
 
 type NavbarProps = {
 	onToggleSidePanel: () => void;
@@ -45,33 +46,19 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 					<div className=" flex md:hidden">
 						<button onClick={toggleNavbar} type="button" className="" aria-controls="mobile-menu" aria-expanded="false">
 							<span className="sr-only">Open main menu</span>
-							{!isOpen ? (
-								<svg
-									className="block h-10 w-10"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-								>
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-								</svg>
-							) : (
-								<svg
-									className="block h-10 w-10"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-								>
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							)}
+							{!isOpen ? <Menu size={34} /> : <X size={34} />}
 						</button>
 					</div>
 				</div>
 				{isOpen && (
-					<div className="md:hidden absolute bg-white dark:bg-[#020817]  w-full left-0" id="mobile-menu">
+					<div className="md:hidden absolute bg-white dark:bg-[#020817]  w-full left-0 py-4" id="mobile-menu">
 						<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 dark:text-white">
+							<a
+								className="text-black dark:text-white  px-3  rounded-md text-xl  font-medium flex justify-between "
+								onClick={onToggleSidePanel}
+							>
+								Perfil <Avatar useravatar="https://placehold.co/100x100" imagesize={40} />
+							</a>
 							<a href="/" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
 								Home
 							</a>

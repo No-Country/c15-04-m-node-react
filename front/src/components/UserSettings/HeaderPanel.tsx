@@ -15,7 +15,7 @@ const HeaderPanel: React.FC<HeaderProps> = ({ panelName, goback, onClose }) => {
 			</div>
 			<div>
 				<a onClick={onClose} className="cursor-pointer">
-					<X className="w-6 h-6 mr-4" />
+					<X size={34} className="m-4" />
 				</a>
 			</div>
 		</div>
