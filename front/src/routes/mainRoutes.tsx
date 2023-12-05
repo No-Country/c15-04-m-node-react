@@ -10,14 +10,10 @@ const mainRoutes: RouteObject = {
 		{
 			path: "/",
 			element: <Home />,
-
-			
 		},
 		{
 			path: "/slider",
 			element: <Slider />,
-
-			
 		},
 	],
 };
