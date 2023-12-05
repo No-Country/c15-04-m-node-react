@@ -4,7 +4,8 @@ const {
     logIn,
     update, 
     eliminar,
-    auth
+    auth,
+    userData
 } = require('../controller/controller.usuario')
 const getAvatars = require('../controller/controller.avatar')
 const { electricityCalculator, gasCalculator, carbonOffsetCalculator, transportCalculator } = require('../controller/controller.carbonfp')
@@ -12,6 +13,7 @@ const { POST_LOGIN, POST_SIGN_UP, TOKEN, ECFP_VALIDATION } = require('../helpers
 const router = Router()
 
 router.get('/auth', auth)
+router.get('/data', userData)
 router.get('/sign-up', getAvatars)
 router.post('/sign-up', POST_SIGN_UP, signUp)
 router.post('/login', POST_LOGIN, logIn)

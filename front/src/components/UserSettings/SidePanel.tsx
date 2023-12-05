@@ -1,10 +1,9 @@
 import SettingsCard from "./SettingsCard";
-
 import { Button } from "@/components/ui/button";
-
 import { User, Mail, Lock, Bell, Palette, XCircle, ShieldAlert, LogOut } from "lucide-react";
 import Avatar from "../ui/avatar";
 import HeaderPanel from "./HeaderPanel";
+import { useTheme } from "@/components/theme-provider";
 
 type SidePanelProps = {
 	isOpen: boolean;
@@ -12,21 +11,26 @@ type SidePanelProps = {
 };
 
 const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
+	const { theme, setTheme } = useTheme();
+
 	const configItems = [
 		{
 			icon: <User size={20} />,
 			label: "Cambiar Nombre",
 			useSwitch: false,
+			onClick: () => {},
 		},
 		{
 			icon: <Mail size={20} />,
 			label: "Cambiar E-mail",
 			useSwitch: false,
+			onClick: () => {},
 		},
 		{
 			icon: <Lock size={20} />,
 			label: "Cambiar Contraseña",
 			useSwitch: false,
+			onClick: () => {},
 		},
 	];
 	const personalizationItems = [
@@ -39,6 +43,11 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 			icon: <Palette size={20} />,
 			label: "Tema",
 			useSwitch: true,
+			handleToggle: () => {
+				const newTheme = theme === "dark" ? "light" : "dark";
+				setTheme(newTheme);
+			},
+			theme: theme,
 		},
 	];
 	const support = [
@@ -46,11 +55,13 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 			icon: <XCircle size={20} />,
 			label: "Reportar Abuso",
 			useSwitch: false,
+			onClick: () => {},
 		},
 		{
 			icon: <ShieldAlert size={20} />,
 			label: "FAQ",
 			useSwitch: false,
+			onClick: () => {},
 		},
 	];
 	let username = "John Doe";
@@ -69,7 +80,13 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 			</div>
 			<div>
 				<SettingsCard title="Configuración" icon={<User size={20} />} items={configItems} />
-				<SettingsCard title="Personalización" icon={<User size={20} />} items={personalizationItems} />
+				<SettingsCard
+					title="Personalización"
+					icon={<User size={20} />}
+					items={personalizationItems}
+					theme={theme}
+					handleToggle={setTheme}
+				/>
 				<SettingsCard title="Soporte" icon={<User size={20} />} items={support} />
 			</div>
 			<div className="flex items-center justify-center pt-4">
