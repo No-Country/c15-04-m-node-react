@@ -1,5 +1,4 @@
 import React from "react";
-import { ModeToggle } from "../mode-toggle";
 import { LoginDialog } from "../LoginDialog";
 import Avatar from "../ui/avatar";
 import { Menu, X } from "lucide-react";
@@ -37,10 +36,9 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 								Contact
 							</a>
 							<LoginDialog />
-							<ModeToggle />
 						</div>
 						<a className="px-4 cursor-pointer" onClick={onToggleSidePanel}>
-							<Avatar useravatar="https://placehold.co/100x100" imagesize={40} />
+							<Avatar useravatar={"https://github.com/shadcn.png"} imagesize={40} />
 						</a>
 					</div>
 					<div className=" flex md:hidden">
@@ -69,7 +67,6 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 								Contact
 							</a>
 						</div>
-						<ModeToggle />
 					</div>
 				)}
 			</div>

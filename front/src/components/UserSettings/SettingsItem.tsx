@@ -7,11 +7,11 @@ type SettingsItemProps = {
 	label: string;
 	onClick?: () => void;
 	useSwitch?: boolean;
+	handleToggle?: () => void;
+	theme: string;
 };
 
-const SettingsItem: React.FC<SettingsItemProps> = ({ icon, label, onClick, useSwitch = false }) => {
-	const IconComponent = useSwitch ? Switch : ChevronRight;
-
+const SettingsItem: React.FC<SettingsItemProps> = ({ icon, label, onClick, useSwitch, theme, handleToggle }) => {
 	return (
 		<div className="flex px-6 py-3 justify-between font-bold">
 			<div className="flex">
@@ -19,7 +19,11 @@ const SettingsItem: React.FC<SettingsItemProps> = ({ icon, label, onClick, useSw
 				<h3>{label}</h3>
 			</div>
 			<button className="chevron-button" onClick={onClick}>
-				<IconComponent />
+				{useSwitch ? (
+					<Switch checked={theme === "dark"} onCheckedChange={handleToggle} />
+				) : (
+					<ChevronRight onClick={onClick} />
+				)}
 			</button>
 		</div>
 	);
