@@ -1,7 +1,7 @@
 import SettingsCard from "./SettingsCard";
 
 import { Button } from "@/components/ui/button";
-import React from "react";
+
 import { User, Mail, Lock, Bell, Palette, XCircle, ShieldAlert, LogOut } from "lucide-react";
 import Avatar from "../ui/avatar";
 import HeaderPanel from "./HeaderPanel";
@@ -60,7 +60,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 				isOpen ? "translate-x" : "translate-x-full  "
 			} transition-transform duration-300 ease-in-out`}
 		>
-			<HeaderPanel panelName="Perfil" goback={false} />
+			<HeaderPanel onClose={onClose} panelName="Perfil" goback={false} />
 			<div className="flex items-center justify-center pt-4 ">
 				<Avatar useravatar={"https://github.com/shadcn.png"} imagesize={100} />
 			</div>

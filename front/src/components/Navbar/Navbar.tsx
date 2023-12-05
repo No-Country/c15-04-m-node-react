@@ -3,7 +3,11 @@ import { ModeToggle } from "../mode-toggle";
 import { LoginDialog } from "../LoginDialog";
 import Avatar from "../ui/avatar";
 
-function Navbar() {
+type NavbarProps = {
+	onToggleSidePanel: () => void;
+};
+
+function Navbar({ onToggleSidePanel }: NavbarProps) {
 	const [isOpen, setIsOpen] = React.useState(false);
 
 	const toggleNavbar = () => {
@@ -31,12 +35,10 @@ function Navbar() {
 							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
 								Contact
 							</a>
-
 							<LoginDialog />
-
 							<ModeToggle />
 						</div>
-						<a className="px-4" href="#">
+						<a className="px-4 cursor-pointer" onClick={onToggleSidePanel}>
 							<Avatar useravatar="https://placehold.co/100x100" imagesize={40} />
 						</a>
 					</div>

@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 type HeaderProps = {
 	panelName: string;
 	goback: boolean;
-	onClose(): void; //prop for close callback
+	onClose: () => void;
 };
 
 const HeaderPanel: React.FC<HeaderProps> = ({ panelName, goback, onClose }) => {
@@ -14,9 +14,7 @@ const HeaderPanel: React.FC<HeaderProps> = ({ panelName, goback, onClose }) => {
 				<h1 className="text-xl font-bold px-4">{panelName}</h1>
 			</div>
 			<div>
-				<a href="#" onClick={onClose}>
-					{" "}
-					{/* Add onClick event handler */}
+				<a onClick={onClose} className="cursor-pointer">
 					<X className="w-6 h-6 mr-4" />
 				</a>
 			</div>
