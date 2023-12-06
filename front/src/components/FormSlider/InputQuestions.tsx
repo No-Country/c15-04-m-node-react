@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 
-const InputQuestions = ({ onSubmit }) => {
+interface InputQuestionsProps {
+  onSubmit: (value: string) => void;
+}
+
+const InputQuestions = ({ onSubmit }:InputQuestionsProps) => {
   const [inputValue, setInputValue] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Puedes hacer alguna validación aquí antes de enviar el valor
     onSubmit(inputValue);
