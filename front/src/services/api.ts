@@ -20,4 +20,15 @@ api.interceptors.request.use(
 	},
 );
 
+
+export const calculateCarbonFootprint = async (kwh, country) => {
+	try {
+	  const response = await api.post('/calculadora/electricidad', { kwh, pais: country });
+	  return response.data; 
+	} catch (error) {
+	  console.error('Error al calcular la huella de carbono:', error);
+	  throw error;
+	}
+  };
+
 export default api;
