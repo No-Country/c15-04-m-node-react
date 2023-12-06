@@ -41,7 +41,7 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 							{user?.nombre === undefined && <LoginDialog />}
 						</div>
 						<a className="px-4 cursor-pointer" onClick={onToggleSidePanel}>
-							{user?.nombre !== undefined && <Avatar imagesize={32} />}
+							{user?.nombre !== undefined && <Avatar imagesize={32} ñ />}
 						</a>
 					</div>
 					<div className=" flex md:hidden">
