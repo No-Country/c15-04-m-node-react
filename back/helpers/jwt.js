@@ -1,14 +1,13 @@
 const jwt = require('jsonwebtoken')
 require('colors')
 
-const genToken = (uid = '') => {
+const genToken = (id = '') => {
     return new Promise((res, rej) => {
-        const payload = { uid }
-        jwt.sign(payload, process.env.TOKEN_USER, { expiresIn: '30m' }, 
+        jwt.sign( { id }, process.env.TOKEN_USER, { expiresIn: '30m' }, 
         (err, result) => {
             if(err)  {
                 console.log('ERROR AL GENERAR TOKEN!'.red, err)
-                rej('No se pudo generar el token')
+                rej('Error al generar el token!', err.message)
             } else res(result)
         })
     })
