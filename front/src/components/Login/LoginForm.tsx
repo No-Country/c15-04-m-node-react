@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useUserContext } from "@/hooks/useExample/useUserContext";
+import GreenTraceLogo from "@/assets/img/greentracelogo.png";
 
 const formSchema = z.object({
 	email: z.string().min(2, {
@@ -37,7 +38,7 @@ const LoginForm = () => {
 				onSubmit={form.handleSubmit(onSubmit)}
 				className="p-6 text-lg dark:border-slate-600 dark:bg-[#020817] rounded-lgw-[347px] md:[802px]"
 			>
-				<img className="w-[50%] m-auto" src="./src/assets/img/greentracelogo.png" alt="logo" />
+				<img className="w-[50%] m-auto" src={GreenTraceLogo} alt="logo" />
 				<FormField
 					control={form.control}
 					name="email"

@@ -4,7 +4,6 @@ import { useToast } from "@/components/ui/use-toast";
 import { Avatar, User, UserResponseError, UserSignUp, UserUpdate } from "@/types/api";
 import { AxiosError } from "axios";
 import { GlobalConstants } from "@/constants";
-import { any } from "zod";
 
 export type UserContextProps = {
 	user: User | null;

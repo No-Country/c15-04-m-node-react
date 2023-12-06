@@ -1,9 +1,12 @@
 import { Icon } from "@iconify/react";
+
+import GreentraceLogo from "../../assets/img/greentracelogo_desktop.png";
+
 const Footer = () => {
 	return (
 		<footer className=" py-4 w-full shadow-xl bg-footer">
 			<div className="container mx-auto text-start d">
-				<img src="./src/assets/img/greentracelogo_desktop.png" alt="logo" width={"200px"} />
+				<img src={GreentraceLogo} alt="logo" width={"200px"} />
 				<div className="font-semibold ">
 					<p className="py-2">Sirviendo al mundo desde 2023</p>
 					<p className="py-2">Argentina</p>

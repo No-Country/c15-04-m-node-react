@@ -1,6 +1,6 @@
 import SettingsCard from "./SettingsCard";
 import { Button } from "@/components/ui/button";
-import { User, Mail, Lock, Bell, Palette, XCircle, ShieldAlert, LogOut } from "lucide-react";
+import { User, Mail, Lock, Palette, XCircle, ShieldAlert, LogOut } from "lucide-react";
 import Avatar from "../ui/avatar";
 import HeaderPanel from "./HeaderPanel";
 import { useTheme } from "@/components/theme-provider";
@@ -64,7 +64,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 			onClick: () => {},
 		},
 	];
-	let username = user?.nombre ?? "John Doe";
+	const username = user?.nombre ?? "John Doe";
 	return (
 		<div
 			className={`fixed inset-y-0 right-0 w-full md:w-1/4 dark:bg-[#020817] bg-white shadow-lg ${

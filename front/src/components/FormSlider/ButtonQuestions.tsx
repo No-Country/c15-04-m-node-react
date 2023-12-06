@@ -1,7 +1,11 @@
+interface ButtonQuestionsProps {
+  options: { label: string; value: number }[];
+  onClick: (option: { label: string; value: number }) => void;
+}
 
 
 
-const ButtonQuestions = ({ options, onClick }) => {
+const ButtonQuestions = ({ options, onClick }:ButtonQuestionsProps) => {
   return (
     <div className="flex flex-col items-center justify-center">
       {options.map((option, index) => (
