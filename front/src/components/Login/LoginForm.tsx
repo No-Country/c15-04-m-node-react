@@ -35,7 +35,7 @@ const LoginForm = () => {
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="max-w-sm p-6 text-lg bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:w-[347px] md:[802px]"
+				className="p-6 text-lg dark:border-slate-600 dark:bg-[#020817] rounded-lgw-[347px] md:[802px]"
 			>
 				<img className="w-[50%] m-auto" src="./src/assets/img/greentracelogo.png" alt="logo" />
 				<FormField
@@ -62,7 +62,7 @@ const LoginForm = () => {
 								<h3 className="text-lg">Contraseña:</h3>
 							</FormLabel>
 							<FormControl>
-								<Input placeholder="Ingresa tu contraseña" {...field} />
+								<Input type="password" placeholder="Ingresa tu contraseña" {...field} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>

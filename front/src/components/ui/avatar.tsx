@@ -1,17 +1,18 @@
+import { useUserContext } from "@/hooks/useExample/useUserContext";
+
 type AvatarProps = {
-	useravatar: string;
 	imagesize: number;
 };
 
-const Avatar: React.FC<AvatarProps> = ({ useravatar, imagesize }) => {
+const Avatar: React.FC<AvatarProps> = ({ imagesize }) => {
+	const { user } = useUserContext();
 	return (
 		<img
-			className="rounded-full"
-			src={useravatar}
+			className="object-contain rounded-full aspect-ratio-square"
+			src={user?.img || "https://img.freepik.com/premium-vector/flat-instagram-icons-notifications_619991-50.jpg"}
 			alt="Avatar"
 			width={imagesize}
 			height={imagesize}
-			style={{ objectFit: "cover" }}
 		/>
 	);
 };

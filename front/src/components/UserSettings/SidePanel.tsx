@@ -4,6 +4,7 @@ import { User, Mail, Lock, Bell, Palette, XCircle, ShieldAlert, LogOut } from "l
 import Avatar from "../ui/avatar";
 import HeaderPanel from "./HeaderPanel";
 import { useTheme } from "@/components/theme-provider";
+import { useUserContext } from "@/hooks/useExample/useUserContext";
 
 type SidePanelProps = {
 	isOpen: boolean;
@@ -11,6 +12,7 @@ type SidePanelProps = {
 };
 
 const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
+	const { user } = useUserContext();
 	const { theme, setTheme } = useTheme();
 
 	const configItems = [
@@ -64,7 +66,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 			onClick: () => {},
 		},
 	];
-	let username = "John Doe";
+	let username = user?.nombre ?? "John Doe";
 	return (
 		<div
 			className={`fixed inset-y-0 right-0 w-full md:w-1/4 dark:bg-[#020817] bg-white shadow-lg ${
@@ -73,7 +75,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 		>
 			<HeaderPanel onClose={onClose} panelName="Perfil" goback={false} />
 			<div className="flex items-center justify-center pt-4 ">
-				<Avatar useravatar={"https://github.com/shadcn.png"} imagesize={100} />
+				<Avatar imagesize={100} />
 			</div>
 			<div className="flex flex-col items-center justify-center p-2 font-semibold">
 				<h3 className="text-bold text-xl">{username}</h3>

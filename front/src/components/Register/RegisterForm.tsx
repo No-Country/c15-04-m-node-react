@@ -46,7 +46,7 @@ const RegisterForm = () => {
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:w-[347px] md:[802px]"
+				className="max-w-sm p-6  dark:border-gray-700 sm:w-[347px] md:[802px]"
 			>
 				<img className="w-[50%] m-auto" src="./src/assets/img/greentracelogo.png" alt="logo" />
 				<FormField
@@ -82,7 +82,7 @@ const RegisterForm = () => {
 						<FormItem>
 							<FormLabel>Contraseña:</FormLabel>
 							<FormControl>
-								<Input placeholder="Ingresa tu contraseña" {...field} />
+								<Input type="password" placeholder="Ingresa tu contraseña" {...field} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
@@ -95,7 +95,7 @@ const RegisterForm = () => {
 						<FormItem>
 							<FormLabel>Confirmar Contraseña:</FormLabel>
 							<FormControl>
-								<Input placeholder="Confirma tu contraseña" {...field} />
+								<Input type="password" placeholder="Confirma tu contraseña" {...field} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
