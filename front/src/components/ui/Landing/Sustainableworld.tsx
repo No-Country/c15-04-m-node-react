@@ -1,9 +1,11 @@
+import Colorfulgraphics from "../../../assets/img/colorfulgraphics.svg";
+
 const Sustainableworld = () => {
 	return (
 		<div className="px-6 py-2 md:w-3/4 ">
 			<div className="flex ">
 				<div className="md:flex">
-					<img src="./src/assets/img/colorfulgraphics.svg" className="py-4" alt="colorfull graphics" width={"500px"} />
+					<img src={Colorfulgraphics} className="py-4" alt="colorfull graphics" width={"500px"} />
 					<div className="justify-between w-25">
 						<h3 className="font-bold text-2xl md:text-start md:px-10">Por un mundo mas sustentable</h3>
 						<p className="text-md text-left font-semibold p-6 md:px-10">
