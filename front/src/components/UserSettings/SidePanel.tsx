@@ -37,11 +37,6 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 	];
 	const personalizationItems = [
 		{
-			icon: <Bell size={20} />,
-			label: "Notifiaciones",
-			useSwitch: true,
-		},
-		{
 			icon: <Palette size={20} />,
 			label: "Tema",
 			useSwitch: true,

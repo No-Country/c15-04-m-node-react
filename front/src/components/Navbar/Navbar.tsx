@@ -2,6 +2,7 @@ import React from "react";
 import { LoginDialog } from "../LoginDialog";
 import Avatar from "../ui/avatar";
 import { Menu, X } from "lucide-react";
+import { useUserContext } from "@/hooks/useExample/useUserContext";
 
 type NavbarProps = {
 	onToggleSidePanel: () => void;
@@ -9,6 +10,8 @@ type NavbarProps = {
 
 function Navbar({ onToggleSidePanel }: NavbarProps) {
 	const [isOpen, setIsOpen] = React.useState(false);
+	const { user } = useUserContext();
+	console.log(user?.nombre);
 
 	const toggleNavbar = () => {
 		setIsOpen(!isOpen);
@@ -35,10 +38,10 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
 								Contact
 							</a>
-							<LoginDialog />
+							{user?.nombre === undefined && <LoginDialog />}
 						</div>
 						<a className="px-4 cursor-pointer" onClick={onToggleSidePanel}>
-							<Avatar imagesize={32} />
+							{user?.nombre !== undefined && <Avatar imagesize={32} />}
 						</a>
 					</div>
 					<div className=" flex md:hidden">
@@ -55,7 +58,7 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 								className="text-black dark:text-white  px-3  rounded-md text-xl  font-medium flex justify-between "
 								onClick={onToggleSidePanel}
 							>
-								Perfil <Avatar imagesize={40} />
+								Perfil <Avatar imagesize={32} />
 							</a>
 							<a href="/" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
 								Home
@@ -66,6 +69,8 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 							<a href="/" className="text-black dark:text-white  block px-3 py-3 rounded-md text-xl  font-medium">
 								Contact
 							</a>
+
+							<LoginDialog />
 						</div>
 					</div>
 				)}
