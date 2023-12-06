@@ -14,7 +14,10 @@ type SidePanelProps = {
 const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 	const { user } = useUserContext();
 	const { theme, setTheme } = useTheme();
-
+	const handleLogout = () => {
+		localStorage.clear();
+		window.location.reload();
+	};
 	const configItems = [
 		{
 			icon: <User size={20} />,
@@ -36,11 +39,6 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 		},
 	];
 	const personalizationItems = [
-		{
-			icon: <Bell size={20} />,
-			label: "Notifiaciones",
-			useSwitch: true,
-		},
 		{
 			icon: <Palette size={20} />,
 			label: "Tema",
@@ -92,7 +90,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 				<SettingsCard title="Soporte" icon={<User size={20} />} items={support} />
 			</div>
 			<div className="flex items-center justify-center pt-4">
-				<Button className="bg-emerald-500" type="submit">
+				<Button className="bg-emerald-500" type="submit" onClick={handleLogout}>
 					<LogOut className="mr-2" />
 					Cerrar Sesión
 				</Button>
