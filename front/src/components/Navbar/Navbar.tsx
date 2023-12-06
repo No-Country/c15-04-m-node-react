@@ -38,7 +38,7 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 							<LoginDialog />
 						</div>
 						<a className="px-4 cursor-pointer" onClick={onToggleSidePanel}>
-							<Avatar useravatar={"https://github.com/shadcn.png"} imagesize={40} />
+							<Avatar imagesize={32} />
 						</a>
 					</div>
 					<div className=" flex md:hidden">
@@ -55,7 +55,7 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 								className="text-black dark:text-white  px-3  rounded-md text-xl  font-medium flex justify-between "
 								onClick={onToggleSidePanel}
 							>
-								Perfil <Avatar useravatar="https://placehold.co/100x100" imagesize={40} />
+								Perfil <Avatar imagesize={40} />
 							</a>
 							<a href="/" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
 								Home

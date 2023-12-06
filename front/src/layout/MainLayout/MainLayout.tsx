@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import SidePanel from "../../components/UserSettings/SidePanel";
 import { useState } from "react";
 const MainLayout = () => {
-	const [isSidePanelOpen, setIsSidePanelOpen] = useState(true);
+	const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
 	const toggleSidePanel = () => {
 		setIsSidePanelOpen(!isSidePanelOpen);
