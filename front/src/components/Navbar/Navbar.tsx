@@ -23,20 +23,30 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 				<div className="flex justify-between h-20">
 					<div className="flex items-center">
 						<div className="flex-shrink-0">
-							<img className="block md:hidden" src="src/assets/img/greentracelogo.png" width={"80px"} alt="" />
-							<img className="hidden md:block" src="src/assets/img/greentracelogo_desktop.png" width={"200px"} alt="" />
+							<a href="/">
+								<img className="block md:hidden" src="src/assets/img/greentracelogo.png" width={"80px"} alt="" />
+								<img
+									className="hidden md:block"
+									src="src/assets/img/greentracelogo_desktop.png"
+									width={"200px"}
+									alt=""
+								/>
+							</a>
 						</div>
 					</div>
 					<div className=" hidden md:flex justify-center items-center">
 						<div className="space-x-4 text-lg">
-							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
-								Home
+							<a
+								href="/footprint"
+								className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline"
+							>
+								Mi Huella
 							</a>
 							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
-								About
+								Calculadora
 							</a>
 							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
-								Contact
+								Contacto
 							</a>
 							{user?.nombre === undefined && <LoginDialog />}
 						</div>
@@ -58,19 +68,25 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 								className="text-black dark:text-white  px-3  rounded-md text-xl  font-medium flex justify-between "
 								onClick={onToggleSidePanel}
 							>
-								Perfil <Avatar imagesize={32} />
+								{user?.nombre !== undefined && (
+									<div className="flex justify-between w-full">
+										Perfil <Avatar imagesize={32} />
+									</div>
+								)}
+							</a>
+							<a
+								href="/footprint"
+								className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium"
+							>
+								Mi Huella
 							</a>
 							<a href="/" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
-								Home
-							</a>
-							<a href="/" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
-								About
+								Calculadora
 							</a>
 							<a href="/" className="text-black dark:text-white  block px-3 py-3 rounded-md text-xl  font-medium">
-								Contact
+								Contacto
 							</a>
-
-							<LoginDialog />
+							<div className="flex justify-center">{user?.nombre === undefined && <LoginDialog />} </div>
 						</div>
 					</div>
 				)}

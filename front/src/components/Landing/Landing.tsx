@@ -9,7 +9,7 @@ import NewsLetter from "../ui/Landing/NewsLetter";
 const Landing = () => {
 	return (
 		<div className="landing-container">
-			<div className="flex flex-col items-center ">
+			<div className="flex flex-col gap-10 items-center ">
 				<HeroSection />
 				<Presentation />
 				<VideoCard />

@@ -3,8 +3,8 @@ import ReactPlayer from "react-player";
 const VideoCard = () => {
 	return (
 		<div className="px-6 py-2 md:w-3/4 ">
-			<div className="flex">
-				<div className="block sm:hidden">
+			<div className="flex flex-col md:flex-row items-center justify-center">
+				<div className="block sm:hidden py-5">
 					<ReactPlayer url="https://www.youtube.com/watch?v=nQ1pPLb1Fo4" width={"100%"} height={"100%"} />
 				</div>
 				<div className="hidden md:block">
