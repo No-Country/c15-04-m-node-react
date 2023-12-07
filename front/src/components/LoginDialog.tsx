@@ -6,7 +6,7 @@ export function LoginDialog() {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button variant="outline">Login</Button>
+				<Button variant="outline">Iniciar Sesión</Button>
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-[425px]">
 				<div>

@@ -1,9 +1,10 @@
 import SettingsCard from "./SettingsCard";
 import { Button } from "@/components/ui/button";
-import { User, Mail, Lock, Bell, Palette, XCircle, ShieldAlert, LogOut } from "lucide-react";
+import { User, Mail, Lock, Palette, XCircle, ShieldAlert, LogOut } from "lucide-react";
 import Avatar from "../ui/avatar";
 import HeaderPanel from "./HeaderPanel";
 import { useTheme } from "@/components/theme-provider";
+import { useUserContext } from "@/hooks/useExample/useUserContext";
 
 type SidePanelProps = {
 	isOpen: boolean;
@@ -11,8 +12,12 @@ type SidePanelProps = {
 };
 
 const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
+	const { user } = useUserContext();
 	const { theme, setTheme } = useTheme();
-
+	const handleLogout = () => {
+		localStorage.clear();
+		window.location.reload();
+	};
 	const configItems = [
 		{
 			icon: <User size={20} />,
@@ -34,11 +39,6 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 		},
 	];
 	const personalizationItems = [
-		{
-			icon: <Bell size={20} />,
-			label: "Notifiaciones",
-			useSwitch: true,
-		},
 		{
 			icon: <Palette size={20} />,
 			label: "Tema",
@@ -64,7 +64,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 			onClick: () => {},
 		},
 	];
-	let username = "John Doe";
+	const username = user?.nombre ?? "John Doe";
 	return (
 		<div
 			className={`fixed inset-y-0 right-0 w-full md:w-1/4 dark:bg-[#020817] bg-white shadow-lg ${
@@ -73,7 +73,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 		>
 			<HeaderPanel onClose={onClose} panelName="Perfil" goback={false} />
 			<div className="flex items-center justify-center pt-4 ">
-				<Avatar useravatar={"https://github.com/shadcn.png"} imagesize={100} />
+				<Avatar imagesize={100} />
 			</div>
 			<div className="flex flex-col items-center justify-center p-2 font-semibold">
 				<h3 className="text-bold text-xl">{username}</h3>
@@ -90,7 +90,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 				<SettingsCard title="Soporte" icon={<User size={20} />} items={support} />
 			</div>
 			<div className="flex items-center justify-center pt-4">
-				<Button className="bg-emerald-500" type="submit">
+				<Button className="bg-emerald-500" type="submit" onClick={handleLogout}>
 					<LogOut className="mr-2" />
 					Cerrar Sesión
 				</Button>

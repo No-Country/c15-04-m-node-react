@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import { useUserContext } from "@/hooks/useExample/useUserContext";
 
+import GreenTraceLogo from "@/assets/img/greentracelogo.png";
+
 const formSchema = z.object({
 	username: z.string().min(2, {
 		message: "Username is required.",

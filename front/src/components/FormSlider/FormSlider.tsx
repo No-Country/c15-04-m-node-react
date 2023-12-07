@@ -27,7 +27,7 @@ const FormSlider = () => {
 
     ];
 
-    const handleInputSubmit = (value) => {
+    const handleInputSubmit = (value:string) => {
         console.log('Respuesta enviada:', value);
         
       };

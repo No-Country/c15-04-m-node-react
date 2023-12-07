@@ -2,6 +2,7 @@ import React from "react";
 import { LoginDialog } from "../LoginDialog";
 import Avatar from "../ui/avatar";
 import { Menu, X } from "lucide-react";
+import { useUserContext } from "@/hooks/useExample/useUserContext";
 
 type NavbarProps = {
 	onToggleSidePanel: () => void;
@@ -9,6 +10,8 @@ type NavbarProps = {
 
 function Navbar({ onToggleSidePanel }: NavbarProps) {
 	const [isOpen, setIsOpen] = React.useState(false);
+	const { user } = useUserContext();
+	console.log(user?.nombre);
 
 	const toggleNavbar = () => {
 		setIsOpen(!isOpen);
@@ -20,25 +23,35 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 				<div className="flex justify-between h-20">
 					<div className="flex items-center">
 						<div className="flex-shrink-0">
-							<img className="block md:hidden" src="src/assets/img/greentracelogo.png" width={"80px"} alt="" />
-							<img className="hidden md:block" src="src/assets/img/greentracelogo_desktop.png" width={"200px"} alt="" />
+							<a href="/">
+								<img className="block md:hidden" src="src/assets/img/greentracelogo.png" width={"80px"} alt="" />
+								<img
+									className="hidden md:block"
+									src="src/assets/img/greentracelogo_desktop.png"
+									width={"200px"}
+									alt=""
+								/>
+							</a>
 						</div>
 					</div>
 					<div className=" hidden md:flex justify-center items-center">
 						<div className="space-x-4 text-lg">
-							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
-								Home
+							<a
+								href="/footprint"
+								className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline"
+							>
+								Mi Huella
 							</a>
 							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
-								About
+								Calculadora
 							</a>
 							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
-								Contact
+								Contacto
 							</a>
-							<LoginDialog />
+							{user?.nombre === undefined && <LoginDialog />}
 						</div>
 						<a className="px-4 cursor-pointer" onClick={onToggleSidePanel}>
-							<Avatar useravatar={"https://github.com/shadcn.png"} imagesize={40} />
+							{user?.nombre !== undefined && <Avatar imagesize={32} />}
 						</a>
 					</div>
 					<div className=" flex md:hidden">
@@ -55,17 +68,25 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 								className="text-black dark:text-white  px-3  rounded-md text-xl  font-medium flex justify-between "
 								onClick={onToggleSidePanel}
 							>
-								Perfil <Avatar useravatar="https://placehold.co/100x100" imagesize={40} />
+								{user?.nombre !== undefined && (
+									<div className="flex justify-between w-full">
+										Perfil <Avatar imagesize={32} />
+									</div>
+								)}
+							</a>
+							<a
+								href="/footprint"
+								className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium"
+							>
+								Mi Huella
 							</a>
 							<a href="/" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
-								Home
-							</a>
-							<a href="/" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
-								About
+								Calculadora
 							</a>
 							<a href="/" className="text-black dark:text-white  block px-3 py-3 rounded-md text-xl  font-medium">
-								Contact
+								Contacto
 							</a>
+							<div className="flex justify-center">{user?.nombre === undefined && <LoginDialog />} </div>
 						</div>
 					</div>
 				)}
