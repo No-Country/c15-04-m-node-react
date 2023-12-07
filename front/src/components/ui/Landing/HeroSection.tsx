@@ -1,7 +1,4 @@
-import GooglePlay from '../../../assets/img/hero/googleplay.svg';
-import AppStore from '../../../assets/img/hero/appstore.svg';
-import HeroImage from '../../../assets/img/hero/iphone12.png';
-
+import HeroImage from "../../../assets/img/hero/iphone12.png";
 
 const HeroSection = () => {
 	return (
@@ -14,18 +11,6 @@ const HeroSection = () => {
 					Desarrolla la habilidad de conocer tu huella de carbono y sigue nuestros consejos para reducirla. ¡Juntos
 					podemos hacer un mundo mejor!
 				</p>
-				<div className="store-icons flex gap-5 mt-6">
-					<a href="">
-						<div className="bg-white rounded-sm">
-							<img className="object-contain" src={AppStore} alt="App Store" />
-						</div>
-					</a>
-					<a href="">
-						<div className="bg-white rounded-sm">
-							<img className="object-contain" src={GooglePlay} alt="Google Play Store" />
-						</div>
-					</a>
-				</div>
 			</div>
 			<img className="mt-6" src={HeroImage} alt="CellPhone" />
 		</div>
