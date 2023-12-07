@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useUserContext } from "@/hooks/useExample/useUserContext";
+import GreenTraceLogo from "@/assets/img/greentracelogo.png";
 
 const formSchema = z.object({
 	email: z.string().min(2, {
@@ -16,8 +17,8 @@ const formSchema = z.object({
 	}),
 });
 const LoginForm = () => {
-	const { logIn } = useUserContext();
-
+	const { logIn, user } = useUserContext();
+	console.log(user);
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -35,9 +36,9 @@ const LoginForm = () => {
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="max-w-sm p-6 text-lg bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:w-[347px] md:[802px]"
+				className="p-6 text-lg dark:border-slate-600 dark:bg-[#020817] rounded-lgw-[347px] md:[802px]"
 			>
-				<img className="w-[50%] m-auto" src="./src/assets/img/greentracelogo.png" alt="logo" />
+				<img className="w-[50%] m-auto" src={GreenTraceLogo} alt="logo" />
 				<FormField
 					control={form.control}
 					name="email"
@@ -62,7 +63,7 @@ const LoginForm = () => {
 								<h3 className="text-lg">Contraseña:</h3>
 							</FormLabel>
 							<FormControl>
-								<Input placeholder="Ingresa tu contraseña" {...field} />
+								<Input type="password" placeholder="Ingresa tu contraseña" {...field} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>

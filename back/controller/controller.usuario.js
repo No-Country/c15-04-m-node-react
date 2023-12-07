@@ -119,6 +119,30 @@ const eliminar = async (req = request, res = response) => {
     }
 }
 
+const userData = async (req = request, res = response) => {
+    try {
+        const Authorization = req.header('Authorization')
+        const token = Authorization.split('Bearer ')[1]
+
+        if (!token) return res.status(401).json({
+            message: "Error: trying a request with an empty token"
+        })
+
+        const { id } = jwt.verify(token, process.env.TOKEN_USER)
+        const usuario = await Usuario.findOne({ _id: id, estado: true })
+
+        res.status(200).json({
+            message: 'request successful',
+            usuario
+        })
+    } catch (e) {
+        res.status(500).json({
+            message: 'request failed',
+            error: e.message,
+        })
+    }
+}
+
 const auth = async (req = request, res = response) => {
     try {
         const Authorization = req.header('Authorization')
@@ -164,5 +188,6 @@ module.exports = {
     logIn,
     update,
     eliminar,
-    auth
+    auth,
+    userData
 }

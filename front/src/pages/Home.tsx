@@ -1,6 +1,11 @@
 import Landing from "@/components/Landing/Landing";
 
-function Home() {
-	return <Landing />;
+function Home(): JSX.Element {
+	return (
+		<div>
+			<Landing />
+		</div>
+	);
 }
+
 export default Home;

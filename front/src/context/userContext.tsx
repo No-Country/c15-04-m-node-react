@@ -1,7 +1,5 @@
 import React from "react";
-
 import * as userService from "@/services/userService";
-
 import { useToast } from "@/components/ui/use-toast";
 import { Avatar, User, UserResponseError, UserSignUp, UserUpdate } from "@/types/api";
 import { AxiosError } from "axios";
@@ -45,6 +43,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 		try {
 			const user = await userService.logIn({ correo, password });
 			setUser(user.usuario);
+			localStorage.setItem(GlobalConstants.USER, JSON.stringify(user.usuario));
 			toast({
 				title: "Inicio de sesión exitoso",
 			});
@@ -100,10 +99,15 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 				toast({
 					title: `Bienvenido ${user.usuario}`,
 				});
+
+				setUser(
+					localStorage.getItem(GlobalConstants.USER) ? JSON.parse(localStorage.getItem(GlobalConstants.USER)!) : null,
+				);
 			})
 			.catch((err: AxiosError) => {
 				if (err.response?.status === 401) {
 					localStorage.removeItem(GlobalConstants.TOKEN);
+					localStorage.removeItem(GlobalConstants.USER);
 					toast({
 						title: "Sesión expirada",
 						variant: "destructive",
@@ -111,7 +115,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 				}
 			});
 	}, [toast]);
-
+	console.log(user);
 	return (
 		<UserContext.Provider
 			value={{
