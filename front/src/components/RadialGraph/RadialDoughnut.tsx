@@ -9,7 +9,6 @@ type RadialDoughnutProps = {
 };
 
 const RadialDoughnut: React.FC<RadialDoughnutProps> = ({ data, options }) => {
-	const scales = {};
 	return (
 		<div className="" style={{ width: "350px", height: "350px" }}>
 			<Doughnut data={data} options={options}></Doughnut>
