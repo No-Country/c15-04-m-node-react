@@ -1,12 +1,14 @@
+import React from "react";
+
+import { Button } from "@/components/ui/button";
+import { Answer, Question } from "@/types/quiz";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
+import { questions } from "./questions";
+import { transformData } from "./utils";
+
+import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import "swiper/css";
-import { Button } from "@/components/ui/button";
-import React from "react";
-import { questions } from "./questions";
-import { Answer, Question } from "@/types/quiz";
-import { transformData } from "./utils";
 
 const Quiz = () => {
 	const swiperRef = React.useRef<null | SwiperRef>(null);
@@ -30,7 +32,6 @@ const Quiz = () => {
 	const handlePrev = () => {
 		if (swiper) {
 			const newHistory = [...history];
-			// const lastQuestion = newHistory.pop();
 			newHistory.pop();
 			setHistory(newHistory);
 			swiper.slidePrev();
@@ -143,10 +144,6 @@ const Quiz = () => {
 				return null;
 		}
 	};
-
-	React.useEffect(() => {
-		console.log(answers);
-	}, [answers]);
 
 	return (
 		<div className="bg-white-500 h-screen">
