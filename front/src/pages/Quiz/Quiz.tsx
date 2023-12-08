@@ -12,8 +12,9 @@ const Quiz = () => {
 	const swiperRef = React.useRef<null | SwiperRef>(null);
 	const [history, setHistory] = React.useState<string[]>([]);
 
+	const { swiper } = swiperRef.current || {};
+
 	const handleNext = (questionTitle: string) => {
-		const { swiper } = swiperRef.current || {};
 		if (swiper) {
 			swiper.slideNext();
 
@@ -27,22 +28,33 @@ const Quiz = () => {
 	};
 
 	const handlePrev = () => {
-		const { swiper } = swiperRef.current || {};
 		if (swiper) {
-			swiper.slidePrev();
 			const newHistory = [...history];
+			// const lastQuestion = newHistory.pop();
 			newHistory.pop();
 			setHistory(newHistory);
+			swiper.slidePrev();
 		}
 	};
 
 	const [answers, setAnswers] = React.useState<Record<string, Answer>>({});
 
 	const handleAnswerChange = (question: Question, answer: Answer) => {
-		const { swiper } = swiperRef.current || {};
+		const isChanged = question.name in answers && answers[question.name] !== answer;
+
+		if (isChanged && question.conditions?.length) {
+			question.conditions.forEach((condition) => {
+				condition.questions.forEach((question) => {
+					if (question.name in answers) {
+						delete answers[question.name];
+					}
+				});
+			});
+		}
+
 		setAnswers((prev) => ({ ...prev, [question.name]: answer }));
 		if (question.type === "radio" && !swiper?.isEnd) {
-			handleNext(question.title);
+			handleNext(question.name);
 		}
 	};
 
@@ -53,27 +65,32 @@ const Quiz = () => {
 	};
 
 	const renderQuestion = (question: Question) => {
-		const { swiper } = swiperRef.current || {};
-
 		return (
-			<React.Fragment key={question.title}>
-				<SwiperSlide key={question.title}>
+			<React.Fragment key={question.name}>
+				<SwiperSlide key={question.name}>
 					{
-						<div key={question.title} className="flex justify-center items-center h-full flex-col">
+						<div key={question.name} className="flex justify-center items-center h-full flex-col">
 							<p>{question.title}</p>
 							{renderInputField(question, handleAnswerChange)}
-							{swiper?.isEnd ? (
-								<Button onClick={handleSend}>Enviar</Button>
-							) : (
-								<div className="flex gap-2 mt-2">
-									<Button onClick={() => handlePrev()} disabled={!history.length}>
-										Anterior
-									</Button>
-									<Button onClick={() => handleNext(question.title)} disabled={!answers[question.name]}>
-										Siguiente
-									</Button>
-								</div>
-							)}
+							<div className="flex gap-2 mt-2">
+								{swiper?.isEnd ? (
+									<>
+										<Button onClick={() => handlePrev()} disabled={!history.length}>
+											Anterior
+										</Button>
+										<Button onClick={handleSend}>Enviar</Button>
+									</>
+								) : (
+									<>
+										<Button onClick={() => handlePrev()} disabled={!history.length}>
+											Anterior
+										</Button>
+										<Button onClick={() => handleNext(question.name)} disabled={!answers[question.name]}>
+											Siguiente
+										</Button>
+									</>
+								)}
+							</div>
 						</div>
 					}
 				</SwiperSlide>
@@ -81,7 +98,7 @@ const Quiz = () => {
 					<React.Fragment key={condition.triggerAnswer as string}>
 						{condition.triggerAnswer === answers[question.name] &&
 							condition.questions.map((question) => (
-								<React.Fragment key={question.title}>{renderQuestion(question)}</React.Fragment>
+								<React.Fragment key={question.name}>{renderQuestion(question)}</React.Fragment>
 							))}
 					</React.Fragment>
 				))}
@@ -102,7 +119,7 @@ const Quiz = () => {
 							<div key={option.value as string}>
 								<input
 									type="radio"
-									name={question.title}
+									name={question.name}
 									value={option.value as string}
 									onChange={(e) => onChange(question, e.target.value)}
 								/>
@@ -127,6 +144,10 @@ const Quiz = () => {
 		}
 	};
 
+	React.useEffect(() => {
+		console.log(answers);
+	}, [answers]);
+
 	return (
 		<div className="bg-white-500 h-screen">
 			<Swiper
@@ -142,7 +163,7 @@ const Quiz = () => {
 				className="h-full w-full"
 			>
 				{questions.map((question) => (
-					<React.Fragment key={question.title}>{renderQuestion(question)}</React.Fragment>
+					<React.Fragment key={question.name}>{renderQuestion(question)}</React.Fragment>
 				))}
 			</Swiper>
 		</div>
