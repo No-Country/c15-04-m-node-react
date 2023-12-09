@@ -5,7 +5,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "@/hooks/useExample/useUserContext";
 
 import GreenTraceLogo from "@/assets/img/greentracelogo.png";
@@ -25,7 +25,8 @@ const formSchema = z.object({
 	}),
 });
 const RegisterForm = () => {
-	const { user, loading, signUp } = useUserContext();
+	const { signUp } = useUserContext();
+	const navigate = useNavigate();
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -37,12 +38,14 @@ const RegisterForm = () => {
 	async function onSubmit(values: z.infer<typeof formSchema>) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
-		await signUp({
+		const user = await signUp({
 			correo: values.email,
 			password: values.password,
 			nombre: values.username,
 		});
-		console.log(user, loading);
+		if (user?.nombre) {
+			navigate("/");
+		}
 	}
 
 	return (
@@ -107,7 +110,7 @@ const RegisterForm = () => {
 					/>
 
 					<div className="flex mt-5 justify-center">
-						<Button className="bg-green-500" type="submit" disabled={loading}>
+						<Button className="bg-green-500 disabled:bg-gray-500" type="submit">
 							Crear Cuenta
 						</Button>
 					</div>
