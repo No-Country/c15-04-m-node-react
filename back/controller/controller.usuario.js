@@ -4,10 +4,11 @@ const bycript = require('bcryptjs')
 const Usuario = require('../models/usuario')
 const genToken = require('../helpers/jwt')
 const transport = require('../helpers/emissions/calculator/transport')
+const carbonFP = require('../helpers/carbon_footprint/carbonFP')
 
 const signUp = async (req = request, res = response) => {
     try {
-        const { nombre, correo, password, transporte, ...rest } = req.body
+        const { nombre, correo, password, ...rest } = req.body
         const salt = bycript.genSaltSync()
         let usuario
         const noNew = await Usuario.findOne({ correo, estado: false })
@@ -16,7 +17,6 @@ const signUp = async (req = request, res = response) => {
                 nombre,
                 password: bycript.hashSync(password, salt),
                 estado: true,
-                transporte: transport(transporte),
                 ...rest,
             }
             usuario = await Usuario.findByIdAndUpdate(noNew.id, update, { new: true })
@@ -26,7 +26,6 @@ const signUp = async (req = request, res = response) => {
                     nombre,
                     correo,
                     password,
-                    transporte: transport(transporte),
                     ...rest
                 }
             )
@@ -83,11 +82,26 @@ const update = async (req = request, res = response) => {
     try {
         const Authorization = req.header('Authorization')
         const token = Authorization.split('Bearer ')[1]
-        const { correo, nombre, estado, ...rest } = req.body
-        if('transporte' in rest) rest.transporte = transport(rest.transporte)
-        const data = rest
+        const { estado, ...rest } = req.body
+
+        if ('gas' in rest) rest.gas = carbonFP.getGas(rest.gas)
+        if ('transporte' in rest) rest.transporte = transport(rest.transporte)
+
+        if ('electricidad' in rest) {
+            rest.electricidad = carbonFP.getElectricity(rest.electricidad)
+        }
+        if ('password' in rest) {
+            const salt = bycript.genSaltSync()
+            rest.password = bycript.hashSync(rest.password, salt)
+        }
+
+        /*  if ('correo' in rest) {
+             const correo = rest.correo
+            // const noNew = await Usuario.findOne({ correo, estado: false })
+             //if (noNew) rest = { estado: true, ...rest }
+         } */
         const { id } = jwt.verify(token, process.env.TOKEN_USER)
-        const usuario = await Usuario.findByIdAndUpdate(id, data, { new: true })
+        const usuario = await Usuario.findByIdAndUpdate(id, rest, { new: true })
         res.status(200).json({
             message: `Hemos actualizado tus datos ${usuario.nombre} correctamente`,
             usuario,
