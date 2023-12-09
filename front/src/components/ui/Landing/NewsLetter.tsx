@@ -36,7 +36,7 @@ const NewsLetter: React.FC = () => {
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 						</div>
-						<div className="mb-4 border text-emerald-500 border-emerald-500 rounded-lg shadow-lg gap-10 w-1/2 ">
+						<div className="mb-4 border bg-emerald-500 text-white  border-emerald-500 rounded-lg shadow-lg gap-10 w-1/2 ">
 							<button type="submit" className=" text-start px-4 py-2 rounded-r-md">
 								Subscribirse
 							</button>
