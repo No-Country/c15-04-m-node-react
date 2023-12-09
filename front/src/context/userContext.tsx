@@ -10,7 +10,7 @@ export type UserContextProps = {
 	user: User | null;
 	avatars: Avatar[];
 	logIn: (correo: string, password: string) => Promise<void>;
-	signUp: (options: UserSignUp) => Promise<void>;
+	signUp: (options: UserSignUp) => Promise<User | null>;
 	deleteUser: () => Promise<void>;
 	updateUser: (options: UserUpdate) => Promise<void>;
 	getAvatars: () => Promise<void>;
@@ -58,10 +58,16 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	};
 
 	const signUp = async (options: UserSignUp) => {
+		let user: User | null = null;
 		try {
 			setLoading(true);
-			const user = await userService.signUp(options);
-			setUser(user.usuario);
+			const data = await userService.signUp(options);
+			setUser(data.usuario);
+			localStorage.setItem(GlobalConstants.USER, JSON.stringify(data.usuario));
+			user = data.usuario;
+			toast({
+				title: "Registro exitoso",
+			});
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				handleErrors(error);
@@ -69,6 +75,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 		} finally {
 			setLoading(false);
 		}
+		return user;
 	};
 
 	const deleteUser = async () => {
@@ -101,14 +108,9 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	React.useEffect(() => {
 		userService
 			.getAuth()
-			.then((user) => {
-				toast({
-					title: `Bienvenido ${user.usuario}`,
-				});
-
-				setUser(
-					localStorage.getItem(GlobalConstants.USER) ? JSON.parse(localStorage.getItem(GlobalConstants.USER)!) : null,
-				);
+			.then(() => {
+				const userStorage = localStorage.getItem(GlobalConstants.USER);
+				setUser(userStorage ? JSON.parse(userStorage) : null);
 			})
 			.catch((err: AxiosError) => {
 				if (err.response?.status === 401) {
@@ -121,7 +123,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 				}
 			});
 	}, [toast]);
-	console.log(user);
+
 	return (
 		<UserContext.Provider
 			value={{
