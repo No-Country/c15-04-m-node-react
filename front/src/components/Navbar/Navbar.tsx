@@ -4,6 +4,9 @@ import Avatar from "../ui/avatar";
 import { Menu, X } from "lucide-react";
 import { useUserContext } from "@/hooks/useExample/useUserContext";
 
+import GreenTraceLogo from "../../assets/img/greentracelogo.png";
+import GreenTraceLogoDesktop from "../../assets/img/greentracelogo_desktop.png";
+
 type NavbarProps = {
 	onToggleSidePanel: () => void;
 };
@@ -24,13 +27,8 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 					<div className="flex items-center">
 						<div className="flex-shrink-0">
 							<a href="/">
-								<img className="block md:hidden" src="src/assets/img/greentracelogo.png" width={"80px"} alt="" />
-								<img
-									className="hidden md:block"
-									src="src/assets/img/greentracelogo_desktop.png"
-									width={"200px"}
-									alt=""
-								/>
+								<img className="block md:hidden" src={GreenTraceLogo} width={"80px"} alt="" />
+								<img className="hidden md:block" src={GreenTraceLogoDesktop} width={"200px"} alt="" />
 							</a>
 						</div>
 					</div>
