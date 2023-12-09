@@ -46,78 +46,80 @@ const RegisterForm = () => {
 	}
 
 	return (
-		<Form {...form}>
-			<form
-				onSubmit={form.handleSubmit(onSubmit)}
-				className="max-w-sm p-6  dark:border-gray-700 sm:w-[347px] md:[802px]"
-			>
-				<img className="w-[50%] m-auto" src={GreenTraceLogo} alt="logo" />
-				<FormField
-					control={form.control}
-					name="username"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Nombre de usuario:</FormLabel>
-							<FormControl>
-								<Input placeholder="Ingresa tu nombre de usuario" {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="email"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Email:</FormLabel>
-							<FormControl>
-								<Input placeholder="Ingresa tu email" {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="password"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Contraseña:</FormLabel>
-							<FormControl>
-								<Input type="password" placeholder="Ingresa tu contraseña" {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="password2"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Confirmar Contraseña:</FormLabel>
-							<FormControl>
-								<Input type="password" placeholder="Confirma tu contraseña" {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
+		<div className="flex items-center">
+			<Form {...form}>
+				<form
+					onSubmit={form.handleSubmit(onSubmit)}
+					className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:w-[347px] md:[802px]"
+				>
+					<img className="w-[50%] m-auto" src={GreenTraceLogo} alt="logo" />
+					<FormField
+						control={form.control}
+						name="username"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>Nombre de usuario:</FormLabel>
+								<FormControl>
+									<Input placeholder="Ingresa tu nombre de usuario" {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name="email"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>Email:</FormLabel>
+								<FormControl>
+									<Input placeholder="Ingresa tu email" {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name="password"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>Contraseña:</FormLabel>
+								<FormControl>
+									<Input placeholder="Ingresa tu contraseña" {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name="password2"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>Confirmar Contraseña:</FormLabel>
+								<FormControl>
+									<Input placeholder="Confirma tu contraseña" {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
 
-				<div className="flex mt-5 justify-center">
-					<Button className="bg-green-500" type="submit" disabled={loading}>
-						Crear Cuenta
-					</Button>
-				</div>
-				<div className="flex flex-col items-center pt-4">
-					<p className="p-4">¿Ya tienes cuenta?</p>
-					<Link className="hover:underline" to="/login">
-						Iniciar Sesión
-					</Link>
-				</div>
-			</form>
-		</Form>
+					<div className="flex mt-5 justify-center">
+						<Button className="bg-green-500" type="submit">
+							Crear Cuenta
+						</Button>
+					</div>
+					<div className="flex flex-col items-center pt-4">
+						<p className="p-4">¿Ya tienes cuenta?</p>
+						<Link className="hover:underline" to="/login">
+							Iniciar Sesión
+						</Link>
+					</div>
+				</form>
+			</Form>
+		</div>
 	);
 };
 export default RegisterForm;
