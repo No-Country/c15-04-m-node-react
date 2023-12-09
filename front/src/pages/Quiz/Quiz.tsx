@@ -3,14 +3,17 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Answer, Question } from "@/types/quiz";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
-import { questions } from "./questions";
 import { transformData } from "./utils";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
-const Quiz = () => {
+interface QuizProps {
+	questions?: Question[];
+}
+
+const Quiz = ({ questions = [] }: QuizProps) => {
 	const swiperRef = React.useRef<null | SwiperRef>(null);
 	const [history, setHistory] = React.useState<string[]>([]);
 
