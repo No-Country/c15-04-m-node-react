@@ -1,12 +1,11 @@
-import FormSlider from "@/components/FormSlider/FormSlider";
+import FormSlider from "@/components/FormSlider/TransportSlider";
 
-
- function Slider() {
+function Slider() {
 	return (
-		<div >
-			<FormSlider/>
+		<div>
+			<FormSlider />
 		</div>
 	);
 }
 
-export default Slider
+export default Slider;
