@@ -6,6 +6,7 @@ import { AxiosError } from "axios";
 import { GlobalConstants } from "@/constants";
 
 export type UserContextProps = {
+	loading?: boolean;
 	user: User | null;
 	avatars: Avatar[];
 	logIn: (correo: string, password: string) => Promise<void>;
@@ -20,6 +21,8 @@ export const UserContext = React.createContext<UserContextProps>(null);
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	const [user, setUser] = React.useState<User | null>(null);
 	const [avatars, setAvatars] = React.useState<Avatar[]>([]);
+	const [loading, setLoading] = React.useState(false);
+
 	const { toast } = useToast();
 
 	const handleErrors = (error: AxiosError<UserResponseError>) => {
@@ -56,12 +59,15 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 	const signUp = async (options: UserSignUp) => {
 		try {
+			setLoading(true);
 			const user = await userService.signUp(options);
 			setUser(user.usuario);
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				handleErrors(error);
 			}
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -119,6 +125,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	return (
 		<UserContext.Provider
 			value={{
+				loading,
 				user,
 				avatars,
 				logIn,

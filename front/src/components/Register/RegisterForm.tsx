@@ -25,7 +25,7 @@ const formSchema = z.object({
 	}),
 });
 const RegisterForm = () => {
-	const { signUp } = useUserContext();
+	const { user, loading, signUp } = useUserContext();
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -42,6 +42,7 @@ const RegisterForm = () => {
 			password: values.password,
 			nombre: values.username,
 		});
+		console.log(user, loading);
 	}
 
 	return (
@@ -105,7 +106,7 @@ const RegisterForm = () => {
 				/>
 
 				<div className="flex mt-5 justify-center">
-					<Button className="bg-green-500" type="submit">
+					<Button className="bg-green-500" type="submit" disabled={loading}>
 						Crear Cuenta
 					</Button>
 				</div>
