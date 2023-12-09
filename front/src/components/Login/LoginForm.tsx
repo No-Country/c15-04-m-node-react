@@ -16,6 +16,7 @@ const formSchema = z.object({
 		message: "password is required",
 	}),
 });
+0;
 const LoginForm = () => {
 	const { logIn, user } = useUserContext();
 	console.log(user);
