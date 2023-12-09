@@ -51,7 +51,7 @@ const RegisterForm = () => {
 					onSubmit={form.handleSubmit(onSubmit)}
 					className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:w-[347px] md:[802px]"
 				>
-					<img className="w-[50%] m-auto" src="./src/assets/img/greentracelogo.png" alt="logo" />
+					<img className="w-[50%] m-auto" src={GreenTraceLogo} alt="logo" />
 					<FormField
 						control={form.control}
 						name="username"
