@@ -11,6 +11,7 @@
 * Brandon Sanches
 * Nehuen Grosso
 * Alejandro Quiñones
+* Maribel Mena
 <br>
 
 ## Teconologías: 

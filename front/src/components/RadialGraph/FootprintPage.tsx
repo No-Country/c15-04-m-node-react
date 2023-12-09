@@ -15,7 +15,7 @@ const data = {
 
 const options = {};
 
-const currentMonth = "Noviembre";
+// const currentMonth = "Noviembre";
 
 const FootprintPage: React.FC = () => {
 	return (
