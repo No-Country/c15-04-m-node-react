@@ -5,7 +5,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useUserContext } from "@/hooks/useExample/useUserContext";
 
 import GreenTraceLogo from "@/assets/img/greentracelogo.png";
@@ -26,7 +26,6 @@ const formSchema = z.object({
 });
 const RegisterForm = () => {
 	const { signUp } = useUserContext();
-	const navigate = useNavigate();
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -38,14 +37,11 @@ const RegisterForm = () => {
 	async function onSubmit(values: z.infer<typeof formSchema>) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
-		const user = await signUp({
+		await signUp({
 			correo: values.email,
 			password: values.password,
 			nombre: values.username,
 		});
-		if (user?.nombre) {
-			navigate("/");
-		}
 	}
 
 	return (
