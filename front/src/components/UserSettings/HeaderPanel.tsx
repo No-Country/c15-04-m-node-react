@@ -8,7 +8,7 @@ type HeaderProps = {
 
 const HeaderPanel: React.FC<HeaderProps> = ({ panelName, goback, onClose }) => {
 	return (
-		<div className="w-full h-20 flex items-center justify-between shadow-md  ">
+		<div className="w-full h-14 flex items-center justify-between shadow-md  ">
 			<div className="">
 				<a href="">{goback && <ArrowLeft className="w-6 h-6 ml-4" />}</a>
 				<h1 className="text-xl font-bold px-4">{panelName}</h1>
