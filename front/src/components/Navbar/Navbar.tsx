@@ -14,7 +14,6 @@ type NavbarProps = {
 function Navbar({ onToggleSidePanel }: NavbarProps) {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const { user } = useUserContext();
-	console.log(user?.nombre);
 
 	const toggleNavbar = () => {
 		setIsOpen(!isOpen);
