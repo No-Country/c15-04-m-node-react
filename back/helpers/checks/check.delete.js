@@ -1,9 +1,9 @@
 const validarCampos = require('../../middleware/validarCampos')
 const validarJWT = require('../../middleware/validarJWT')
 
-const TOKEN = [
+const POST_DELETE = [
     validarJWT,
     validarCampos
 ]
 
-module.exports = TOKEN
+module.exports = POST_DELETE

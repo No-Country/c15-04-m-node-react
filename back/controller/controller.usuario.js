@@ -83,6 +83,7 @@ const update = async (req = request, res = response) => {
         const Authorization = req.header('Authorization')
         const token = Authorization.split('Bearer ')[1]
         const { estado, ...rest } = req.body
+        const { id } = jwt.verify(token, process.env.TOKEN_USER)
 
         if ('gas' in rest) rest.gas = carbonFP.getGas(rest.gas)
         if ('transporte' in rest) rest.transporte = transport(rest.transporte)
@@ -95,12 +96,26 @@ const update = async (req = request, res = response) => {
             rest.password = bycript.hashSync(rest.password, salt)
         }
 
-        /*  if ('correo' in rest) {
-             const correo = rest.correo
-            // const noNew = await Usuario.findOne({ correo, estado: false })
-             //if (noNew) rest = { estado: true, ...rest }
-         } */
-        const { id } = jwt.verify(token, process.env.TOKEN_USER)
+        if ('correo' in rest) {
+            const correo = rest.correo
+            const [activo, noActivo] = await Promise.all([
+                await Usuario.findOne({ correo, estado: true }),
+                await Usuario.findOne({ correo, estado: false })
+            ])
+            if (activo) return res.status(400).json({
+                message: 'Este correo ya le pertenece a otra persona, intenta con uno distinto'
+            })
+            if (noActivo) {
+                const [, usuario] = await Promise.all([
+                    await Usuario.findByIdAndUpdate(noActivo._id, { correo: `changed${correo}` }),
+                    await Usuario.findByIdAndUpdate(id, rest, { new: true })
+                ])
+                return res.status(200).json({
+                    message: `Hemos actualizado tus datos ${usuario.nombre} correctamente`,
+                    usuario,
+                })
+            }
+        }
         const usuario = await Usuario.findByIdAndUpdate(id, rest, { new: true })
         res.status(200).json({
             message: `Hemos actualizado tus datos ${usuario.nombre} correctamente`,
