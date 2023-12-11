@@ -18,8 +18,7 @@ const formSchema = z.object({
 });
 0;
 const LoginForm = () => {
-	const { logIn, user } = useUserContext();
-	console.log(user);
+	const { logIn } = useUserContext();
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {

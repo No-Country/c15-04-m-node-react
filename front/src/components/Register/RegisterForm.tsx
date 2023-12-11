@@ -106,7 +106,7 @@ const RegisterForm = () => {
 					/>
 
 					<div className="flex mt-5 justify-center">
-						<Button className="bg-green-500" type="submit">
+						<Button className="bg-green-500 disabled:bg-gray-500" type="submit">
 							Crear Cuenta
 						</Button>
 					</div>
