@@ -197,7 +197,7 @@ export const questions: Question[] = [
 		],
 	},
 	{
-		name: "electricity",
+		name: "gas",
 		title: "¿Ocupa el uso de gas doméstico?",
 		type: "radio",
 		options: [
@@ -209,7 +209,7 @@ export const questions: Question[] = [
 				triggerAnswer: "yes",
 				questions: [
 					{
-						name: "electricity.type",
+						name: "gas.type",
 						title: "¿Qué tipo de gas consume?",
 						type: "select",
 						options: [
@@ -218,7 +218,7 @@ export const questions: Question[] = [
 						],
 					},
 					{
-						name: "electricity.units",
+						name: "gas.units",
 						title: "¿En qué unidad de medida está cuantificada su consumo de gas?",
 						type: "select",
 						options: [
