@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SettingsCard from "./SettingsCard";
 import { Button } from "@/components/ui/button";
-import { User, Mail, Lock, Palette, XCircle, ShieldAlert, LogOut } from "lucide-react";
+import { User, Palette, ShieldAlert, LogOut } from "lucide-react";
 import Avatar from "../ui/avatar";
 import HeaderPanel from "./HeaderPanel";
 import { useTheme } from "@/components/theme-provider";
