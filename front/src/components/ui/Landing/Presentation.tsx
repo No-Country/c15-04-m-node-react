@@ -6,9 +6,9 @@ const Presentation = () => {
 					¿Qué es <span className="text-emerald-500">Green Trace</span>?
 				</h1>
 				<p className="text-md text-zinc-200 font-semibold pb-4">
-					Green Trace es una aplicación que tiene como objetivo que conozcas tu emisión de CO2 en base a tus actividades
-					diarias (transporte, ocio, trabajo, reciclaje y más). Si tu emisión es demasiado alta, te daremos consejos
-					para reducirla y así poder, entre todos, tener un mundo mejor y más sostenible.
+					Green Trace es una aplicación diseñada para que conozcas tu emisión de CO2 según tus actividades diarias, como
+					transporte, ocio, trabajo, reciclaje y más. Si tu emisión es elevada, te proporcionaremos consejos para
+					reducirla. ¡Trabajemos juntos para lograr un mundo mejor y más sostenible!
 				</p>
 			</div>
 		</div>

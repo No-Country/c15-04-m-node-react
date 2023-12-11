@@ -45,7 +45,7 @@ const AvatarSelector: React.FC = () => {
 					<h2 className="text-black font-bold text-lg flex justify-center">Selecciona tu Avatar</h2>
 					<div className="max-h-60 overflow-auto">
 						<div className="grid grid-cols-3 gap-4 p-4">
-							{currentAvatars.map((avatar: any, index: number) => (
+							{currentAvatars.map((avatar: any) => (
 								<img
 									src={avatar.url}
 									alt={avatar.name}

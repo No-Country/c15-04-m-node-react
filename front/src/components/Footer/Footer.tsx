@@ -4,7 +4,7 @@ import GreentraceLogo from "../../assets/img/greentracelogo_desktop.png";
 
 const Footer = () => {
 	return (
-		<footer className=" py-4 w-full shadow-xl bg-footer">
+		<footer className=" py-10 w-full shadow-xl bg-footer">
 			<div className="container mx-auto text-start d">
 				<img src={GreentraceLogo} alt="logo" width={"200px"} />
 				<div className="font-semibold ">
