@@ -7,6 +7,7 @@ class Server {
 
     #PORT = process.env.PORT
     #usuario = '/api/usuario'
+    #main = '/'
 
     constructor() {
         this.app = express()
@@ -19,12 +20,13 @@ class Server {
         this.app.use(cors())
         this.app.use(express.json())
     }
-    async dataBase () {
+    async dataBase() {
         await connection()
     }
 
     routes() {
         this.app.use(this.#usuario, require('../routes/routes.usuario'))
+        this.app.use(this.#main, require('../routes/routes.newsletter'))
     }
 
     listen() {
