@@ -5,6 +5,10 @@ require('colors')
 const newsletterPost = async (req = request, res = response) => {
   const { nombre, correo } = req.body
   try {
+    const news = await Newsletter.findOne({ correo })
+    if (news) return res.status(400).json({
+      message: `${nombre} este Correo ya está suscrito`
+    })
     const newsletter = new Newsletter({ nombre, correo })
     await newsletter.save()
 
