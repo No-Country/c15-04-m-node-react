@@ -85,7 +85,7 @@ const RegisterForm = () => {
 							<FormItem>
 								<FormLabel>Contraseña:</FormLabel>
 								<FormControl>
-									<Input placeholder="Ingresa tu contraseña" {...field} />
+									<Input type="password" placeholder="Ingresa tu contraseña" {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -98,7 +98,7 @@ const RegisterForm = () => {
 							<FormItem>
 								<FormLabel>Confirmar Contraseña:</FormLabel>
 								<FormControl>
-									<Input placeholder="Confirma tu contraseña" {...field} />
+									<Input type="password" placeholder="Confirma tu contraseña" {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -112,7 +112,7 @@ const RegisterForm = () => {
 					</div>
 					<div className="flex flex-col items-center pt-4">
 						<p className="p-4">¿Ya tienes cuenta?</p>
-						<Link className="hover:underline" to="/login">
+						<Link className="hover:underline" to="/">
 							Iniciar Sesión
 						</Link>
 					</div>

@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import SidePanel from "../../components/UserSettings/SidePanel";
 import { useState } from "react";
+import AvatarSelector from "@/components/AvatarSelector/AvatarSelector";
 const MainLayout = () => {
 	const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
@@ -12,6 +13,7 @@ const MainLayout = () => {
 	return (
 		<div>
 			<Navbar onToggleSidePanel={toggleSidePanel} />
+			<AvatarSelector />
 			<SidePanel
 				{...{
 					isOpen: isSidePanelOpen,
