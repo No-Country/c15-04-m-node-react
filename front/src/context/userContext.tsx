@@ -93,6 +93,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 		try {
 			const user = await userService.updateUser(options);
 			setUser(user.usuario);
+			localStorage.setItem(GlobalConstants.USER, JSON.stringify(user.usuario));
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				handleErrors(error);
