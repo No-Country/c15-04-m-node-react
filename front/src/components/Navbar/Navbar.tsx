@@ -56,7 +56,7 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 					</div>
 				</div>
 				{isOpen && (
-					<div className="md:hidden absolute bg-white dark:bg-[#020817] fixed  w-full left-0 py-6 " id="mobile-menu">
+					<div className="md:hidden  bg-white dark:bg-[#020817] fixed  w-full left-0 py-6 " id="mobile-menu">
 						<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 dark:text-white">
 							<a
 								className="text-black dark:text-white  px-3  rounded-md text-xl  font-medium flex justify-between "
