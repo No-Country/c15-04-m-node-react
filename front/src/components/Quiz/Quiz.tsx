@@ -8,6 +8,7 @@ import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import { Input } from "../ui/input";
 
 interface QuizProps {
 	questions?: Question[];
@@ -70,9 +71,9 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 		(question: Question) => {
 			switch (question.type) {
 				case "text":
-					return <input type="text" onChange={(e) => handleAnswerChange(question, e.target.value)} />;
+					return <Input type="text" onChange={(e) => handleAnswerChange(question, e.target.value)} />;
 				case "number":
-					return <input type="number" onChange={(e) => handleAnswerChange(question, e.target.value)} />;
+					return <Input type="number" onChange={(e) => handleAnswerChange(question, e.target.value)} />;
 				case "radio":
 					return (
 						<div>
@@ -114,7 +115,7 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 			<React.Fragment key={question.name}>
 				<SwiperSlide key={question.name}>
 					{
-						<div key={question.name} className="flex justify-center items-center h-full flex-col">
+						<div key={question.name} className="flex justify-center items-center h-full flex-col max-w-xs mx-auto">
 							<p>{question.title}</p>
 							{renderInputField(question)}
 							<div className="flex gap-2 mt-2">
