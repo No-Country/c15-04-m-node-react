@@ -40,10 +40,10 @@ const AvatarSelector: React.FC = () => {
 
 	return (
 		panelOpen && (
-			<div className="fixed top-0 left-0 right-0 bottom-0 flex items-center w-full h-full overflow-hidden justify-center bg-black bg-opacity-50">
-				<div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col justify-center">
+			<div className="fixed top-0 z-50 left-0 right-0 bottom-0 flex items-center w-full h-full overflow-hidden justify-center bg-black bg-opacity-50">
+				<div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col pt-6 justify-center">
 					<h2 className="text-black font-bold text-lg flex justify-center">Selecciona tu Avatar</h2>
-					<div className="max-h-60 overflow-auto">
+					<div className="max-h-96 overflow-auto">
 						<div className="grid grid-cols-3 gap-4 p-4">
 							{currentAvatars.map((avatar: any) => (
 								<img

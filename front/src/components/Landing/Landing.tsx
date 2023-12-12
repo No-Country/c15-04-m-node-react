@@ -17,7 +17,6 @@ const Landing = () => {
 					<Sustainableworld />
 
 					<NewsLetter />
-					<Footer />
 				</div>
 			</div>
 		</div>
