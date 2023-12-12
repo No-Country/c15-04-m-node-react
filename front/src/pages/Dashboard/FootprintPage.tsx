@@ -106,8 +106,17 @@ const FootprintPage: React.FC = () => {
 						</div>
 					</li>
 				</ul>
-				<h3>Se requiere plantar {trees} arboles para compensar tu huella</h3>
-				<h3>Tu huella equivale a recorrer {carDistance}km en auto</h3>
+				<h3 className="text-lg font-bold text-center py-4">
+					Se requiere plantar {trees} arboles para compensar tu huella
+				</h3>
+				<div className="flex justify-center items-center w-full md:w-3/4">
+					<img src="src/assets/img/tree-svgrepo-com 2.svg" width={80} height={20} alt="tree" />
+					<img src="src/assets/img/tree-svgrepo-com.svg" width={80} height={20} alt="tree" />
+				</div>
+				<h3 className="text-lg font-bold text-center py-4">Tu huella equivale a recorrer {carDistance}km en auto</h3>
+				<div className="flex justify-center items-center w-full md:w-3/4">
+					<img src="src/assets/img/car-transport-svgrepo-com.svg" width={80} height={20} alt="car"></img>
+				</div>
 			</div>
 		</div>
 	);
