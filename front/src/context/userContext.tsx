@@ -6,6 +6,7 @@ import { AxiosError } from "axios";
 import { GlobalConstants } from "@/constants";
 
 export type UserContextProps = {
+	panelOpen?: boolean;
 	loading?: boolean;
 	user: User | null;
 	avatars: Avatar[];
@@ -14,6 +15,7 @@ export type UserContextProps = {
 	deleteUser: () => Promise<void>;
 	updateUser: (options: UserUpdate) => Promise<void>;
 	getAvatars: () => Promise<void>;
+	setPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
 } | null;
 
 export const UserContext = React.createContext<UserContextProps>(null);
@@ -22,6 +24,9 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	const [user, setUser] = React.useState<User | null>(null);
 	const [avatars, setAvatars] = React.useState<Avatar[]>([]);
 	const [loading, setLoading] = React.useState(false);
+	const [panelOpen, setPanelOpen] = React.useState<boolean>(false);
+
+	const isUserAvatar = user !== null ? user.img && user.img.length > 0 : true;
 
 	const { toast } = useToast();
 
@@ -101,10 +106,10 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 		}
 	};
 
-	const getAvatars = async () => {
+	const getAvatars = React.useCallback(async () => {
 		const avatars = await userService.getAvatars();
 		setAvatars(avatars);
-	};
+	}, []);
 
 	React.useEffect(() => {
 		userService
@@ -125,9 +130,17 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 			});
 	}, [toast]);
 
+	React.useEffect(() => {
+		if (!isUserAvatar) {
+			setPanelOpen(true);
+			getAvatars();
+		}
+	}, [user, getAvatars, isUserAvatar]);
+
 	return (
 		<UserContext.Provider
 			value={{
+				panelOpen,
 				loading,
 				user,
 				avatars,
@@ -136,6 +149,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 				deleteUser,
 				updateUser,
 				getAvatars,
+				setPanelOpen,
 			}}
 		>
 			{children}
