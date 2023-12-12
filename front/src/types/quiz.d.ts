@@ -25,6 +25,7 @@ export interface Question {
 	name: string;
 	description?: string;
 	type: QuestionType;
+	label?: string;
 	options?: Option[];
 	conditions?: ConditionSubQuestion[];
 }

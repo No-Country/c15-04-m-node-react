@@ -1,9 +1,33 @@
 import { Question } from "@/types/quiz";
+
+const countriesOptions = [
+	{ value: "mexico", label: "México" },
+	{ value: "costa_rica", label: "Costa Rica" },
+	{ value: "guatemala", label: "Guatemala" },
+	{ value: "honduras", label: "Honduras" },
+	{ value: "nicaragua", label: "Nicaragua" },
+	{ value: "panama", label: "Panamá" },
+	{ value: "republica_dominicana", label: "República Dominicana" },
+	{ value: "salvador", label: "El Salvador" },
+	{ value: "argentina", label: "Argentina" },
+	{ value: "bolivia", label: "Bolivia" },
+	{ value: "brasil", label: "Brasil" },
+	{ value: "chile", label: "Chile" },
+	{ value: "colombia", label: "Colombia" },
+	{ value: "peru", label: "Perú" },
+	{ value: "uruguay", label: "Uruguay" },
+	{ value: "ecuador", label: "Ecuador" },
+	{ value: "paraguay", label: "Paraguay" },
+	{ value: "venezuela", label: "Venezuela" },
+];
+
 export const questions: Question[] = [
 	{
 		name: "residence",
 		title: "¿En qué país reside?",
-		type: "text",
+		type: "select",
+		label: "Seleccione un país",
+		options: countriesOptions,
 	},
 	{
 		name: "transport",
@@ -74,6 +98,7 @@ export const questions: Question[] = [
 										name: "vehicle.car.size",
 										title: "¿De que tamaño considera es su automóvil?",
 										type: "select",
+										label: "Seleccione una opción",
 										options: [
 											{ value: "small", label: "Pequeño" },
 											{ value: "medium", label: "Mediano" },
@@ -84,6 +109,7 @@ export const questions: Question[] = [
 										name: "vehicle.car.fuel",
 										title: "¿Qué tipo de combustible consume su automóvil?",
 										type: "select",
+										label: "Seleccione una opción",
 										options: [
 											{ value: "gasoline", label: "Gasolina" },
 											{ value: "diesel", label: "Diesel" },
@@ -187,6 +213,7 @@ export const questions: Question[] = [
 						name: "flight.round",
 						title: "¿Su viaje consistió en ida y vuelta o solo ida?",
 						type: "select",
+						label: "Seleccione una opción",
 						options: [
 							{ value: "round", label: "Ida y vuelta" },
 							{ value: "one-way", label: "Solo ida" },
@@ -212,6 +239,7 @@ export const questions: Question[] = [
 						name: "gas.type",
 						title: "¿Qué tipo de gas consume?",
 						type: "select",
+						label: "Seleccione una opción",
 						options: [
 							{ value: "natural", label: "Natural" },
 							{ value: "propane", label: "Propano" },
@@ -221,6 +249,7 @@ export const questions: Question[] = [
 						name: "gas.units",
 						title: "¿En qué unidad de medida está cuantificada su consumo de gas?",
 						type: "select",
+						label: "Seleccione una opción",
 						options: [
 							{ value: "kg", label: "Kilogramos" },
 							{ value: "m3", label: "Metros cúbicos" },

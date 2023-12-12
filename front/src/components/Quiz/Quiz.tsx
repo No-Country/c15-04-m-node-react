@@ -8,7 +8,11 @@ import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+
 import { Input } from "../ui/input";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 interface QuizProps {
 	questions?: Question[];
@@ -76,30 +80,31 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 					return <Input type="number" onChange={(e) => handleAnswerChange(question, e.target.value)} />;
 				case "radio":
 					return (
-						<div>
+						<RadioGroup defaultValue="comfortable" onValueChange={(value) => handleAnswerChange(question, value)}>
 							{question.options?.map((option) => (
-								<div key={option.value as string}>
-									<input
-										type="radio"
-										name={question.name}
-										value={option.value as string}
-										onChange={(e) => handleAnswerChange(question, e.target.value)}
-									/>
-									<label htmlFor={option.value as string}>{option.label}</label>
+								<div className="flex items-center space-x-2">
+									<RadioGroupItem value={option.value as string} id={option.value as string} />
+									<Label htmlFor={option.value as string}>{option.label}</Label>
 								</div>
 							))}
-						</div>
+						</RadioGroup>
 					);
 				case "select":
 					return (
-						<select onChange={(e) => handleAnswerChange(question, e.target.value)}>
-							<option value="">Selecciona una opción</option>
-							{question.options?.map((option) => (
-								<option key={option.value as string} value={option.value as string}>
-									{option.label}
-								</option>
-							))}
-						</select>
+						<Select onValueChange={(value) => handleAnswerChange(question, value)}>
+							<SelectTrigger className="w-[180px]">
+								<SelectValue placeholder={question.label} />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectGroup>
+									{question.options?.map((option) => (
+										<SelectItem key={option.value as string} value={option.value as string}>
+											{option.label}
+										</SelectItem>
+									))}
+								</SelectGroup>
+							</SelectContent>
+						</Select>
 					);
 				default:
 					return null;
@@ -115,10 +120,10 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 			<React.Fragment key={question.name}>
 				<SwiperSlide key={question.name}>
 					{
-						<div key={question.name} className="flex justify-center items-center h-full flex-col max-w-xs mx-auto">
-							<p>{question.title}</p>
+						<div key={question.name} className="flex justify-center items-center h-full flex-col max-w-md mx-auto">
+							<h2 className="text-2xl font-bold text-center py-4">{question.title}</h2>
 							{renderInputField(question)}
-							<div className="flex gap-2 mt-2">
+							<div className="flex gap-2 py-4">
 								{isLastQuestion ? (
 									<>
 										<Button onClick={handlePrev} disabled={isBeginning}>
