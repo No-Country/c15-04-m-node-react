@@ -224,8 +224,8 @@ export const questions: Question[] = [
 						type: "select",
 						label: "Seleccione una opción",
 						options: [
-							{ value: "round", label: "Ida y vuelta" },
-							{ value: "one-way", label: "Solo ida" },
+							{ value: true, label: "Ida y vuelta" },
+							{ value: false, label: "Solo ida" },
 						],
 					},
 				],

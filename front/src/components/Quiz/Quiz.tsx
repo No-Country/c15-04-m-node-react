@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Button } from "@/components/ui/button";
-import { Answer, Question } from "@/types/quiz";
+import { Answer, NestedObject, Question } from "@/types/quiz";
 import { transformData } from "@/utils/quiz";
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 
@@ -16,9 +16,10 @@ import { Label } from "@/components/ui/label";
 
 interface QuizProps {
 	questions?: Question[];
+	onSubmit?: (data: NestedObject) => void;
 }
 
-const Quiz = ({ questions = [] }: QuizProps) => {
+const Quiz = ({ questions = [], onSubmit }: QuizProps) => {
 	const [swiper, setSwiper] = React.useState<SwiperClass | null>(null);
 	const [answers, setAnswers] = React.useState<Record<string, Answer>>({});
 	const [isBeginning, setIsBeginning] = React.useState<boolean>(true);
@@ -69,6 +70,7 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 		console.log("Respuestas:", answers);
 		const data = transformData(answers);
 		console.log("Data:", data);
+		onSubmit?.(data);
 	};
 
 	const renderInputField = React.useCallback(

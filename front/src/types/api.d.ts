@@ -76,3 +76,75 @@ export interface AuthResponseError {
 	message: string;
 	isTokenValid?: boolean;
 }
+
+export interface CarbonOffsetCalculatorPayload {
+	residence: string;
+	transport: {
+		public: number;
+		bus: {
+			kms: number;
+		};
+		colectivo: {
+			kms: number;
+		};
+		metro: {
+			kms: number;
+		};
+		car: {
+			kms: number;
+			size: string;
+			fuel: boolean;
+		};
+		motorcycle: {
+			kms: number;
+		};
+		airplane: {
+			kms: number;
+			numberOfSeats: number;
+			rounTrip: boolean;
+		};
+	};
+	bike: {
+		kms: number;
+	};
+	walk: {
+		kms: number;
+	};
+	electricity: {
+		renewable_source: boolean;
+		consumption: number;
+	};
+	project: string;
+	gas: {
+		type: string;
+		units: string;
+		consumption: number;
+	};
+}
+
+interface CarbonOffsetCalculatorResponse {
+	offsets: Array<Offset>;
+	offset_by_user: Array<Offset>;
+	statistics: Array<Statistics>;
+}
+
+interface Offset {
+	minTrees?: number;
+	car_emission_offset?: number;
+	message: string;
+}
+
+interface Statistics {
+	carbon_footprint: {
+		transport: number;
+		gas: number;
+		electricity: number;
+		total: number;
+	};
+	emission_percentage: {
+		transport_perc: number;
+		gas_perc: number;
+		electricity_perc: number;
+		higher_emission: string;
+	};
+}
