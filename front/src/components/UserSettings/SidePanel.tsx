@@ -18,7 +18,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 	const [showChangeName, setShowChangeName] = useState(false);
 	const [showChangePassword, setShowChangePassword] = useState(false);
 	const [showChangeEmail, setShowChangeEmail] = useState(false);
-	const { user } = useUserContext();
+	const { user, setPanelOpen, getAvatars } = useUserContext();
 	const { theme, setTheme } = useTheme();
 	const handleLogout = () => {
 		localStorage.clear();
@@ -89,7 +89,14 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 
 			<HeaderPanel onClose={onClose} panelName="Perfil" goback={false} />
 			<div className="flex items-center justify-center pt-4 ">
-				<Avatar imagesize={100} />
+				<button
+					onClick={() => {
+						setPanelOpen(true);
+						getAvatars();
+					}}
+				>
+					<Avatar imagesize={100} />
+				</button>
 			</div>
 			<div className="flex flex-col items-center justify-center p-2 font-semibold">
 				<h3 className="text-bold text-xl">{username}</h3>
