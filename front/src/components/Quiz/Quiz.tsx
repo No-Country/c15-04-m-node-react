@@ -77,14 +77,35 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 				case "text":
 					return <Input type="text" onChange={(e) => handleAnswerChange(question, e.target.value)} />;
 				case "number":
-					return <Input type="number" onChange={(e) => handleAnswerChange(question, e.target.value)} />;
+					return (
+						<Input
+							type="number"
+							onChange={(e) => {
+								// check if value is a number
+								if (isNaN(Number(e.target.value))) {
+									return;
+								}
+								handleAnswerChange(question, Number(e.target.value));
+							}}
+						/>
+					);
 				case "radio":
 					return (
-						<RadioGroup defaultValue="comfortable" onValueChange={(value) => handleAnswerChange(question, value)}>
+						<RadioGroup
+							defaultValue="comfortable"
+							onValueChange={(value) => {
+								// check if value is a boolean
+								if (value === "true" || value === "false") {
+									handleAnswerChange(question, value === "true");
+								} else {
+									handleAnswerChange(question, value);
+								}
+							}}
+						>
 							{question.options?.map((option) => (
-								<div className="flex items-center space-x-2">
-									<RadioGroupItem value={option.value as string} id={option.value as string} />
-									<Label htmlFor={option.value as string}>{option.label}</Label>
+								<div className="flex items-center space-x-2" key={option.value as string}>
+									<RadioGroupItem value={option.value as string} />
+									<Label>{option.label}</Label>
 								</div>
 							))}
 						</RadioGroup>
@@ -116,6 +137,7 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 	const renderQuestion = (question: Question) => {
 		const condition = question.conditions?.find((condition) => condition.triggerAnswer === answers[question.name]);
 		const isLastQuestion = isEnd && !condition;
+
 		return (
 			<React.Fragment key={question.name}>
 				<SwiperSlide key={question.name}>
@@ -136,7 +158,10 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 										<Button onClick={handlePrev} disabled={isBeginning}>
 											Anterior
 										</Button>
-										<Button onClick={handleNext} disabled={!answers[question.name]}>
+										<Button
+											onClick={handleNext}
+											disabled={typeof answers[question.name] === "boolean" ? false : !answers[question.name]}
+										>
 											Siguiente
 										</Button>
 									</>
