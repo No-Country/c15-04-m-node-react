@@ -122,19 +122,28 @@ export interface CarbonOffsetCalculatorPayload {
 	};
 }
 
-interface CarbonOffsetCalculatorResponse {
+export interface CarbonOffsetCalculatorResponse {
+	carbonOffset: CarbonOffset;
+}
+
+export interface CarbonOffset {
 	offsets: Array<Offset>;
 	offset_by_user: Array<Offset>;
 	statistics: Array<Statistics>;
 }
 
-interface Offset {
+export interface Offset {
 	minTrees?: number;
 	car_emission_offset?: number;
 	message: string;
 }
 
-interface Statistics {
+export interface HigherEmission {
+	category: string;
+	value: number;
+}
+
+export interface Statistics {
 	carbon_footprint: {
 		transport: number;
 		gas: number;
@@ -145,6 +154,6 @@ interface Statistics {
 		transport_perc: number;
 		gas_perc: number;
 		electricity_perc: number;
-		higher_emission: string;
+		higher_emission: HigherEmission;
 	};
 }
