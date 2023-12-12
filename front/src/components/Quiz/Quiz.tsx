@@ -26,29 +26,39 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 		}
 	};
 
-	const handleNext = () => {
+	const handleNext = React.useCallback(() => {
 		swiper?.slideNext();
-	};
+	}, [swiper]);
 
-	const handlePrev = () => {
+	const handlePrev = React.useCallback(() => {
 		swiper?.slidePrev();
-	};
+	}, [swiper]);
 
-	const handleAnswerChange = (question: Question, answer: Answer) => {
-		const isChanged = question.name in answers && answers[question.name] !== answer;
+	const handleAnswerChange = React.useCallback(
+		(question: Question, answer: Answer) => {
+			const isChanged = question.name in answers && answers[question.name] !== answer;
 
-		if (isChanged && question.conditions?.length) {
-			question.conditions.forEach((condition) => {
-				condition.questions.forEach((question) => {
-					if (question.name in answers) {
-						delete answers[question.name];
-					}
+			const updatedAnswers = { ...answers, [question.name]: answer };
+			const questionsToRemove: string[] = [];
+
+			if (isChanged && question.conditions?.length) {
+				question.conditions.forEach((condition) => {
+					condition.questions.forEach((condQuestion) => {
+						if (condQuestion.name in updatedAnswers) {
+							questionsToRemove.push(condQuestion.name);
+						}
+					});
 				});
-			});
-		}
+			}
 
-		setAnswers((prev) => ({ ...prev, [question.name]: answer }));
-	};
+			questionsToRemove.forEach((questionName) => {
+				delete updatedAnswers[questionName];
+			});
+
+			setAnswers(updatedAnswers);
+		},
+		[answers],
+	);
 
 	const handleSend = () => {
 		console.log("Respuestas:", answers);
@@ -56,9 +66,50 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 		console.log("Data:", data);
 	};
 
+	const renderInputField = React.useCallback(
+		(question: Question) => {
+			switch (question.type) {
+				case "text":
+					return <input type="text" onChange={(e) => handleAnswerChange(question, e.target.value)} />;
+				case "number":
+					return <input type="number" onChange={(e) => handleAnswerChange(question, e.target.value)} />;
+				case "radio":
+					return (
+						<div>
+							{question.options?.map((option) => (
+								<div key={option.value as string}>
+									<input
+										type="radio"
+										name={question.name}
+										value={option.value as string}
+										onChange={(e) => handleAnswerChange(question, e.target.value)}
+									/>
+									<label htmlFor={option.value as string}>{option.label}</label>
+								</div>
+							))}
+						</div>
+					);
+				case "select":
+					return (
+						<select onChange={(e) => handleAnswerChange(question, e.target.value)}>
+							<option value="">Selecciona una opción</option>
+							{question.options?.map((option) => (
+								<option key={option.value as string} value={option.value as string}>
+									{option.label}
+								</option>
+							))}
+						</select>
+					);
+				default:
+					return null;
+			}
+		},
+		[handleAnswerChange],
+	);
+
 	const renderQuestion = (question: Question) => {
 		const condition = question.conditions?.find((condition) => condition.triggerAnswer === answers[question.name]);
-
+		const isLastQuestion = isEnd && !condition;
 		return (
 			<React.Fragment key={question.name}>
 				<SwiperSlide key={question.name}>
@@ -67,7 +118,7 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 							<p>{question.title}</p>
 							{renderInputField(question)}
 							<div className="flex gap-2 mt-2">
-								{isEnd && !condition ? (
+								{isLastQuestion ? (
 									<>
 										<Button onClick={handlePrev} disabled={isBeginning}>
 											Anterior
@@ -88,50 +139,17 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 						</div>
 					}
 				</SwiperSlide>
-				{condition?.questions.map((question) => (
-					<React.Fragment key={question.name}>{renderQuestion(question)}</React.Fragment>
-				))}
+				{condition?.questions.map((question) => renderQuestion(question))}
 			</React.Fragment>
 		);
 	};
 
-	const renderInputField = (question: Question) => {
-		switch (question.type) {
-			case "text":
-				return <input type="text" onChange={(e) => handleAnswerChange(question, e.target.value)} />;
-			case "number":
-				return <input type="number" onChange={(e) => handleAnswerChange(question, e.target.value)} />;
-			case "radio":
-				return (
-					<div>
-						{question.options?.map((option) => (
-							<div key={option.value as string}>
-								<input
-									type="radio"
-									name={question.name}
-									value={option.value as string}
-									onChange={(e) => handleAnswerChange(question, e.target.value)}
-								/>
-								<label htmlFor={option.value as string}>{option.label}</label>
-							</div>
-						))}
-					</div>
-				);
-			case "select":
-				return (
-					<select onChange={(e) => handleAnswerChange(question, e.target.value)}>
-						<option value="">Selecciona una opción</option>
-						{question.options?.map((option) => (
-							<option key={option.value as string} value={option.value as string}>
-								{option.label}
-							</option>
-						))}
-					</select>
-				);
-			default:
-				return null;
+	React.useEffect(() => {
+		if (swiper) {
+			setIsEnd(swiper.activeIndex === swiper.slides?.length - 1);
 		}
-	};
+	}, [answers, swiper]);
+
 	return (
 		<div className="bg-white-500 h-screen">
 			<Swiper
@@ -143,7 +161,10 @@ const Quiz = ({ questions = [] }: QuizProps) => {
 				mousewheel={false}
 				spaceBetween={50}
 				slidesPerView={1}
-				onSwiper={(swiper) => setSwiper(swiper)}
+				onSwiper={(swiper) => {
+					setSwiper(swiper);
+					setIsEnd(swiper.isEnd);
+				}}
 				className="h-full w-full"
 				onSlideChange={handleSlideChange}
 			>
