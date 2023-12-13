@@ -22,7 +22,10 @@ const UsuarioSchema = Schema({
 
     transporte: { type: String },
 
-    estado: { type: Boolean, default: true }
+    estado: { type: Boolean, default: false },
+
+    validated: { type: Boolean, default: false }
+
 })
 
 UsuarioSchema.methods.toJSON = function () {
