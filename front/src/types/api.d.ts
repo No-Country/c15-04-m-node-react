@@ -3,7 +3,7 @@ export interface User {
 	correo: string;
 	password: string;
 	edad: number;
-	electricidad: string;
+	electricidad: number;
 	gas: string;
 	transporte: string;
 	estado: boolean;
@@ -76,3 +76,12 @@ export interface AuthResponseError {
 	message: string;
 	isTokenValid?: boolean;
 }
+
+
+export interface CarbonFootprintResponse {
+    kwh: number;
+    country: string;
+	energia_renovable: boolean;
+	
+   
+  }
