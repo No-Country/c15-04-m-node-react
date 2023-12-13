@@ -1,7 +1,7 @@
 const { request, response } = require('express')
 const jwt = require('jsonwebtoken')
 const bycript = require('bcryptjs')
-const Usuario = require('../models/usuario')
+const { Usuario } = require('../models')
 const sessionJWT = require('../helpers/jwt/session.JWT')
 const emailJWT = require('../helpers/jwt/email.JWT')
 const transport = require('../helpers/emissions/calculator/transport')
@@ -134,10 +134,15 @@ const update = async (req = request, res = response) => {
 
         if ('correo' in rest) {
             const correo = rest.correo
-            const [activo, noActivo] = await Promise.all([
+            const [activo, noActivo, current] = await Promise.all([
                 await Usuario.findOne({ correo, estado: true }),
-                await Usuario.findOne({ correo, estado: false })
+                await Usuario.findOne({ correo, estado: false }),
+                await Usuario.findOne({ id, correo })
             ])
+            if (current) return res.status(400).json({
+                message: 'Este es tu actual correo'
+            })
+
             if (activo) return res.status(400).json({
                 message: 'Este correo ya le pertenece a otra persona, intenta con uno distinto'
             })
