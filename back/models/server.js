@@ -7,7 +7,7 @@ class Server {
 
     #PORT = process.env.PORT
     #usuario = '/api/usuario'
-    #main = '/'
+    #newsletter = '/api/newsletter'
 
     constructor() {
         this.app = express()
@@ -26,7 +26,7 @@ class Server {
 
     routes() {
         this.app.use(this.#usuario, require('../routes/routes.usuario'))
-        this.app.use(this.#main, require('../routes/routes.newsletter'))
+        this.app.use(this.#newsletter, require('../routes/routes.newsletter'))
     }
 
     listen() {
