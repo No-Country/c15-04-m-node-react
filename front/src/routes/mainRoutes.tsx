@@ -21,6 +21,12 @@ const mainRoutes: RouteObject = {
 			path: "/calculator",
 			element: <CalculatorPage />,
 		},
+		
+		
+		{
+			path: "/footprint",
+			element: <FootprintPage />,
+		},
 	],
 };
 

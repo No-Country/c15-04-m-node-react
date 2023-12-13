@@ -13,16 +13,16 @@ export const transformData = (input: InputObject): NestedObject => {
 			for (let i = 0; i < parts.length - 1; i++) {
 				const part = parts[i];
 
-				if (!temp[part] || typeof temp[part] === "string") {
+				if (!temp[part] || typeof temp[part] !== "object") {
 					temp[part] = {};
 				}
 
 				temp = temp[part] as NestedObject;
 			}
 
-			temp[parts[parts.length - 1]] = value.toString();
+			temp[parts[parts.length - 1]] = value;
 		} else {
-			output[key] = value.toString();
+			output[key] = value;
 		}
 	}
 

@@ -14,14 +14,13 @@ type NavbarProps = {
 function Navbar({ onToggleSidePanel }: NavbarProps) {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const { user } = useUserContext();
-	console.log(user?.nombre);
 
 	const toggleNavbar = () => {
 		setIsOpen(!isOpen);
 	};
 
 	return (
-		<nav className="bg-white drop-shadow dark:bg-[#020817]">
+		<nav className="bg-white fixed py-1 w-full drop-shadow dark:bg-[#020817]">
 			<div className="px-4 sm:px-6 lg:px-8">
 				<div className="flex justify-between h-20">
 					<div className="flex items-center">
@@ -40,11 +39,8 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 							>
 								Mi Huella
 							</a>
-							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
+							<a href="/quiz" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
 								Calculadora
-							</a>
-							<a href="/" className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline">
-								Contacto
 							</a>
 							{user?.nombre === undefined && <LoginDialog />}
 						</div>
@@ -60,7 +56,7 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 					</div>
 				</div>
 				{isOpen && (
-					<div className="md:hidden absolute bg-white dark:bg-[#020817]  w-full left-0 py-4" id="mobile-menu">
+					<div className="md:hidden  bg-white dark:bg-[#020817] fixed  w-full left-0 py-6 " id="mobile-menu">
 						<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 dark:text-white">
 							<a
 								className="text-black dark:text-white  px-3  rounded-md text-xl  font-medium flex justify-between "
@@ -74,15 +70,12 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 							</a>
 							<a
 								href="/footprint"
-								className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium"
+								className="text-black dark:text-white block px-3 py-6 rounded-md text-xl font-medium"
 							>
 								Mi Huella
 							</a>
-							<a href="/" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
+							<a href="/quiz" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
 								Calculadora
-							</a>
-							<a href="/" className="text-black dark:text-white  block px-3 py-3 rounded-md text-xl  font-medium">
-								Contacto
 							</a>
 							<div className="flex justify-center">{user?.nombre === undefined && <LoginDialog />} </div>
 						</div>
