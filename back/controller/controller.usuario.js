@@ -121,12 +121,12 @@ const update = async (req = request, res = response) => {
         const { estado, ...rest } = req.body
         const { id } = jwt.verify(token, process.env.TOKEN_USER)
 
-        if ('gas' in rest) rest.gas = carbonFP.getGas(rest.gas)
-        if ('transporte' in rest) rest.transporte = transport(rest.transporte)
-
-        if ('electricidad' in rest) {
-            rest.electricidad = carbonFP.getElectricity(rest.electricidad)
-        }
+        /*  if ('gas' in rest) rest.gas = carbonFP.getGas(rest.gas)
+         if ('transporte' in rest) rest.transporte = transport(rest.transporte)
+ 
+         if ('electricidad' in rest) {
+             rest.electricidad = carbonFP.getElectricity(rest.electricidad)
+         } */
         if ('password' in rest) {
             const salt = bycript.genSaltSync()
             rest.password = bycript.hashSync(rest.password, salt)
