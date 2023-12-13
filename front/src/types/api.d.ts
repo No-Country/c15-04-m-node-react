@@ -160,9 +160,14 @@ export interface Statistics {
 
 
 export interface CarbonFootprintResponse {
-    kwh: number;
-    country: string;
+	kwh: number;
+	country: string;
 	energia_renovable: boolean;
-	carbon_footprint ?: number
-   
-  }
+	carbon_footprint?: number
+
+}
+
+export interface NewsletterPayload {
+	nombre: string;
+	correo: string;
+}
