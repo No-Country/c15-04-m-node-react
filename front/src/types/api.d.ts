@@ -3,7 +3,7 @@ export interface User {
 	correo: string;
 	password: string;
 	edad: number;
-	electricidad: string;
+	electricidad: number;
 	gas: string;
 	transporte: string;
 	estado: boolean;
@@ -157,3 +157,12 @@ export interface Statistics {
 		higher_emission: HigherEmission;
 	};
 }
+
+
+export interface CarbonFootprintResponse {
+    kwh: number;
+    country: string;
+	energia_renovable: boolean;
+	carbon_footprint ?: number
+   
+  }
