@@ -13,7 +13,7 @@ const TransportSlider = () => {
 			return '<span class="' + className + '">' + (index + 1) + "</span>";
 		},
 	};
-	const options1 = [
+	const options = [
 		{
 			name: "residence",
 			title: "¿En qué país reside?",

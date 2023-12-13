@@ -147,7 +147,7 @@ const Quiz = ({ questions = [], onSubmit }: QuizProps) => {
 						<div key={question.name} className="flex justify-center items-center h-full flex-col max-w-md mx-auto">
 							<h2 className="text-2xl font-bold text-center py-4">{question.title}</h2>
 							{renderInputField(question)}
-							<div className="flex gap-2 py-4">
+							<div className="flex gap-2 py-4 h-[50%]">
 								{isLastQuestion ? (
 									<>
 										<Button onClick={handlePrev} disabled={isBeginning}>
@@ -157,10 +157,11 @@ const Quiz = ({ questions = [], onSubmit }: QuizProps) => {
 									</>
 								) : (
 									<>
-										<Button onClick={handlePrev} disabled={isBeginning}>
+										<Button className="bg-green-500 text-white" onClick={handlePrev} disabled={isBeginning}>
 											Anterior
 										</Button>
 										<Button
+											className="bg-green-500 text-white"
 											onClick={handleNext}
 											disabled={typeof answers[question.name] === "boolean" ? false : !answers[question.name]}
 										>
