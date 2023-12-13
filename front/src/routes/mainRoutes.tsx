@@ -4,7 +4,7 @@ import Home from "@/pages/Home";
 import Slider from "@/pages/Slider";
 import FootprintPage from "@/pages/Dashboard/FootprintPage";
 import CalculatorPage from "@/pages/CalculatorPage";
-
+import QuizPage from "@/pages/QuizPage/QuizPage";
 
 const mainRoutes: RouteObject = {
 	element: <MainLayout />,
@@ -21,8 +21,10 @@ const mainRoutes: RouteObject = {
 			path: "/calculator",
 			element: <CalculatorPage />,
 		},
-		
-		
+		{
+			path: "/quiz",
+			element: <QuizPage />,
+		},
 		{
 			path: "/footprint",
 			element: <FootprintPage />,

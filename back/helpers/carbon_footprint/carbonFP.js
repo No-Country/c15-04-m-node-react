@@ -21,9 +21,8 @@ const carbonFP = {
    	return consumption * emission_factor;
    },
 
-   getCarbonOffset: function (transport_cfp, gas_cfp, electricity_cfp, walk_to_work, { car: car_data }) {
+   getCarbonOffset: function (transport_cfp, gas_cfp, electricity_cfp) {
    	let offsets = [];
-   	let offset_by_user = [];
    	let statistics = [];
    	const total_carbon_footprint = transport_cfp + gas_cfp + electricity_cfp;
    	const transport_perc = transport_cfp > 0 ? ((transport_cfp * 100) / total_carbon_footprint).toFixed(2) : 0;
@@ -33,7 +32,7 @@ const carbonFP = {
 
    	const higher_emission = getHigherValue([
    		{
-   			category: 'transporte',
+   			category: 'transport',
    			value: transport_perc
    		},
    		{
@@ -41,23 +40,10 @@ const carbonFP = {
    			value: gas_perc
    		},
    		{
-   			category: 'electricidad',
+   			category: 'electricity',
    			value: electricity_perc
    		}
    	]);
-
-   	if(typeof walk_to_work === "object"){
-   		const car_emission_offset = car(walk_to_work.meters * 0.001, car_data.size, car_data.gasoline);
-   		const message = car_emission_offset > 0 ? `De acuerdo a la cantidad de metros que has caminado y a las especificaciones de tu automóvil, has logrado compensar ${car_emission_offset} kgCo2 por no usarlo 👏` : 'Lamentablemente, de acuerdo a la cantidad de metros que has caminado, no has logrado compensar las emisiones de tú automóvil. Pero no te preocupes, te recomendamos que de vez en cuando camines o uses una bicicleta en lugar de usar tu automóvil.';
-   		offset_by_user.push({
-   			car_emission_offset,
-   			message
-   		});
-   	} else {
-   		offset.push({
-   			message: 'Vaya, parece que caminar no es tu actividad física preferida. Pero aún así, GreenTrace te recomienda que camines más para reducir en gran medida tus emisiones de Co2. Así que, ¡A mover esas piernitas!'
-   		});
-   	}
 
    	if(minTrees > 0){
    		offsets.push({
@@ -81,7 +67,30 @@ const carbonFP = {
    		}
    	})
 
-   	return { offsets, offset_by_user, statistics }
+   	return { offsets, statistics }
+   },
+
+   getOffsetByUser: function(walk_to_work, transport) {
+   	let offset_by_user = [];
+
+   	if(transport === null || walk_to_work === null) return offset_by_user;
+
+   	const { car: car_data } = transport;
+
+   	if(typeof walk_to_work === "object"){
+   		const car_emission_offset = car(walk_to_work.meters * 0.001, car_data.size, car_data.gasoline);
+   		const message = car_emission_offset > 0 ? `De acuerdo a la cantidad de metros que has caminado y a las especificaciones de tu automóvil, has logrado compensar ${car_emission_offset} kgCo2 por no usarlo 👏` : 'Lamentablemente, de acuerdo a la cantidad de metros que has caminado, no has logrado compensar las emisiones de tú automóvil. Pero no te preocupes, te recomendamos que de vez en cuando camines o uses una bicicleta en lugar de usar tu automóvil.';
+   		offset_by_user.push({
+   			car_emission_offset,
+   			message
+   		});
+   	} else {
+   		offset.push({
+   			message: 'Vaya, parece que caminar no es tu actividad física preferida. Pero aún así, GreenTrace te recomienda que camines más para reducir en gran medida tus emisiones de Co2. Así que, ¡A mover esas piernitas!'
+   		});
+   	}
+
+   	return offset_by_user;
    }
   
 }

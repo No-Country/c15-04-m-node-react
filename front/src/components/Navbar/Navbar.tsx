@@ -20,7 +20,7 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 	};
 
 	return (
-		<nav className="bg-white fixed py-1 w-full drop-shadow dark:bg-[#020817]">
+		<nav className="bg-white fixed py-1 z-20 w-full drop-shadow dark:bg-[#020817]">
 			<div className="px-4 sm:px-6 lg:px-8">
 				<div className="flex justify-between h-20">
 					<div className="flex items-center">
