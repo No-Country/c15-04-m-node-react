@@ -46,13 +46,6 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 				setShowChangePassword(true);
 			},
 		},
-		{
-			label: "Cambiar Email",
-			onClick: () => {
-				closeAllPanels();
-				setShowChangeEmail(true);
-			},
-		},
 	];
 	const personalizationItems = [
 		{
@@ -77,7 +70,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 	const username = user?.nombre ?? "John Doe";
 	return (
 		<div
-			className={`fixed inset-y-0 right-0 w-full md:w-1/4 dark:bg-[#020817] bg-white shadow-lg ${
+			className={`fixed inset-y-0 z-40 right-0 w-full md:w-1/4 dark:bg-[#020817] bg-white shadow-lg ${
 				isOpen ? "translate-x" : "translate-x-full  "
 			} transition-transform duration-300 ease-in-out`}
 		>

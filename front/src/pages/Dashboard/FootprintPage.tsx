@@ -1,21 +1,20 @@
 import RadialDonut from "./RadialDonut";
 import React from "react";
-import { Flame, Plug, Utensils, Car, Plane } from "lucide-react";
+import { Flame, Plug, Car, Plane } from "lucide-react";
 
-const gas = 30;
-const electricity = 15;
-const food = 15;
-const landTransport = 20;
-const plane = 10;
-const trees = 120;
-const carDistance = 900;
+const gas = 25;
+const electricity = 25;
+const landTransport = 25;
+const plane = 25;
+const trees = 0;
+const carDistance = 0;
 
 const data = {
 	labels: [],
 	datasets: [
 		{
-			data: [gas, electricity, food, landTransport, plane],
-			backgroundColor: ["#fc881c", "#00d856", "#f63b95", "#fbff25", "#560bf5"],
+			data: [gas, electricity, landTransport, plane],
+			backgroundColor: ["#fc881c", "#00d856", "#fbff08", "#560bf5"],
 			borderColor: "",
 			borderWidth: 0,
 		},
@@ -63,19 +62,6 @@ const FootprintPage: React.FC = () => {
 							<div className="flex gap-2 ">
 								<h3 className="text-xl font-bold">Electricidad:</h3>
 								<p className="text-xl font-bold">{electricity}%</p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div className="flex items-center py-4">
-							<div className="pr-3">
-								<div className="flex w-8 h-8 bg-[#ff1385] items-center justify-center rounded-full ">
-									<Utensils size={20} />
-								</div>
-							</div>
-							<div className="flex gap-2 ">
-								<h3 className="text-xl font-bold">Alimentos:</h3>
-								<p className="text-xl font-bold">{food}%</p>
 							</div>
 						</div>
 					</li>
