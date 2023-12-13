@@ -5,7 +5,6 @@ import Slider from "@/pages/Slider";
 import FootprintPage from "@/pages/Dashboard/FootprintPage";
 import CalculatorPage from "@/pages/CalculatorPage";
 
-
 const mainRoutes: RouteObject = {
 	element: <MainLayout />,
 	children: [
@@ -21,8 +20,10 @@ const mainRoutes: RouteObject = {
 			path: "/calculator",
 			element: <CalculatorPage />,
 		},
-		
-		
+		{
+			path: "/quiz",
+			element: <FootprintPage />,
+		},
 		{
 			path: "/footprint",
 			element: <FootprintPage />,
