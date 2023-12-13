@@ -23,6 +23,7 @@ const transport = {
 const mailOptions = (email, name, type, token) => {
   let message = ''
   const url = process.env.EMAIL_PATH
+
   switch (type) {
     case 'newsletter':
       message = newsletter(name)
