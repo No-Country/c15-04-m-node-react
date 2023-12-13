@@ -163,6 +163,6 @@ export interface CarbonFootprintResponse {
     kwh: number;
     country: string;
 	energia_renovable: boolean;
-	
+	carbon_footprint ?: number
    
   }
