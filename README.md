@@ -18,7 +18,6 @@
 <img src="http://logos-download.com/wp-content/uploads/2016/09/React_logo_logotype_emblem.png" width="250px">
 <img src="https://logos-download.com/wp-content/uploads/2016/09/Node_logo_NodeJS.png" width="300px">
 <img src="http://logos-download.com/wp-content/uploads/2016/09/MongoDB_logo_Mongo_DB.png" width="300px">
-<img src="https://worldvectorlogo.com/es/logo/tailwind-css-2" width="300px">
 <br>
 
 ## Dependencias Back-end:
