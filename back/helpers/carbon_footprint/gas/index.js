@@ -2,12 +2,12 @@ const gas = {
     naturalGas: {
       cubic_meter: 1.94,
       therm: 5.50,
-      type: 'gas_natural'
+      type: 'natural'
     },
     propane: {
     	therm: 7.15,
     	cubic_meter: 6.39,
-    	type: 'gas_propano'
+    	type: 'propane'
     },
   getEmissionFactor: function(type, unit) {
     for(const prop in this){

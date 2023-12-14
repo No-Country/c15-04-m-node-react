@@ -1,9 +1,33 @@
 import { Question } from "@/types/quiz";
+
+const countriesOptions = [
+	{ value: "mexico", label: "México" },
+	{ value: "costa_rica", label: "Costa Rica" },
+	{ value: "guatemala", label: "Guatemala" },
+	{ value: "honduras", label: "Honduras" },
+	{ value: "nicaragua", label: "Nicaragua" },
+	{ value: "panama", label: "Panamá" },
+	{ value: "republica_dominicana", label: "República Dominicana" },
+	{ value: "salvador", label: "El Salvador" },
+	{ value: "argentina", label: "Argentina" },
+	{ value: "bolivia", label: "Bolivia" },
+	{ value: "brasil", label: "Brasil" },
+	{ value: "chile", label: "Chile" },
+	{ value: "colombia", label: "Colombia" },
+	{ value: "peru", label: "Perú" },
+	{ value: "uruguay", label: "Uruguay" },
+	{ value: "ecuador", label: "Ecuador" },
+	{ value: "paraguay", label: "Paraguay" },
+	{ value: "venezuela", label: "Venezuela" },
+];
+
 export const questions: Question[] = [
 	{
 		name: "residence",
 		title: "¿En qué país reside?",
-		type: "text",
+		type: "select",
+		label: "Seleccione un país",
+		options: countriesOptions,
 	},
 	{
 		name: "transport",
@@ -23,17 +47,17 @@ export const questions: Question[] = [
 						type: "number",
 					},
 					{
-						name: "transport.bus",
+						name: "transport.bus.kms",
 						title: "¿Cuántos kilómetros ha recorrido usando el bus?",
 						type: "number",
 					},
 					{
-						name: "transport.taxi",
+						name: "transport.colectivo.kms",
 						title: "¿Cuántos kilómetros ha recorrido usando taxi?",
 						type: "number",
 					},
 					{
-						name: "transport.metro",
+						name: "transport.metro.kms",
 						title: "¿Cuántos kilómetros ha recorrido usando el metro?",
 						type: "number",
 					},
@@ -42,7 +66,7 @@ export const questions: Question[] = [
 		],
 	},
 	{
-		name: "vehicle",
+		name: "demo",
 		title: "¿Posee vehículo personal, alquilado o prestado?",
 		type: "radio",
 		options: [
@@ -54,7 +78,7 @@ export const questions: Question[] = [
 				triggerAnswer: "yes",
 				questions: [
 					{
-						name: "vehicle.car",
+						name: "transport.car",
 						title: "¿Posee automóvil?",
 						type: "radio",
 						options: [
@@ -66,14 +90,15 @@ export const questions: Question[] = [
 								triggerAnswer: "yes",
 								questions: [
 									{
-										name: "vehicle.car.kilometers",
+										name: "transport.car.kms",
 										title: "¿Cuántos kilómetros recorre en promedio en automóvil?",
 										type: "number",
 									},
 									{
-										name: "vehicle.car.size",
+										name: "transport.car.size",
 										title: "¿De que tamaño considera es su automóvil?",
 										type: "select",
+										label: "Seleccione una opción",
 										options: [
 											{ value: "small", label: "Pequeño" },
 											{ value: "medium", label: "Mediano" },
@@ -81,13 +106,23 @@ export const questions: Question[] = [
 										],
 									},
 									{
-										name: "vehicle.car.fuel",
+										name: "transport.car.fuel",
 										title: "¿Qué tipo de combustible consume su automóvil?",
 										type: "select",
+										label: "Seleccione una opción",
+										dataType: "boolean",
 										options: [
-											{ value: "gasoline", label: "Gasolina" },
-											{ value: "diesel", label: "Diesel" },
-											{ value: "electric", label: "Eléctrico" },
+											{
+												value: true,
+												label: "Gasolina",
+											},
+											{
+												value: false,
+												label: "Diesel",
+											},
+											// { value: "gasoline", label: "Gasolina" },
+											// { value: "diesel", label: "Diesel" },
+											// { value: "electric", label: "Eléctrico" },
 										],
 									},
 								],
@@ -95,7 +130,7 @@ export const questions: Question[] = [
 						],
 					},
 					{
-						name: "vehicle.motorcycle",
+						name: "transport.motorcycle",
 						title: "¿Posee motocicleta?",
 						type: "radio",
 						options: [
@@ -107,7 +142,7 @@ export const questions: Question[] = [
 								triggerAnswer: "yes",
 								questions: [
 									{
-										name: "vehicle.motorcycle.kilometers",
+										name: "transport.motorcycle.kms",
 										title: "¿Cuántos kilómetros recorre en promedio en motocicleta?",
 										type: "number",
 									},
@@ -132,7 +167,7 @@ export const questions: Question[] = [
 				triggerAnswer: "yes",
 				questions: [
 					{
-						name: "bike.kilometers",
+						name: "bike.kms",
 						title: "¿Cuántas veces haces uso de estos?",
 						type: "number",
 					},
@@ -153,7 +188,7 @@ export const questions: Question[] = [
 				triggerAnswer: "yes",
 				questions: [
 					{
-						name: "walk.kilometers",
+						name: "walk.kms",
 						title: "¿Cuántos metros caminas?",
 						type: "number",
 					},
@@ -162,7 +197,7 @@ export const questions: Question[] = [
 		],
 	},
 	{
-		name: "flight",
+		name: "transport.airplane",
 		title: "¿Ha realizado algún viaje en avión hacia otro estado, país o continente?",
 		type: "radio",
 		options: [
@@ -174,22 +209,23 @@ export const questions: Question[] = [
 				triggerAnswer: "yes",
 				questions: [
 					{
-						name: "flight.kilometers",
+						name: "transport.airplane.kms",
 						title: "¿De cuantos kilómetros fue el viaje?",
 						type: "number",
 					},
 					{
-						name: "flight.seats",
+						name: "transport.airplane.numberOfSeats",
 						title: "¿Qué cantidad de asientos ocupó?",
 						type: "number",
 					},
 					{
-						name: "flight.round",
+						name: "transport.airplane.rounTrip",
 						title: "¿Su viaje consistió en ida y vuelta o solo ida?",
 						type: "select",
+						label: "Seleccione una opción",
 						options: [
-							{ value: "round", label: "Ida y vuelta" },
-							{ value: "one-way", label: "Solo ida" },
+							{ value: true, label: "Ida y vuelta" },
+							{ value: false, label: "Solo ida" },
 						],
 					},
 				],
@@ -197,7 +233,7 @@ export const questions: Question[] = [
 		],
 	},
 	{
-		name: "electricity",
+		name: "gas",
 		title: "¿Ocupa el uso de gas doméstico?",
 		type: "radio",
 		options: [
@@ -209,22 +245,29 @@ export const questions: Question[] = [
 				triggerAnswer: "yes",
 				questions: [
 					{
-						name: "electricity.type",
+						name: "gas.type",
 						title: "¿Qué tipo de gas consume?",
 						type: "select",
+						label: "Seleccione una opción",
 						options: [
 							{ value: "natural", label: "Natural" },
 							{ value: "propane", label: "Propano" },
 						],
 					},
 					{
-						name: "electricity.units",
+						name: "gas.units",
 						title: "¿En qué unidad de medida está cuantificada su consumo de gas?",
 						type: "select",
+						label: "Seleccione una opción",
 						options: [
-							{ value: "kg", label: "Kilogramos" },
-							{ value: "m3", label: "Metros cúbicos" },
+							{ value: "therms", label: "Termias" },
+							{ value: "cubic_meter", label: "Metros cúbicos" },
 						],
+					},
+					{
+						name: "gas.consumption",
+						title: "¿Cuánto consume de gas?",
+						type: "number",
 					},
 				],
 			},
@@ -234,6 +277,16 @@ export const questions: Question[] = [
 		name: "electricity.consumption",
 		title: "¿De acuerdo a su factura eléctrica, cuántos kWh (kilovatios/hora) consumió el ultimo mes?",
 		type: "number",
+	},
+	{
+		name: "electricity.renewable_source",
+		title: "¿Su energía eléctrica proviene de fuentes renovables?",
+		type: "radio",
+		dataType: "boolean",
+		options: [
+			{ value: true, label: "Si" },
+			{ value: false, label: "No" },
+		],
 	},
 	{
 		name: "project",

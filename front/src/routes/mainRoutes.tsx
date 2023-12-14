@@ -2,7 +2,9 @@ import { RouteObject } from "react-router-dom";
 import MainLayout from "@/layout/MainLayout/MainLayout";
 import Home from "@/pages/Home";
 import Slider from "@/pages/Slider";
-import QuizPage from "@/pages/Quiz/Quiz";
+import FootprintPage from "@/pages/Dashboard/FootprintPage";
+import CalculatorPage from "@/pages/CalculatorPage";
+import QuizPage from "@/pages/QuizPage/QuizPage";
 
 const mainRoutes: RouteObject = {
 	element: <MainLayout />,
@@ -16,8 +18,16 @@ const mainRoutes: RouteObject = {
 			element: <Slider />,
 		},
 		{
+			path: "/calculator",
+			element: <CalculatorPage />,
+		},
+		{
 			path: "/quiz",
 			element: <QuizPage />,
+		},
+		{
+			path: "/footprint",
+			element: <FootprintPage />,
 		},
 	],
 };

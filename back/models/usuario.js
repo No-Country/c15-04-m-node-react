@@ -14,18 +14,17 @@ const UsuarioSchema = Schema({
         type: String,
         required: [true, 'Contraseña es obligatoria']
     },
+    img: { type: String },
 
-    edad: { type: Number },
+    electricidad: { type: Number },
 
-    electricidad: {type: String },
+    gas: { type: Number },
 
-    gas: { type: String },
+    transporte: { type: Number },
 
-    transporte: { type: String },
+    estado: { type: Boolean, default: false },
 
-    estado: { type: Boolean, default: true },
-
-    img: { type: String }
+    validated: { type: Boolean, default: false }
 
 })
 

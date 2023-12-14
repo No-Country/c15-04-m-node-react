@@ -1,28 +1,42 @@
 const { Router } = require('express')
-const { 
-    signUp,
-    logIn,
-    update, 
-    eliminar,
-    auth,
-    userData
-} = require('../controller/controller.usuario')
 const getAvatars = require('../controller/controller.avatar')
-const { electricityCalculator, gasCalculator, carbonOffsetCalculator, transportCalculator } = require('../controller/controller.carbonfp')
-const { POST_LOGIN, POST_SIGN_UP, TOKEN, ECFP_VALIDATION } = require('../helpers/checks')
 const router = Router()
 
+const {
+    auth,
+    eliminar,
+    emailVerification,
+    logIn,
+    signUp,
+    update,
+    userData
+} = require('../controller/controller.usuario')
+const {
+    carbonOffsetCalculator,
+    electricityCalculator,
+    gasCalculator,
+    transportCalculator
+} = require('../controller/controller.carbonfp')
+const {
+    ECFP_VALIDATION,
+    POST_DELETE,
+    POST_LOGIN,
+    POST_SIGN_UP,
+    POST_UPDATE
+} = require('../helpers/checks')
+
 router.get('/auth', auth)
-router.get('/data', userData)
-router.get('/sign-up', getAvatars)
-router.post('/sign-up', POST_SIGN_UP, signUp)
-router.post('/login', POST_LOGIN, logIn)
 router.get('/actualizar', getAvatars)
-router.put('/actualizar', TOKEN, update)
-router.delete('/eliminar', TOKEN, eliminar)
+router.put('/actualizar', POST_UPDATE, update)
 router.post('/calculadora/electricidad', electricityCalculator)
 router.post('/calculadora/gas', gasCalculator)
-router.post('/calculadora/transporte', transportCalculator)
 router.post('/calculadora/offset', carbonOffsetCalculator)
+router.post('/calculadora/transporte', transportCalculator)
+router.get('/data', userData)
+router.delete('/eliminar', POST_DELETE, eliminar)
+router.post('/login', POST_LOGIN, logIn)
+router.get('/sign-up', getAvatars)
+router.post('/sign-up', POST_SIGN_UP, signUp)
+router.get('/verificar/:tokenEmail', emailVerification)
 
 module.exports = router

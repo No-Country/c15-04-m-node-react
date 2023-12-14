@@ -1,27 +1,27 @@
 const {
-   airplaine,
+   airplane,
    bus,
    car,
    colectivo,
    metro,
-   motocycle
+   motorcycle
 } = require('../transport')
 
 const transport = ({
-   airplaine: { kms: airKms, numberOfSeats, rounTrip },
+   airplane: { kms: airKms, numberOfSeats, rounTrip },
    bus: { kms: busKms },
    car: { kms: carKms, size, gasoline },
    colectivo: { kms: colectivoKms },
    metro: { kms: metroKms },
-   motocycle: { kms: motocycleKms }
+   motorcycle: { kms: motorcycleKms }
 }) => {
    const sum = (
-      airplaine(airKms, numberOfSeats, rounTrip) +
+      airplane(airKms, numberOfSeats, rounTrip) +
       bus(busKms) +
       car(carKms, size, gasoline) +
       colectivo(colectivoKms) +
       metro(metroKms) +
-      motocycle(motocycleKms)
+      motorcycle(motorcycleKms)
    ).toFixed(2)
 
    return `${sum} KgCo2`

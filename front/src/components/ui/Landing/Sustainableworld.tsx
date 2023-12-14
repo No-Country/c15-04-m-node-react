@@ -7,16 +7,16 @@ const Sustainableworld = () => {
 				<div className="md:flex">
 					<img src={Colorfulgraphics} className="py-4" alt="colorfull graphics" width={"500px"} />
 					<div className="justify-between w-25">
-						<h3 className="font-bold text-2xl md:text-start md:px-10 px-6">Por un mundo mas sustentable</h3>
+						<h3 className="font-bold text-2xl md:text-start md:px-10 px-6">Por un mundo más sustentable</h3>
 						<p className="text-md text-left font-semibold p-6 md:px-10">
-							Desarrollamos una webapp donde podrás llevar un registro de tu emisión de carbono y asi poder conocer tu
-							huella, cada actividad que realizas en tu dia a dia afecta a nuestro planeta, algunas mas y otras menos.
-							Para conocer cuales son las actividades que mas afectan y cuales menos te invitamos a que utilices nuestra
-							calculadora de huella de carbono, en la cual vos podrás registrar tus actividades y te dirá cuanto CO2 han
-							generado. Luego desde el panel de control podrás ver todo el registro de tu huella y asi poder ver
-							gráficamente cuales son las actividades que mas CO2 generan y como puedes reducirlo. También vas a
-							encontrar distintas actividades para poder ayudar y aportar para que todos tengamos un planeta mas
-							sustentable. ¡Y recuerda, por cada árbol reduces entre 10kg y 30 Kg de CO2 al año!
+							Hemos desarrollado una webapp donde puedes llevar un registro de tu emisión de carbono para conocer tu
+							huella. Cada actividad diaria afecta a nuestro planeta, algunas más que otras. Utiliza nuestra calculadora
+							de huella de carbono para descubrir qué actividades tienen un mayor impacto y cuáles menos. Registra tus
+							actividades y la calculadora te mostrará cuánto CO2 has generado. Desde el panel de control, podrás
+							visualizar gráficamente tu historial de huella de carbono y descubrir las actividades que más CO2 generan,
+							así como aprender cómo reducirlo. Además, encontrarás diversas actividades para contribuir a un planeta
+							más sostenible. Recuerda, ¡por cada árbol plantado, se reduce entre 10 kg y 30 kg de CO2 al año! ¡Únete a
+							nosotros en la construcción de un futuro más sustentable!
 						</p>
 					</div>
 				</div>

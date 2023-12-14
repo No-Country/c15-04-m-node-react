@@ -1,12 +1,33 @@
 import React, { useState } from "react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const NewsLetter: React.FC = () => {
 	const [name, setName] = useState<string>("");
 	const [email, setEmail] = useState<string>("");
+	const [subscribed, setSubscribed] = useState(false);
+
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		// Handle form submission logic here
+
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(email)) {
+		  toast.error('Por favor, ingresa un correo electrónico válido.');
+		  return;
+		}
+	  
+	
+		if (!name.trim()) {
+		  toast.error('Por favor, ingresa un nombre válido.');
+		  return; 
+		}
+
+		
+		setSubscribed(true);
+		setName("");
+		setEmail("");
 		console.log(name, email);
 	};
 
@@ -42,6 +63,12 @@ const NewsLetter: React.FC = () => {
 							</button>
 						</div>
 					</form>
+
+					{subscribed && (
+      <div className="mt-4 text-green-500">
+        ¡Te has suscrito exitosamente!
+      </div>
+    )}
 				</div>
 			</div>
 		</div>

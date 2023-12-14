@@ -9,7 +9,7 @@ const HeroSection = () => {
 				</h1>
 				<p className="text-md pt-6 mr-10 font-semibold">
 					Desarrolla la habilidad de conocer tu huella de carbono y sigue nuestros consejos para reducirla. ¡Juntos
-					podemos hacer un mundo mejor!
+					podemos crear un mundo mejor!
 				</p>
 			</div>
 			<img className="mt-6" src={HeroImage} alt="CellPhone" />

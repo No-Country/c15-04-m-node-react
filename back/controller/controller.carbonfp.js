@@ -32,11 +32,27 @@ const transportCalculator = (req = request, res = response) => {
 }
 
 const carbonOffsetCalculator = (req = request, res = response) => {
-	const { huella_carbono } = req.body;
-	const carbonOffset = carbonFP.getCarbonOffset(huella_carbono);
+	let carbonOffset;
+
+	if('carbon_footprint' in req.body){
+		const { electricity, gas, transport } = req.body.carbon_footprint;
+		carbonOffset = carbonFP.getCarbonOffset(transport, gas, electricity);
+	} else {
+
+		const { residence: pais, bike, walk: walk_to_work, project } = req.body;
+		let { transport: transport_data, gas: gas_data, electricity: electricity_data } = req.body;
+		electricity_data['pais'] = pais;
+
+		const transport_cfp = carbonFP.getTransport(transport_data);
+		const gas_cfp = carbonFP.getGas(gas_data);
+		const electricity_cfp = carbonFP.getElectricity(electricity_data);
+
+		carbonOffset = carbonFP.getCarbonOffset(transport_cfp, gas_cfp, electricity_cfp);
+		carbonOffset.offset_by_user = carbonFP.getOffsetByUser(walk_to_work, transport_data);
+	}
 
 	res.status(201).json({
-            carbonOffset
+        carbonOffset
     })
 }
 
