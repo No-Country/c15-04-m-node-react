@@ -43,7 +43,7 @@ const carbonOffsetCalculator = (req = request, res = response) => {
 		let { transport: transport_data, gas: gas_data, electricity: electricity_data } = req.body;
 		electricity_data['pais'] = pais;
 
-		const transport_cfp = Number(transport(transport_data).split(" ")[0]);
+		const transport_cfp = carbonFP.getTransport(transport_data);
 		const gas_cfp = carbonFP.getGas(gas_data);
 		const electricity_cfp = carbonFP.getElectricity(electricity_data);
 

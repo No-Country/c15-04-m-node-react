@@ -1,5 +1,5 @@
 const {
-   airplaine,
+   airplane,
    bus,
    car,
    colectivo,
@@ -16,7 +16,7 @@ const transport = ({
    motorcycle: { kms: motorcycleKms }
 }) => {
    const sum = (
-      airplaine(airKms, numberOfSeats, rounTrip) +
+      airplane(airKms, numberOfSeats, rounTrip) +
       bus(busKms) +
       car(carKms, size, gasoline) +
       colectivo(colectivoKms) +
