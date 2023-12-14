@@ -1,7 +1,7 @@
 const { countryEmission } = require('./electricity')
 const gasEmission = require('./gas')
 const { carbonOffset } = require('./offset')
-const { car } = require('../emissions/transport')
+const { car, bus, colectivo, metro, motorcycle, airplane } = require('../emissions/transport')
 const { getHigherValue } = require('../util')
 
 const carbonFP = {
@@ -21,11 +21,50 @@ const carbonFP = {
    	return consumption * emission_factor;
    },
 
+   getTransport: function (transport) {
+   	let air = 0;
+   	let land = 0;
+
+   	if('airplane' in transport){
+   		const { airplane: airplane_data } = transport;
+   		air += airplane(airplane_data.kms, airplane_data.numberOfSeats, airplane_data.rounTrip);
+   	}
+
+   	if('car' in transport){
+   		const { car: car_data } = transport;
+   		land += car(car_data.kms, car_data.size, car_data.gasoline);
+   	}
+
+   	if('bus' in transport){
+   		const { bus: bus_data } = transport;
+   		land += bus(bus_data.kms);
+   	}
+
+   	if('colectivo' in transport){
+   		const { colectivo: colectivo_data } = transport;
+   		land += colectivo(colectivo_data.kms);
+   	}
+
+   	if('metro' in transport){
+   		const { metro: metro_data } = transport;
+   		land += metro(metro_data.kms);
+   	}
+
+   	if('motorcycle' in transport){
+   		const { motorcycle: motorcycle_data } = transport;
+   		land += motorcycle(motorcycle_data.kms);
+   	}
+
+   	return { land, air, total: Number((land + air).toFixed(2)) }
+   },
+
    getCarbonOffset: function (transport_cfp, gas_cfp, electricity_cfp) {
    	let offsets = [];
    	let statistics = [];
-   	const total_carbon_footprint = transport_cfp + gas_cfp + electricity_cfp;
-   	const transport_perc = transport_cfp > 0 ? ((transport_cfp * 100) / total_carbon_footprint).toFixed(2) : 0;
+   	const total_carbon_footprint = transport_cfp.total + gas_cfp + electricity_cfp;
+   	const air_perc = transport_cfp.air > 0 ? ((transport_cfp.air * 100) / total_carbon_footprint).toFixed(2) : 0;
+   	const land_perc = transport_cfp.land > 0 ? ((transport_cfp.land * 100) / total_carbon_footprint).toFixed(2) : 0;
+   	const transport_perc = transport_cfp.total > 0 ? ((transport_cfp.total * 100) / total_carbon_footprint).toFixed(2) : 0;
    	const gas_perc = gas_cfp > 0 ? ((gas_cfp * 100) / total_carbon_footprint).toFixed(2) : 0;
    	const electricity_perc = electricity_cfp > 0 ? ((electricity_cfp * 100) / total_carbon_footprint).toFixed(2) : 0;
    	const minTrees = Math.round(total_carbon_footprint / carbonOffset.treePerYear);
@@ -60,7 +99,11 @@ const carbonFP = {
    			total: total_carbon_footprint
    		},
    		emission_percentage: {
-   			transport_perc,
+   			transport_perc: {
+   				air_perc,
+   				land_perc,
+   				total: transport_perc
+   			},
    			gas_perc,
    			electricity_perc,
    			higher_emission
@@ -70,7 +113,7 @@ const carbonFP = {
    	return { offsets, statistics }
    },
 
-   getOffsetByUser: function(walk_to_work, transport) {
+   getOffsetByUser: function (walk_to_work, transport) {
    	let offset_by_user = [];
 
    	if(transport === null || walk_to_work === null) return offset_by_user;
