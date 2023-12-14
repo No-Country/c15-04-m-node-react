@@ -1,17 +1,45 @@
-# Huella de carbono 
+# Rastreo de huella de carbono 
 <img src="https://www.carbonneutralplus.com/wp-content/uploads/2021/03/dreamstime_m_99690329.jpg">
+
+## Introducción
+* Green Trace es una aplicación web que permite a las personas calcular su huella de carbono personal.
+
+## Objetivo principal
+* El objetivo principal es que los usuarios conozcan su emisión de CO2 en base a sus actividades diarias.
+<br>
+
+## Funcionalidades
+
+### Registro de actividades diarias
+* Cálculo automático de la huella de carbono
+* Consejos personalizados para reducir la huella
+* Establecimiento de metas de reducción
+<br>
+
+### Áreas de actividad contempladas
+* Transporte, ocio, trabajo, reciclaje y más
+<br>
+
+### Características 
+* Preciso, motivador, educativo
+* Contribuye a un cambio sostenible de comportamiento
+<br>
+
+### Recomendaciones ante emisiones altas
+* Consejos para reducir la huella de carbono
+* Trabajar todos hacia un mundo mejor y más sostenible
 <br>
 
 ## Integrantes: 
-* Patricia Caicedo
-* Edith Escarlon
-* Santiago Ariel
-* Agustin Lucentini
-* Michael Gonzalez
-* Brandon Sanches
-* Nehuen Grosso
-* Alejandro Quiñones
-* Maribel Mena
+* Patricia Caicedo Tester Manual
+* Edith Escarlon Tester Manual
+* Santiago  Villanueva Front End
+* Agustin Lucentini Front End
+* Michael Gonzalez Front End
+* Maribel Mena Front End
+* Nehuen Grosso Diseño UX/UI
+* Alejandro Quiñones Back End
+* Brandon Sanchez Back End
 <br>
 
 ## Teconologías: 
