@@ -183,7 +183,7 @@
             <tr>
               <td>Santiago  Villanueva</td>
               <td>
-                <a href="">
+                <a href="https://github.com/santiagoarielv98">
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
@@ -191,7 +191,7 @@
             <tr>
               <td>Agustin Lucentini</td>
               <td>
-                <a href="">
+                <a href="https://github.com/lucenstuff">
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
@@ -199,7 +199,7 @@
             <tr>
               <td>Michael Gonzalez</td>
               <td>
-                <a href="">
+                <a href="https://github.com/Mike2020x">
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
@@ -207,7 +207,7 @@
             <tr>
               <td>Maribel Mena</td>
               <td>
-                <a href="">
+                <a href="https://github.com/marycib">
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
@@ -232,7 +232,7 @@
             <tr>
               <td>Alejandro Quiñones</td>
               <td>
-                <a href="">
+                <a href="https://github.com/blackSamuelBellamy">
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
@@ -290,7 +290,7 @@
             <tr>
               <td>Patricia Caicedo</td>
               <td>
-                <a href="">
+                <a href="https://github.com/blackSamuelBellamy">
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
