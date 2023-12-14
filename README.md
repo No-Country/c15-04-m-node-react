@@ -7,20 +7,25 @@
 ## Objetivo principal
 * El objetivo principal es que los usuarios conozcan su emisión de CO2 en base a sus actividades diarias.
 <br>
+
 ## Funcionalidades
-## Registro de actividades diarias
+
+### Registro de actividades diarias
 * Cálculo automático de la huella de carbono
 * Consejos personalizados para reducir la huella
 * Establecimiento de metas de reducción
 <br>
-## Áreas de actividad contempladas
+
+### Áreas de actividad contempladas
 * Transporte, ocio, trabajo, reciclaje y más
 <br>
-## Características 
+
+### Características 
 * Preciso, motivador, educativo
 * Contribuye a un cambio sostenible de comportamiento
 <br>
-## Recomendaciones ante emisiones altas
+
+### Recomendaciones ante emisiones altas
 * Consejos para reducir la huella de carbono
 * Trabajar todos hacia un mundo mejor y más sostenible
 <br>
