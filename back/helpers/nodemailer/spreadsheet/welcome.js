@@ -159,7 +159,7 @@ const welcome = (name, token, url) => ({
                 <td align="left" bgcolor="#ffffff"
                   style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
                   <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">
-                    ${name} confirma
+                    Hola 👋 ${name}, confirma
                     tu email por favor</h1>
                 </td>
               </tr>
@@ -187,8 +187,8 @@ const welcome = (name, token, url) => ({
               <tr>
                 <td align="left" bgcolor="#ffffff"
                   style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-                  <p style="margin: 0;">Como último paso necesitamos que des click en el boton para ser parte de
-                    nuestro projecto sin fines de lucros. Si no fuiste tú quien creó la cuenta en <a href="https://c15-04-m-node-react.vercel.app/">Green
+                  <p style="margin: 0;">Como último paso necesitamos que hagas click en el boton para ser parte de
+                    nuestro proyecto sin fines de lucros. Si no fuiste tú quien creó la cuenta en <a href="https://c15-04-m-node-react.vercel.app/">Green
                       Trace</a>, puedes borrar este correo sin problemas.</p>
                 </td>
               </tr>
