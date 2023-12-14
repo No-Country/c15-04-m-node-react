@@ -2,9 +2,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 export function FAQ() {
 	return (
-		<div className="flex justify-center z-10">
+		<div className="mx-2">
 			<h2>Preguntas Frecuentes</h2>
-			<Accordion type="single" collapsible className="w-full">
+			<Accordion type="single" collapsible>
 				<AccordionItem value="item-1">
 					<AccordionTrigger
 						className="
