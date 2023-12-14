@@ -18,7 +18,7 @@
 <br>
 ## Características 
 * Preciso, motivador, educativo
-*Contribuye a un cambio sostenible de comportamiento
+* Contribuye a un cambio sostenible de comportamiento
 <br>
 ## Recomendaciones ante emisiones altas
 * Consejos para reducir la huella de carbono
