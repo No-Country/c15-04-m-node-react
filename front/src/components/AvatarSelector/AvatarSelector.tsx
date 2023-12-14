@@ -5,16 +5,9 @@ import { Avatar } from "@/types/api";
 const AvatarSelector: React.FC = () => {
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [loading, setLoading] = useState<boolean>(false);
-	const [panelOpen, setPanelOpen] = useState<boolean>(false);
 	const avatarsPerPage: number = 5;
 
-	const { getAvatars, avatars, updateUser } = useUserContext();
-
-	useEffect(() => {
-		if (avatars.length === 0) {
-			getAvatars();
-		}
-	}, []);
+	const { avatars, panelOpen, setPanelOpen, updateUser } = useUserContext();
 
 	useEffect(() => {
 		if (loading) return;
@@ -45,14 +38,15 @@ const AvatarSelector: React.FC = () => {
 					<h2 className="text-black font-bold text-lg flex justify-center">Selecciona tu Avatar</h2>
 					<div className="max-h-96 overflow-auto">
 						<div className="grid grid-cols-3 gap-4 p-4">
-							{currentAvatars.map((avatar: any) => (
+							{currentAvatars.map((avatar) => (
 								<img
 									src={avatar.url}
-									alt={avatar.name}
+									alt="avatar"
 									key={avatar.id}
 									className="cursor-pointer hover:opacity-75 object-cover object-center rounded-full"
 									style={{ width: "100px", height: "100px" }}
 									onClick={() => handleAvatarClick(avatar)}
+									loading="lazy"
 								/>
 							))}
 						</div>

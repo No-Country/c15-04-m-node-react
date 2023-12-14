@@ -57,8 +57,9 @@ export interface UserDeleteResponse {
 }
 
 export interface Avatar {
-	descripcion;
-	url;
+	id: string;
+	descripcion: string;
+	url: string;
 }
 
 export interface AvatarResponse {

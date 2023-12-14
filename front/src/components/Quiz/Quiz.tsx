@@ -144,31 +144,46 @@ const Quiz = ({ questions = [], onSubmit }: QuizProps) => {
 			<React.Fragment key={question.name}>
 				<SwiperSlide key={question.name}>
 					{
-						<div key={question.name} className="flex justify-center items-center h-full flex-col max-w-md mx-auto">
-							<h2 className="text-2xl font-bold text-center py-4">{question.title}</h2>
-							{renderInputField(question)}
-							<div className="flex gap-2 py-4 h-screen">
-								{isLastQuestion ? (
-									<>
-										<Button onClick={handlePrev} disabled={isBeginning}>
-											Anterior
-										</Button>
-										<Button onClick={handleSend}>Enviar</Button>
-									</>
-								) : (
-									<>
-										<Button className="bg-green-500 text-white" onClick={handlePrev} disabled={isBeginning}>
-											Anterior
-										</Button>
-										<Button
-											className="bg-green-500 text-white"
-											onClick={handleNext}
-											disabled={typeof answers[question.name] === "boolean" ? false : !answers[question.name]}
-										>
-											Siguiente
-										</Button>
-									</>
-								)}
+						<div className="w-full h-3/4 z-10 flex justify-center items-center">
+							<div
+								key={question.name}
+								className="flex justify-center bg-gray-100 rounded-lg items-center flex-col h-full w-full md:w-1/4 p-6 shadow-xl mx-4"
+							>
+								<h2 className="text-2xl font-bold text-center p-4">{question.title}</h2>
+								{renderInputField(question)}
+								<div className="flex gap-2 p-4">
+									{isLastQuestion ? (
+										<>
+											<Button
+												className="bg-emerald-500 text-white hover:bg-emerald-300"
+												onClick={handlePrev}
+												disabled={isBeginning}
+											>
+												Anterior
+											</Button>
+											<Button className="bg-emerald-500 text-white hover:bg-emerald-300" onClick={handleSend}>
+												Enviar
+											</Button>
+										</>
+									) : (
+										<>
+											<Button
+												className="bg-emerald-500 text-white hover:bg-emerald-300"
+												onClick={handlePrev}
+												disabled={isBeginning}
+											>
+												Anterior
+											</Button>
+											<Button
+												className="bg-emerald-500 text-white hover:bg-emerald-400"
+												onClick={handleNext}
+												disabled={typeof answers[question.name] === "boolean" ? false : !answers[question.name]}
+											>
+												Siguiente
+											</Button>
+										</>
+									)}
+								</div>
 							</div>
 						</div>
 					}

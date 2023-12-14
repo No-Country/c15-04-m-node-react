@@ -18,7 +18,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 	const [showChangeName, setShowChangeName] = useState(false);
 	const [showChangePassword, setShowChangePassword] = useState(false);
 	const [showChangeEmail, setShowChangeEmail] = useState(false);
-	const { user } = useUserContext();
+	const { user, setPanelOpen, getAvatars } = useUserContext();
 	const { theme, setTheme } = useTheme();
 	const handleLogout = () => {
 		localStorage.clear();
@@ -46,13 +46,6 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 				setShowChangePassword(true);
 			},
 		},
-		{
-			label: "Cambiar Email",
-			onClick: () => {
-				closeAllPanels();
-				setShowChangeEmail(true);
-			},
-		},
 	];
 	const personalizationItems = [
 		{
@@ -77,7 +70,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 	const username = user?.nombre ?? "John Doe";
 	return (
 		<div
-			className={`fixed inset-y-0 right-0 w-full md:w-1/4 dark:bg-[#020817] bg-white shadow-lg ${
+			className={`fixed inset-y-0 z-40 right-0 w-full md:w-1/4 dark:bg-[#020817] bg-white shadow-lg ${
 				isOpen ? "translate-x" : "translate-x-full  "
 			} transition-transform duration-300 ease-in-out`}
 		>
@@ -89,7 +82,14 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 
 			<HeaderPanel onClose={onClose} panelName="Perfil" goback={false} />
 			<div className="flex items-center justify-center pt-4 ">
-				<Avatar imagesize={100} />
+				<button
+					onClick={() => {
+						setPanelOpen(true);
+						getAvatars();
+					}}
+				>
+					<Avatar imagesize={100} />
+				</button>
 			</div>
 			<div className="flex flex-col items-center justify-center p-2 font-semibold">
 				<h3 className="text-bold text-xl">{username}</h3>
