@@ -16,10 +16,7 @@ const Footer = () => {
 			<div className="container mx-auto text-center font-semibold ">
 				<div className="py-6 text-sm">
 					<p>&copy; 2023 Soluciones de tecnologias climaticas</p>
-					<Link to={"/privacy"}>
-						Política de privacidad
-						<p>Terminos de uso</p>
-					</Link>
+					<Link to={"/privacy"}>Política de privacidad y Terminos de uso</Link>
 				</div>
 				<div className="flex container mx-auto justify-center">
 					<a href="https://co.linkedin.com/" className="mr-4" target="_blank" rel="noopener noreferrer">

@@ -2,11 +2,12 @@ const Privacy = () => {
 	return (
 		<>
 			<div className="pt-20 flex flex-col  w-full items-center px-20 gap-9">
-				<h2 className="text-xl font-bold py-10">Políticas de privacidad</h2>
+				<h2 className="text-xl font-bold py-10">Política de privacidad y Terminos de uso</h2>
 				<p>
-					Esta política de privacidad revela las prácticas de privacidad de thegreentrace.com . Esta política de
+					Esta política de privacidad revela las prácticas de privacidad de thegreentrace.com, Esta política de
 					privacidad se aplica únicamente a la información recopilada por este sitio web. Le notificará lo siguiente:
 				</p>
+
 				<p>
 					Tenga en claro que, al utilizar el Sitio o los Servicios, dentro de sitio thegreentrace.com (en adelante el
 					«sitio») acepta regirse por nuestra Política de privacidad publicada en el Sitio, que se incorpora a estos
