@@ -167,8 +167,8 @@ export const questions: Question[] = [
 				triggerAnswer: "yes",
 				questions: [
 					{
-						name: "bike.kms",
-						title: "¿Cuántas veces haces uso de estos?",
+						name: "bike.meters",
+						title: "¿Cuántos metros recorre en promedio en bicicleta/monopalín?",
 						type: "number",
 					},
 				],
@@ -188,7 +188,7 @@ export const questions: Question[] = [
 				triggerAnswer: "yes",
 				questions: [
 					{
-						name: "walk.kms",
+						name: "walk.meters",
 						title: "¿Cuántos metros caminas?",
 						type: "number",
 					},
