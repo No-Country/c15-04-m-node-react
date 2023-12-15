@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import GreentraceLogo from "../../assets/img/greentracelogo_desktop.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
 	return (
@@ -15,8 +16,10 @@ const Footer = () => {
 			<div className="container mx-auto text-center font-semibold ">
 				<div className="py-6 text-sm">
 					<p>&copy; 2023 Soluciones de tecnologias climaticas</p>
-					<p>Política de privacidad</p>
-					<p>Terminos de uso</p>
+					<Link to={"/privacy"}>
+						Política de privacidad
+						<p>Terminos de uso</p>
+					</Link>
 				</div>
 				<div className="flex container mx-auto justify-center">
 					<a href="https://co.linkedin.com/" className="mr-4" target="_blank" rel="noopener noreferrer">
