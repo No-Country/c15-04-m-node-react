@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { CarbonFootprintResponse } from "../types/api";
+import { NewsletterPayload } from "../types/api"
 import { GlobalConstants } from "@/constants";
 
 
@@ -45,4 +46,31 @@ export const calculateCarbonFootprint = async (
 	}
   };
   
+
+
+export const subscribeToNewsletter = async (
+  name: string,
+  email: string
+): Promise<NewsletterPayload> => {
+  try {
+    const response: AxiosResponse<NewsletterPayload> = await axios.post(
+      '/api/newsletter',
+      {
+        nombre: name,
+        correo: email,
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error subscribing to newsletter:', error);
+    throw error;
+  }
+};
+
+
+
+
+
+
+
 export default api;

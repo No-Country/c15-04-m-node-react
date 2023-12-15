@@ -9,6 +9,9 @@ const Footer = () => {
 				<div className="font-semibold text-md">
 					<p className="py-2">Sirviendo al mundo desde 2023</p>
 					<p className="py-2">Argentina</p>
+					<p className="py-2">Colombia</p>
+					<p className="py-2">Chile</p>
+					<p className="py-2">Venezuela</p>
 					<p className="py-2">hello@greentrace.com</p>
 				</div>
 			</div>

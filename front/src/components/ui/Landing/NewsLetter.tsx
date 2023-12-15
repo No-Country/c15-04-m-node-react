@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { NewsletterPayload } from "@/types/api";
+import { subscribeToNewsletter } from "../../../services/api";
+
 
 const NewsLetter: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -22,26 +23,17 @@ const NewsLetter: React.FC = () => {
       return; 
     }
 
-    try {
-      const response = await fetch(' http://localhost:8080/api/newsletter', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          nombre: name,
-          correo: email,
-        } as NewsletterPayload),
-      });
 
-      if (!response.ok) {
-        throw new Error('Error al suscribirse');
-      }
+    try {
+  await subscribeToNewsletter(name, email);
+      
 
       setSubscribed(true);
       setName('');
       setEmail('');
       console.log(name, email);
+
+
     } catch (error) {
       console.error(error);
       toast.error('Error al suscribirse. Por favor, inténtalo de nuevo más tarde.');
