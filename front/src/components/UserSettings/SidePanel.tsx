@@ -59,12 +59,15 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 			theme: theme,
 		},
 	];
+	const handleClick = () => {
+		window.location.href = "/faq";
+	};
 	const support = [
 		{
 			icon: <ShieldAlert size={20} />,
 			label: "FAQ",
 			useSwitch: false,
-			onClick: () => {},
+			onClick: handleClick,
 		},
 	];
 	const username = user?.nombre ?? "John Doe";
