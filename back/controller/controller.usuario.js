@@ -1,11 +1,10 @@
 const { request, response } = require('express')
 const jwt = require('jsonwebtoken')
+const path = require('path')
 const bycript = require('bcryptjs')
 const { Usuario } = require('../models')
 const sessionJWT = require('../helpers/jwt/session.JWT')
 const emailJWT = require('../helpers/jwt/email.JWT')
-const transport = require('../helpers/emissions/calculator/transport')
-const carbonFP = require('../helpers/carbon_footprint/carbonFP')
 const sendingMail = require('../helpers/nodemailer/nodemailer')
 
 const signUp = async (req = request, res = response) => {
@@ -66,19 +65,14 @@ const emailVerification = async (req = request, res = response) => {
         const { id } = jwt.verify(tokenEmail, process.env.TOKEN_EMAIL)
         const data = { estado: true, validated: true }
         const usuario = await Usuario.findByIdAndUpdate(id, data, { new: true })
-        const token = await sessionJWT(id)
-
-        if (usuario.validated === true) return res.status(200).json({
-            message: `${usuario.nombre} tu correo ha sido validado correctamente!`,
-            usuario,
-            token
-        })
+        if (usuario.validated === true) {
+            const indexPath = path.join(__dirname, '../public/index.html')
+            return res.sendFile(indexPath)
+        }
     } catch (e) {
         console.log(e)
-        res.status(500).json({
-            message: 'Hubo un error inesperado al validar tu correo',
-            error: e.message,
-        })
+        const errorPath = path.join(__dirname, '../public/error.html')
+        res.status(500).sendFile(errorPath)
     }
 
 }
@@ -121,12 +115,6 @@ const update = async (req = request, res = response) => {
         const { estado, ...rest } = req.body
         const { id } = jwt.verify(token, process.env.TOKEN_USER)
 
-        /*  if ('gas' in rest) rest.gas = carbonFP.getGas(rest.gas)
-         if ('transporte' in rest) rest.transporte = transport(rest.transporte)
- 
-         if ('electricidad' in rest) {
-             rest.electricidad = carbonFP.getElectricity(rest.electricidad)
-         } */
         if ('password' in rest) {
             const salt = bycript.genSaltSync()
             rest.password = bycript.hashSync(rest.password, salt)
