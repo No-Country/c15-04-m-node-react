@@ -178,3 +178,9 @@ export interface CarbonFootprintResponse {
 	energia_renovable: boolean;
 	carbon_footprint?: number;
 }
+
+export interface NewsletterPayload {
+	name: string,
+	email: string, 
+	
+}

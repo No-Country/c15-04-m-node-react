@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+//import { toast } from 'react-toastify';
+//import 'react-toastify/dist/ReactToastify.css';
 import { subscribeToNewsletter } from "../../../services/api";
 
 
@@ -12,33 +12,30 @@ const NewsLetter: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      toast.error('Por favor, ingresa un correo electrónico válido.');
-      return;
-    }
-
-    if (!name.trim()) {
-      toast.error('Por favor, ingresa un nombre válido.');
-      return; 
-    }
-
+    
 
     try {
-  await subscribeToNewsletter(name, email);
       
+      const response = await subscribeToNewsletter(name, email);
 
-      setSubscribed(true);
-      setName('');
-      setEmail('');
-      console.log(name, email);
-
-
+     
+      if (response) {
+        setSubscribed(true);
+        setName('');
+        setEmail('');
+        console.log(name, email);
+        console.log('Successfully subscribed:', response)
+      } else {
+    
+        console.error('Invalid response from the server');
+      }
     } catch (error) {
-      console.error(error);
-      toast.error('Error al suscribirse. Por favor, inténtalo de nuevo más tarde.');
+      console.error('Error subscribing to newsletter:', error);
+     
     }
   };
+ 
+  
 
   return (
     <div className="px-6 py-2 md:w-3/4 ">

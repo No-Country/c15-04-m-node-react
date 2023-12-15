@@ -12,7 +12,7 @@ const Footer = () => {
 					<p className="py-2">Colombia</p>
 					<p className="py-2">Chile</p>
 					<p className="py-2">Venezuela</p>
-					<p className="py-2">hello@greentrace.com</p>
+					<p className="py-2">greentraceproject@gmail.com</p>
 				</div>
 			</div>
 			<div className="container mx-auto text-center font-semibold ">

@@ -27,44 +27,45 @@ export const calculateCarbonFootprint = async (
 	kwh: number,
 	country: string,
 	renewableEnergy: boolean
-  ): Promise<CarbonFootprintResponse> => {
+): Promise<CarbonFootprintResponse> => {
 	try {
-	  const response: AxiosResponse<CarbonFootprintResponse> = await api.post(
-		'/usuario/calculadora/electricidad',
-		{
-		  electricidad: {
-			kwh,
-			pais: country,
-			energia_renovable: renewableEnergy,
-		  },
-		}
-	  );
-	  return response.data;
+		const response: AxiosResponse<CarbonFootprintResponse> = await api.post(
+			'/usuario/calculadora/electricidad',
+			{
+				electricidad: {
+					kwh,
+					pais: country,
+					energia_renovable: renewableEnergy,
+				},
+			}
+		);
+		return response.data;
 	} catch (error) {
-	  console.error('Error al calcular la huella de carbono:', error);
-	  throw error;
+		console.error('Error al calcular la huella de carbono:', error);
+		throw error;
 	}
-  };
-  
+};
+
 
 
 export const subscribeToNewsletter = async (
-  name: string,
-  email: string
+	name: string,
+	email: string,
+
 ): Promise<NewsletterPayload> => {
-  try {
-    const response: AxiosResponse<NewsletterPayload> = await axios.post(
-      '/api/newsletter',
-      {
-        nombre: name,
-        correo: email,
-      }
-    );
-    return response.data;
-  } catch (error) {
-    console.error('Error subscribing to newsletter:', error);
-    throw error;
-  }
+	try {
+		const response: AxiosResponse<NewsletterPayload> = await api.post(
+			'/newsletter',
+			{
+				nombre: name,
+				correo: email,
+			}
+		);
+		return response.data;
+	} catch (error) {
+		console.error('Error subscribing to newsletter:', error);
+		throw error;
+	}
 };
 
 
