@@ -146,29 +146,35 @@ export interface HigherEmission {
 
 export interface Statistics {
 	carbon_footprint: {
-		transport: number;
+		transport: Transport;
 		gas: number;
 		electricity: number;
 		total: number;
 	};
 	emission_percentage: {
-		transport_perc: number;
+		transport_perc: TransportPercentage;
 		gas_perc: number;
 		electricity_perc: number;
 		higher_emission: HigherEmission;
 	};
 }
 
+export interface Transport {
+	land: number;
+	air: number;
+	total: number;
+}
 
+export interface TransportPercentage {
+	air_perc: number;
+	land_perc: number;
+	total: number;
+}
 export interface CarbonFootprintResponse {
 	kwh: number;
 	country: string;
+	kwh: number;
+	country: string;
 	energia_renovable: boolean;
-	carbon_footprint?: number
-
-}
-
-export interface NewsletterPayload {
-	nombre: string;
-	correo: string;
+	carbon_footprint?: number;
 }

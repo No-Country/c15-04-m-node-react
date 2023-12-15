@@ -1,10 +1,15 @@
+/* eslint-disable react-refresh/only-export-components */
+import React from "react";
 import { RouteObject } from "react-router-dom";
-import MainLayout from "@/layout/MainLayout/MainLayout";
-import Home from "@/pages/Home";
-import Slider from "@/pages/Slider";
-import FootprintPage from "@/pages/Dashboard/FootprintPage";
-import CalculatorPage from "@/pages/CalculatorPage";
-import QuizPage from "@/pages/QuizPage/QuizPage";
+
+import Loadable from "@/components/Loadable";
+
+const MainLayout = Loadable(React.lazy(() => import("@/layout/MainLayout/MainLayout")));
+const Home = Loadable(React.lazy(() => import("@/pages/Home")));
+const FootprintPage = Loadable(React.lazy(() => import("@/pages/Dashboard/FootprintPage")));
+const CalculatorPage = Loadable(React.lazy(() => import("@/pages/CalculatorPage")));
+const QuizPage = Loadable(React.lazy(() => import("@/pages/QuizPage/QuizPage")));
+const FAQPage = Loadable(React.lazy(() => import("@/pages/FAQPage")));
 
 const mainRoutes: RouteObject = {
 	element: <MainLayout />,
@@ -14,20 +19,21 @@ const mainRoutes: RouteObject = {
 			element: <Home />,
 		},
 		{
-			path: "/slider",
-			element: <Slider />,
-		},
-		{
 			path: "/calculator",
 			element: <CalculatorPage />,
+		},
+
+		{
+			path: "/footprint",
+			element: <FootprintPage />,
+		},
+		{
+			path: "/faq",
+			element: <FAQPage />,
 		},
 		{
 			path: "/quiz",
 			element: <QuizPage />,
-		},
-		{
-			path: "/footprint",
-			element: <FootprintPage />,
 		},
 	],
 };
