@@ -67,7 +67,7 @@ const emailVerification = async (req = request, res = response) => {
         const usuario = await Usuario.findByIdAndUpdate(id, data, { new: true })
         if (usuario.validated === true) {
             const indexPath = path.join(__dirname, '../public/index.html')
-            return res.sendFile(indexPath)
+            return res.status(200).sendFile(indexPath)
         }
     } catch (e) {
         console.log(e)
@@ -122,10 +122,10 @@ const update = async (req = request, res = response) => {
 
         if ('correo' in rest) {
             const correo = rest.correo
-            const [activo, noActivo, current] = await Promise.all([
-                await Usuario.findOne({ correo, estado: true }),
-                await Usuario.findOne({ correo, estado: false }),
-                await Usuario.findOne({ id, correo })
+            const [current, activo, noActivo] = await Promise.all([
+                Usuario.findOne({ _id: id, correo }),
+                Usuario.findOne({ correo, estado: true }),
+                Usuario.findOne({ correo, estado: false })
             ])
             if (current) return res.status(400).json({
                 message: 'Este es tu actual correo'
