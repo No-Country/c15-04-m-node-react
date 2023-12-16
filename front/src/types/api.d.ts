@@ -25,7 +25,6 @@ export interface UserLogin {
 	correo: string;
 	password: string;
 }
-
 export interface UserLoginResponse {
 	message: string;
 	usuario: User;
