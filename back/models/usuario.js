@@ -24,7 +24,7 @@ const UsuarioSchema = Schema({
 
     transporteAereo: { type: Number },
 
-    TransporteTerrestre: { type: Number },
+    transporteTerrestre: { type: Number },
 
     estado: { type: Boolean, default: false },
 

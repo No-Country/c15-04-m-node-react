@@ -3,6 +3,7 @@ import React from "react";
 import { RouteObject } from "react-router-dom";
 
 import Loadable from "@/components/Loadable";
+import Privacy from "@/pages/Privacy";
 
 const MainLayout = Loadable(React.lazy(() => import("@/layout/MainLayout/MainLayout")));
 const Home = Loadable(React.lazy(() => import("@/pages/Home")));
@@ -34,6 +35,11 @@ const mainRoutes: RouteObject = {
 		{
 			path: "/quiz",
 			element: <QuizPage />,
+		},
+
+		{
+			path: "/privacy",
+			element: <Privacy />,
 		},
 	],
 };
