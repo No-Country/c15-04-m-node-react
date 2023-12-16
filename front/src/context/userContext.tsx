@@ -1,7 +1,7 @@
 import React from "react";
 import * as userService from "@/services/userService";
 import { useToast } from "@/components/ui/use-toast";
-import { Avatar, User, UserResponseError, UserSignUp, UserUpdate } from "@/types/api";
+import { Avatar, User, UserResponseError, UserSignUpPayload, UserUpdatePayload } from "@/types/api";
 import { AxiosError } from "axios";
 import { GlobalConstants } from "@/constants";
 
@@ -11,9 +11,9 @@ export type UserContextProps = {
 	user: User | null;
 	avatars: Avatar[];
 	logIn: (correo: string, password: string) => Promise<void>;
-	signUp: (options: UserSignUp) => Promise<User | null>;
+	signUp: (options: UserSignUpPayload) => Promise<User | null>;
 	deleteUser: () => Promise<void>;
-	updateUser: (options: UserUpdate) => Promise<void>;
+	updateUser: (options: UserUpdatePayload) => Promise<void>;
 	getAvatars: () => Promise<void>;
 	setPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
 } | null;
@@ -62,7 +62,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 		}
 	};
 
-	const signUp = async (options: UserSignUp) => {
+	const signUp = async (options: UserSignUpPayload) => {
 		let user: User | null = null;
 		try {
 			setLoading(true);
@@ -94,7 +94,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 		}
 	};
 
-	const updateUser = async (options: UserUpdate) => {
+	const updateUser = async (options: UserUpdatePayload) => {
 		try {
 			const user = await userService.updateUser(options);
 			setUser(user.usuario);
@@ -107,7 +107,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	};
 
 	const getAvatars = React.useCallback(async () => {
-		const avatars = await userService.getAvatars();
+		const { avatars } = await userService.getAvatars();
 		setAvatars(avatars);
 	}, []);
 
