@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image" href="https://res.cloudinary.com/druohmyna/image/upload/v1702646991/favicon_flkit9.png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    header,
+    footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 1em;
+      border-radius: 0 0 50% 50%;
+      width: 100%;
+    }
+
+    footer {
+      border-radius: 0;
+      height: 2rem;
+    }
+
+    header img {
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    h2,
+    h3 {
+      text-align: center;
+      margin-top: 20px;
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+
+    #contador {
+      color: #00f;
+    }
+  </style>
+  <title>Green-Trace | Confirmación</title>
+</head>
+
+<body>
+  <header>
+    <img src="https://res.cloudinary.com/druohmyna/image/upload/v1702513561/grenn_trace_dx21qd.png"
+      alt="Green-Trace Logo" style="width: 100px;">
+  </header>
+  <h2> Tu correo se actualizó con éxito!.👌</h2>
+  <h3>Esta ventana se cerrará en <span id="contador">7</span> segundos... Vuelve a la página del Login por favor.</h3>
+
+  <script>
+    const contadorElemento = document.getElementById('contador')
+
+    const cerrarVentana = () => window.close();
+
+    const actualizarContador = (segundos) => {
+      contadorElemento.textContent = segundos;
+    }
+
+    const iniciarCuentaRegresiva = (segundos) => {
+      const intervalo = setInterval(() => {
+        segundos--
+        actualizarContador(segundos)
+
+        if (segundos <= 0) {
+          clearInterval(intervalo);
+          cerrarVentana();
+        }
+      }, 1000)
+    }
+
+    setTimeout(() => {
+      iniciarCuentaRegresiva(7)
+    }, 0)
+  </script>
+
+  <footer>
+    <p>&#169 Green trace project 2023</p>
+  </footer>
+</body>
+
+</html>

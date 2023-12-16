@@ -1,12 +1,14 @@
 const { request, response } = require('express')
 const jwt = require('jsonwebtoken')
+const path = require('path')
 const bycript = require('bcryptjs')
 const { Usuario } = require('../models')
-const sessionJWT = require('../helpers/jwt/session.JWT')
-const emailJWT = require('../helpers/jwt/email.JWT')
-const transport = require('../helpers/emissions/calculator/transport')
-const carbonFP = require('../helpers/carbon_footprint/carbonFP')
 const sendingMail = require('../helpers/nodemailer/nodemailer')
+const {
+    emailJWT,
+    sessionJWT,
+} = require('../helpers/jwt')
+
 
 const signUp = async (req = request, res = response) => {
     const { nombre, correo, password, ...rest } = req.body
@@ -63,22 +65,22 @@ const signUp = async (req = request, res = response) => {
 const emailVerification = async (req = request, res = response) => {
     try {
         const { tokenEmail } = req.params
-        const { id } = jwt.verify(tokenEmail, process.env.TOKEN_EMAIL)
+        const { id, correo } = jwt.verify(tokenEmail, process.env.TOKEN_EMAIL)
+        if (correo) {
+            await Usuario.findByIdAndUpdate(id, { correo }, { new: true })
+            const updatePath = path.join(__dirname, '../public/update.html')
+            return res.status(200).sendFile(updatePath)
+        }
         const data = { estado: true, validated: true }
         const usuario = await Usuario.findByIdAndUpdate(id, data, { new: true })
-        const token = await sessionJWT(id)
-
-        if (usuario.validated === true) return res.status(200).json({
-            message: `${usuario.nombre} tu correo ha sido validado correctamente!`,
-            usuario,
-            token
-        })
+        if (usuario.validated === true) {
+            const indexPath = path.join(__dirname, '../public/index.html')
+            return res.status(200).sendFile(indexPath)
+        }
     } catch (e) {
         console.log(e)
-        res.status(500).json({
-            message: 'Hubo un error inesperado al validar tu correo',
-            error: e.message,
-        })
+        const errorPath = path.join(__dirname, '../public/error.html')
+        res.status(500).sendFile(errorPath)
     }
 
 }
@@ -118,26 +120,21 @@ const update = async (req = request, res = response) => {
     try {
         const Authorization = req.header('Authorization')
         const token = Authorization.split('Bearer ')[1]
-        const { estado, ...rest } = req.body
+        const { estado, correo, ...rest } = req.body
         const { id } = jwt.verify(token, process.env.TOKEN_USER)
 
-        /*  if ('gas' in rest) rest.gas = carbonFP.getGas(rest.gas)
-         if ('transporte' in rest) rest.transporte = transport(rest.transporte)
- 
-         if ('electricidad' in rest) {
-             rest.electricidad = carbonFP.getElectricity(rest.electricidad)
-         } */
         if ('password' in rest) {
             const salt = bycript.genSaltSync()
             rest.password = bycript.hashSync(rest.password, salt)
         }
 
-        if ('correo' in rest) {
-            const correo = rest.correo
-            const [activo, noActivo, current] = await Promise.all([
-                await Usuario.findOne({ correo, estado: true }),
-                await Usuario.findOne({ correo, estado: false }),
-                await Usuario.findOne({ id, correo })
+        if (correo) {
+            const [current, activo, noActivo, usuario, token] = await Promise.all([
+                Usuario.findOne({ _id: id, correo }),
+                Usuario.findOne({ correo, estado: true }),
+                Usuario.findOne({ correo, estado: false }),
+                Usuario.findByIdAndUpdate(id, rest, { new: true }),
+                emailJWT(id, correo)
             ])
             if (current) return res.status(400).json({
                 message: 'Este es tu actual correo'
@@ -147,16 +144,19 @@ const update = async (req = request, res = response) => {
                 message: 'Este correo ya le pertenece a otra persona, intenta con uno distinto'
             })
             if (noActivo) {
-                const [, usuario] = await Promise.all([
-                    await Usuario.findByIdAndUpdate(noActivo._id, { correo: `changed${correo}` }),
-                    await Usuario.findByIdAndUpdate(id, rest, { new: true })
-                ])
-                return res.status(200).json({
-                    message: `Hemos actualizado tus datos ${usuario.nombre} correctamente`,
-                    usuario,
-                })
+                await Usuario.findByIdAndUpdate(noActivo._id, { correo: `changed${correo}` })
             }
+            const mail = await sendingMail(correo, usuario.nombre, 'update', token)
+
+            if (mail) return res.status(200).json({
+                message: `${usuario.nombre}, Debemos validar tu correo para poder cambiarlo, favor ve a tu bandeja de entrada para terminar el proceso.`,
+                usuario
+            })
+            else return res.status(500).json({
+                message: 'Hubo un problema con el envío del correo, intenta hacerlo nuevamente'
+            })
         }
+
         const usuario = await Usuario.findByIdAndUpdate(id, rest, { new: true })
         res.status(200).json({
             message: `Hemos actualizado tus datos ${usuario.nombre} correctamente`,

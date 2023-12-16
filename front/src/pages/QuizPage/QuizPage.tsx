@@ -51,13 +51,17 @@ const CarbonOffsetCalculator = ({ carbonOffset }: CarbonOffsetCalculatorProps) =
 						//Estilar esto
 						<p>{item?.carbon_footprint.electricity}</p>
 						<p>{item?.carbon_footprint.gas}</p>
-						<p>{item?.carbon_footprint.transport}</p>
+						<p>{item?.carbon_footprint.transport.air}</p>
+						<p>{item?.carbon_footprint.transport.land}</p>
+						<p>{item?.carbon_footprint.transport.total}</p>
 						<p>{item?.carbon_footprint.total}</p>
 						<p>{item?.emission_percentage.electricity_perc}</p>
 						<p>{item?.emission_percentage.gas_perc}</p>
 						<p>{item?.emission_percentage.higher_emission.category}</p>
 						<p>{item?.emission_percentage.higher_emission.value}</p>
-						<p>{item?.emission_percentage.transport_perc}</p>
+						<p>{item?.emission_percentage.transport_perc.air_perc}</p>
+						<p>{item?.emission_percentage.transport_perc.land_perc}</p>
+						<p>{item?.emission_percentage.transport_perc.total}</p>
 					</div>
 				))}
 			</div>
