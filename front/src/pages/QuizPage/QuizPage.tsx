@@ -48,6 +48,7 @@ const CarbonOffsetCalculator = ({ carbonOffset }: CarbonOffsetCalculatorProps) =
 			<div>
 				{carbonOffset?.statistics?.map((item) => (
 					<div>
+						//Estilar esto
 						<p>{item?.carbon_footprint.electricity}</p>
 						<p>{item?.carbon_footprint.gas}</p>
 						<p>{item?.carbon_footprint.transport}</p>
