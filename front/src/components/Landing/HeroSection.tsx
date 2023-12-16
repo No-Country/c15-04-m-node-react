@@ -1,9 +1,9 @@
-import HeroImage from "../../../assets/img/hero/iphone12.png";
+import HeroImage from "../../assets/img/hero/iphone12.png";
 
 const HeroSection = () => {
 	return (
-		<div className="text-left p-6 md:flex md:items-center md:w-3/4">
-			<div>
+		<div className="flex flex-wrap items-center justify-center max-lg:text-center mt-4">
+			<div className="lg:w-1/2 md:pr-8">
 				<h1 className="text-3xl font-bold">
 					Calcula y gestiona tu huella de <span className="text-emerald-500">carbono</span>
 				</h1>
@@ -12,7 +12,9 @@ const HeroSection = () => {
 					podemos crear un mundo mejor!
 				</p>
 			</div>
-			<img className="mt-6" src={HeroImage} alt="CellPhone" />
+			<div className="lg:w-1/2">
+				<img className="mt-6" src={HeroImage} alt="CellPhone" />
+			</div>
 		</div>
 	);
 };
