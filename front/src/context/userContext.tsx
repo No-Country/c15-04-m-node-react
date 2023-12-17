@@ -11,7 +11,7 @@ export type UserContextProps = {
 	user: User | null;
 	avatars: Avatar[];
 	logIn: (correo: string, password: string) => Promise<void>;
-	signUp: (options: UserSignUpPayload) => Promise<User | null>;
+	signUp: (options: UserSignUpPayload) => Promise<boolean>;
 	deleteUser: () => Promise<void>;
 	updateUser: (options: UserUpdatePayload) => Promise<void>;
 	getAvatars: () => Promise<void>;
@@ -63,24 +63,21 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	};
 
 	const signUp = async (options: UserSignUpPayload) => {
-		let user: User | null = null;
 		try {
 			setLoading(true);
 			const data = await userService.signUp(options);
-			setUser(data.usuario);
-			localStorage.setItem(GlobalConstants.USER, JSON.stringify(data.usuario));
-			user = data.usuario;
 			toast({
-				title: "Registro exitoso",
+				title: data.message,
 			});
+			return true;
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				handleErrors(error);
 			}
+			return false;
 		} finally {
 			setLoading(false);
 		}
-		return user;
 	};
 
 	const deleteUser = async () => {
