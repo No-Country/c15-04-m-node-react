@@ -54,6 +54,8 @@ const getUpdatedAccessToken = async () => {
   )
   oAuth2Client.setCredentials({
     refresh_token: transport.auth.refreshToken,
+    access_type: 'offline',
+    prompt: 'consent',
   })
   try {
     const { token } = await oAuth2Client.refreshAccessToken()
