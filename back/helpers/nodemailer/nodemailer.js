@@ -1,5 +1,6 @@
 require('colors')
 const nodemailer = require('nodemailer')
+const { google } = require('googleapis')
 const {
   newsletter,
   updateMail,
@@ -15,7 +16,8 @@ const transport = {
     user: process.env.EMAIL,
     clientId: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    refreshToken: process.env.REFRESH_TOKEN
+    refreshToken: process.env.REFRESH_TOKEN,
+    redirectUri: process.env.REDIRECT_URI
   },
   tls: { rejectUnauthorized: false }
 }
@@ -43,10 +45,31 @@ const mailOptions = (email, name, type, token) => {
     html: message.body
   }
 }
+
+const getUpdatedAccessToken = async () => {
+  const oAuth2Client = new google.auth.OAuth2(
+    transport.auth.clientId,
+    transport.auth.clientSecret,
+    transport.auth.redirectUri
+  )
+  oAuth2Client.setCredentials({
+    refresh_token: transport.auth.refreshToken,
+  })
+  try {
+    const { token } = await oAuth2Client.refreshAccessToken()
+    return token
+  } catch (error) {
+    console.error('Error al obtener el nuevo token de acceso:'.red, error.message)
+    throw error
+  }
+}
+
 const sendingMail = async (email, name, type, token = '') => {
   try {
     const state = '2.0.0 OK'
     const transporter = nodemailer.createTransport(transport)
+    const accessToken = await getUpdatedAccessToken()
+    transport.auth.accessToken = accessToken
     const info = await transporter.sendMail(mailOptions(email, name, type, token))
     if (info.accepted.length > 0 && info.response.includes(state))
       return true
