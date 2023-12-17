@@ -61,7 +61,6 @@ const carbonFP = {
    getCarbonOffset: function (transport_cfp, gas_cfp, electricity_cfp, pais, user_offset, transport_data) {
    	let offsets = [];
       let offset_by_user = [];
-   	//let statistics = [];
    	const total_carbon_footprint = transport_cfp.total + gas_cfp + electricity_cfp;
    	const air_perc = transport_cfp.air > 0 ? ((transport_cfp.air * 100) / total_carbon_footprint).toFixed(2) : 0;
    	const land_perc = transport_cfp.land > 0 ? ((transport_cfp.land * 100) / total_carbon_footprint).toFixed(2) : 0;
@@ -71,7 +70,7 @@ const carbonFP = {
    	const minTrees = Math.round(total_carbon_footprint / carbonOffset.treePerYear);
       const car_km_equivalent = Math.round(total_carbon_footprint / carbonOffset.co2_per_km);
       const led_equivalent = pais != null ? Math.trunc(total_carbon_footprint / carbonOffset.offset_per_led(pais)) : 0;
-      const equivalent_houses = Math.trunc(total_carbon_footprint / (270 * countryEmission[pais]));
+      const equivalent_houses = pais != null ? Math.trunc(total_carbon_footprint / (270 * countryEmission[pais])) : 0;
 
    	const higher_emission = getHigherValue([
    		{

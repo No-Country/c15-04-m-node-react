@@ -9,7 +9,8 @@ const {
     logIn,
     signUp,
     update,
-    userData
+    userData,
+    carbonData
 } = require('../controller/controller.usuario')
 const {
     carbonOffsetCalculator,
@@ -33,6 +34,7 @@ router.post('/calculadora/gas', gasCalculator)
 router.post('/calculadora/offset', carbonOffsetCalculator)
 router.post('/calculadora/transporte', transportCalculator)
 router.get('/data', userData)
+router.get('/footprint', carbonData)
 router.delete('/eliminar', POST_DELETE, eliminar)
 router.post('/login', POST_LOGIN, logIn)
 router.get('/sign-up', getAvatars)
