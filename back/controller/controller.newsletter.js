@@ -11,13 +11,15 @@ const newsletterPost = async (req = request, res = response) => {
     if (noNew) return res.status(400).json({
       message: `${nombre} este Correo ya está suscrito`
     })
-    const newsletter = new Newsletter({ nombre, correo })
-    await newsletter.save()
     const mail = await sendingMail(correo, nombre, 'newsletter')
-    if (mail) return res.status(201).json({
-      message: `Te hemos suscrito satisfactoriamente ${nombre}. Muchas gracias`,
-      newsletter
-    })
+    if (mail) {
+      const newsletter = new Newsletter({ nombre, correo })
+      await newsletter.save()
+      return res.status(201).json({
+        message: `Te hemos suscrito satisfactoriamente ${nombre}. Muchas gracias`,
+        newsletter
+      })
+    }
     else return res.status(500).json({
       message: `${nombre} hubo un problema al enviarte nuestro boletín, favor intenta más tarde`
     })
