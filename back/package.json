@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --env-file .env --watch app.js",
+    "dev": "nodemon --env-file .env app.js",
     "start": "node --env-file .env app.js"
   },
   "keywords": [],
@@ -23,6 +23,7 @@
     "nodemailer": "^6.9.7"
   },
   "devDependencies": {
-    "@types/mongoose": "^5.11.97"
+    "@types/mongoose": "^5.11.97",
+    "nodemon": "^3.0.2"
   }
 }
