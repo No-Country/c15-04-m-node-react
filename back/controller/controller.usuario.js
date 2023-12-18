@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const path = require('path')
 const bycript = require('bcryptjs')
 const { Usuario } = require('../models')
+const carbonFP = require('../helpers/carbon_footprint')
 const sendingMail = require('../helpers/nodemailer/nodemailer')
 const {
     emailJWT,
@@ -201,9 +202,55 @@ const userData = async (req = request, res = response) => {
         const { id } = jwt.verify(token, process.env.TOKEN_USER)
         const usuario = await Usuario.findOne({ _id: id, estado: true })
 
+        if (!usuario) return res.status(404).json({
+            message: 'No existe este usuario'
+        })
+
         res.status(200).json({
             message: 'request successful',
             usuario
+        })
+    } catch (e) {
+        res.status(500).json({
+            message: 'request failed',
+            error: e.message,
+        })
+    }
+}
+
+const carbonData = async (req = request, res = response) => {
+    try {
+        const Authorization = req.header('Authorization')
+        const token = Authorization.split('Bearer ')[1]
+
+        if (!token) return res.status(401).json({
+            message: "Error: trying a request with an empty token"
+        })
+
+        const { id } = jwt.verify(token, process.env.TOKEN_USER)
+        const usuario = await Usuario.findOne({ _id: id, estado: true }, ['transporteAereo', 'transporteTerrestre', 'gas', 'electricidad'])
+
+        if (!usuario) return res.status(404).json({
+            message: 'No existe este usuario'
+        })
+        
+        if(typeof usuario.transporteAereo === 'undefined' 
+        	&& typeof usuario.transporteTerrestre === 'undefined'
+        		&& typeof usuario.gas === 'undefined'
+        			&& typeof usuario.electricidad === 'undefined') return res.status(404).json({
+            message: 'El usuario no posee registro de la huella de carbono'
+        })
+
+        const transport_cfp = {
+        	land: usuario.transporteTerrestre,
+        	air: usuario.transporteAereo,
+        	total: (usuario.transporteTerrestre + usuario.transporteAereo)
+        }
+       	const data = carbonFP.getCarbonOffset(transport_cfp, usuario.gas, usuario.electricidad, null, null, null);
+
+        res.status(200).json({
+            message: 'request successful',
+            data
         })
     } catch (e) {
         res.status(500).json({
@@ -260,5 +307,6 @@ module.exports = {
     logIn,
     signUp,
     update,
-    userData
+    userData,
+    carbonData
 }

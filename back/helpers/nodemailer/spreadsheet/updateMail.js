@@ -125,7 +125,7 @@ const updateMail = (name, token, url) => ({
             <tr>
             <td align="center" valign="top" style="padding: 36px 24px; max-width: 200px;">
               <img src="https://res.cloudinary.com/druohmyna/image/upload/v1702513561/grenn_trace_dx21qd.png" alt="Logo"
-              border="0" style="display: block; max-width: 200px; min-width: 200px; border-radius: 50%;">
+              border="0" width= "200" style="display: block; max-width: 200px; min-width: 200px; border-radius: 50%;">
             </td>
           
             </tr>
