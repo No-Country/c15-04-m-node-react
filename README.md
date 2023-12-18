@@ -1,4 +1,5 @@
-# Rastreo de huella de carbono 
+# Rastreo de huella de carbono
+
 <div align="center">
   <a>
     <img src="/front/public/logo.png" alt="Descripción de la imagen" width="50%">
@@ -7,6 +8,7 @@
 </div>
 
 ## 🍀 Introducción
+
 <dl>
   <dd>
     <b>Green Trace</b>
@@ -16,6 +18,7 @@
 <br/>
 
 ## 🍀 Objetivo principal
+
 <dl>
   <dd>
     El objetivo principal es que los usuarios conozcan su emisión de CO2 en base a sus actividades diarias.
@@ -23,7 +26,8 @@
 </dl>
 <br/>
 
-## 🍀 Características 
+## 🍀 Características
+
 <dl>
   <dd>
     ✅ Preciso, motivador, educativo
@@ -35,6 +39,7 @@
 <br>
 
 ## 🍀 Funcionalidades
+
 <dl>
   <dd>
     <h3>📋 Registro de actividades diarias</h3>
@@ -80,7 +85,8 @@
 </dl>
 <br>
 
-## 🛠️ Teconologías 
+## 🛠️ Teconologías
+
 <table>
   <thead>
     <tr>
@@ -312,16 +318,17 @@
 <br>
 
 ## Comandos
-Para inicializar el proyecto primero debes  instalar las dependencias con 
-```npm install```
+
+Para inicializar el proyecto primero debes instalar las dependencias con
+`npm install`
 <br>
 Luego crear un archivo <i>.env</i> en la raíz del proyecto.
 agregar en la variable <i>PORT</i> el número de puerto a ocupar tal cual muestra el archivo <i>example.env</i>.
 Y tambien el link del cluster en la variable <i>MONGODB</i>
 <br>
-Luego podrás usar los comandos tanto 
-```npm start``` Para producción y también <br>
-```npm run dev``` Para el área de de desarrollo.
+Luego podrás usar los comandos tanto
+`npm start` Para producción y también <br>
+`npm run dev` Para el área de de desarrollo.
 <br>
 Obteniendo la ejecución del puerto
 
