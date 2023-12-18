@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
 	return (
 		<footer className="py-10 w-full shadow-lg ">
-			<div className="container mx-auto text-start d">
+			<div className="container mx-auto text-start">
 				<img src={GreentraceLogo} className="translate-x-[-5%]" alt="logo" width={"200px"} />
 				<div className="font-semibold text-md">
 					<p className="py-2">Sirviendo al mundo desde 2023</p>

@@ -5,10 +5,11 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "@/hooks/useExample/useUserContext";
 
 import GreenTraceLogo from "@/assets/img/greentracelogo.png";
+import { Routes } from "@/constants";
 
 const formSchema = z.object({
 	username: z.string().min(2, {
@@ -26,6 +27,7 @@ const formSchema = z.object({
 });
 const RegisterForm = () => {
 	const { signUp } = useUserContext();
+	const navigate = useNavigate();
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -33,16 +35,17 @@ const RegisterForm = () => {
 			username: "",
 		},
 	});
-	// 2. Define a submit handler.
-	async function onSubmit(values: z.infer<typeof formSchema>) {
-		// Do something with the form values.
-		// ✅ This will be type-safe and validated.
-		await signUp({
+
+	const onSubmit = async (values: z.infer<typeof formSchema>) => {
+		const success = await signUp({
 			correo: values.email,
 			password: values.password,
 			nombre: values.username,
 		});
-	}
+		if (success) {
+			navigate(Routes.LOGIN);
+		}
+	};
 
 	return (
 		<div className="flex items-center">
