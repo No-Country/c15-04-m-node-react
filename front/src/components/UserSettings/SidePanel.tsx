@@ -9,6 +9,9 @@ import { useUserContext } from "@/hooks/useExample/useUserContext";
 import ChangeNamePanel from "./ConfigPanels/ChangeNamePanel";
 import ChangeEmailPanel from "./ConfigPanels/ChangeEmailPanel";
 import ChangePasswordPanel from "./ConfigPanels/ChangePaswordPanel";
+import { links } from "@/constants/links";
+import { useNavigate } from "react-router-dom";
+
 type SidePanelProps = {
 	isOpen: boolean;
 	onClose: () => void;
@@ -24,6 +27,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 		localStorage.clear();
 		window.location.reload();
 	};
+	const navigate = useNavigate();
 
 	const closeAllPanels = () => {
 		setShowChangeName(false);
@@ -59,18 +63,21 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 			theme: theme,
 		},
 	];
-	const handleClick = () => {
-		window.location.href = "/faq";
+	const handleClick = (path: string) => {
+		navigate(path);
+		onClose();
 	};
+
 	const support = [
 		{
 			icon: <ShieldAlert size={20} />,
 			label: "FAQ",
 			useSwitch: false,
-			onClick: handleClick,
+			onClick: () => handleClick("/faq"),
 		},
 	];
 	const username = user?.nombre ?? "John Doe";
+
 	return (
 		<div
 			className={`fixed inset-y-0 z-40 right-0 w-full md:w-1/4 dark:bg-[#020817] bg-white shadow-lg flex flex-col ${
@@ -99,6 +106,18 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 					<h3 className="text-bold text-xl">{username}</h3>
 				</div>
 				<div>
+					<div className="md:hidden">
+						<SettingsCard
+							title="Links"
+							items={links.map((e) => {
+								return {
+									...e,
+									onClick: () => handleClick(e.path),
+								};
+							})}
+						/>
+					</div>
+
 					<SettingsCard title="Configuración" icon={<User size={20} />} items={configItems} />
 					<SettingsCard
 						title="Personalización"

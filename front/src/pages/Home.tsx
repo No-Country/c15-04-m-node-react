@@ -1,6 +1,5 @@
 import FeaturedServicesSection from "@/components/Landing/FeaturedServicesSection";
 import HeroBannerSection from "@/components/Landing/HeroBannerSection";
-import NewsLetter from "@/components/Landing/NewsLetter";
 import Presentation from "@/components/Landing/Presentation";
 import Sustainableworld from "@/components/Landing/Sustainableworld";
 import TeamSection from "@/components/Landing/TeamSection";
@@ -16,7 +15,6 @@ function Home(): JSX.Element {
 				<VideoCard />
 				<Sustainableworld />
 				<TeamSection />
-				<NewsLetter />
 			</div>
 		</main>
 	);

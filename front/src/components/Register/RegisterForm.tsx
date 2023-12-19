@@ -10,6 +10,7 @@ import { useUserContext } from "@/hooks/useExample/useUserContext";
 
 import GreenTraceLogo from "@/assets/img/greentracelogo.png";
 import { Routes } from "@/constants";
+import useModalContext from "@/hooks/useModalContext";
 
 const formSchema = z.object({
 	username: z.string().min(2, {
@@ -27,6 +28,7 @@ const formSchema = z.object({
 });
 const RegisterForm = () => {
 	const { signUp } = useUserContext();
+	const { setModalLogin } = useModalContext();
 	const navigate = useNavigate();
 
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -47,12 +49,16 @@ const RegisterForm = () => {
 		}
 	};
 
+	const handleClick = () => {
+		setModalLogin(true);
+	};
+
 	return (
 		<div className="flex items-center">
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:w-[347px] md:[802px]"
+					className="p-6 text-lg dark:border-slate-600 dark:bg-[#020817] rounded-lgw-[347px] md:[802px]"
 				>
 					<img className="w-[50%] m-auto" src={GreenTraceLogo} alt="logo" />
 					<FormField
@@ -115,7 +121,7 @@ const RegisterForm = () => {
 					</div>
 					<div className="flex flex-col items-center pt-4">
 						<p className="p-4">¿Ya tienes cuenta?</p>
-						<Link className="hover:underline" to="/">
+						<Link className="hover:underline" to="/" onClick={handleClick}>
 							Iniciar Sesión
 						</Link>
 					</div>

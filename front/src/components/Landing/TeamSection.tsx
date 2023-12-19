@@ -10,7 +10,7 @@ const TeamSection = () => {
 				</div>
 				<div className="flex flex-wrap -m-4">
 					{team.map((user) => (
-						<div className="p-2 lg:w-1/3 md:w-1/2 text-center">
+						<div className="p-2 lg:w-1/3 md:w-1/2 text-center  mx-auto">
 							<div className="p-6 rounded-lg max-w-sm">
 								<img
 									className="rounded-full w-full h-full object-cover object-center mb-6 max-w-[60%] mx-auto aspect-square"

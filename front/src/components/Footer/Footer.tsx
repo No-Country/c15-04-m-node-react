@@ -1,27 +1,31 @@
 import { Link } from "react-router-dom";
 import { icons, items } from "./items";
+import NewsLetter from "../Landing/NewsLetter";
 
 const Footer = () => {
 	return (
 		<footer className="py-10">
 			<div className="container flex flex-col max-lg:text-center">
-				<div className="flex flex-col items-center">
-					<h1 className="font-bold text-5xl">Green trace</h1>
-					<p className="font-semibold text-md py-2">Sirviendo al mundo desde 2023</p>
-					<div className="flex gap-1">
-						{items.map((item, index) => (
-							<img
-								key={index}
-								className="rounded-sm"
-								title={item.name}
-								src={item.img}
-								alt={item.name}
-								width="36"
-								height="26"
-							/>
-						))}
+				<div className="flex justify-between flex-col lg:flex-row gap-4 my-4 items-center">
+					<div className="flex flex-col max-md:items-center">
+						<h1 className="font-bold text-5xl">Green trace</h1>
+						<p className="font-semibold text-md py-2">Sirviendo al mundo desde 2023</p>
+						<div className="flex gap-1">
+							{items.map((item, index) => (
+								<img
+									key={index}
+									className="rounded-sm"
+									title={item.name}
+									src={item.img}
+									alt={item.name}
+									width="36"
+									height="26"
+								/>
+							))}
+						</div>
+						<p className="font-semibold text-md py-2">hello@greentrace.com</p>
 					</div>
-					<p className="font-semibold text-md py-2">hello@greentrace.com</p>
+					<NewsLetter />
 				</div>
 				<hr className="my-4" />
 				<div className="flex justify-between flex-col lg:flex-row gap-4 my-4 items-center">
