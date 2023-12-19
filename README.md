@@ -263,7 +263,7 @@
               </td>
               <td>
                 <a href="https://www.linkedin.com/in/brandon-sánchez-47b2a3267" target="_blank">
-                  <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+                  <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
             </tr>
@@ -321,7 +321,7 @@
               </td>
               <td>
                 <a href="https://www.linkedin.com/in/patricia-caicedo" target="_blank">
-                  <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+                  <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
             </tr>
