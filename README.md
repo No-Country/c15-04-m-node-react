@@ -298,6 +298,7 @@
               <th>Nombre</th>
               <th>Github</th>
               <th>Linkedin</th>
+              <th>Behance</th>
             </tr>
           </thead>
           <tbody>
@@ -309,8 +310,13 @@
                 </a>
               </td>
               <td>
-                <a href="">
+                <a href="https://ar.linkedin.com/in/nehuen-grosso-a28a1015b">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+                </a>
+              </td>
+              <td>
+                <a href="https://www.behance.net/nehuengrosso">
+                  <img src="https://img.shields.io/badge/behance-%231769FF.svg?&style=for-the-badge&logo=behance&logoColor=white">
                 </a>
               </td>
             </tr>
