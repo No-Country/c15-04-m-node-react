@@ -59,22 +59,25 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 					<div className="md:hidden  bg-white dark:bg-[#020817] fixed  w-full left-0 py-6 " id="mobile-menu">
 						<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 dark:text-white">
 							<button
-								className="text-black dark:text-white  px-3  rounded-md text-xl  font-medium flex justify-between "
+								className="text-black dark:text-white  px-5  rounded-md text-xl  font-medium flex justify-between "
 								onClick={onToggleSidePanel}
 							>
 								{user?.nombre !== undefined && (
-									<div className="flex justify-between w-full">
-										Perfil <Avatar imagesize={32} />
+									<div className="flex ">
+										<h3>{user.nombre}</h3>
+										<div className="absolute right-10">
+											<Avatar imagesize={32} />
+										</div>
 									</div>
 								)}
 							</button>
 							<Link
 								to="/footprint"
-								className="text-black dark:text-white block px-3 py-6 rounded-md text-xl font-medium"
+								className="text-black dark:text-white block px-5 py-6 rounded-md text-xl font-medium"
 							>
 								Mi Huella
 							</Link>
-							<Link to="/quiz" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
+							<Link to="/quiz" className="text-black dark:text-white block px-5 py-3 rounded-md text-xl font-medium">
 								Calculadora
 							</Link>
 							<div className="flex justify-center">{user?.nombre === undefined && <LoginDialog />} </div>
