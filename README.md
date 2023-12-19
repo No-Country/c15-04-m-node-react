@@ -271,7 +271,7 @@
             <tr>
               <td>Nehuen Grosso</td>
               <td>
-                <a href="">
+                <a href="https://github.com/Nehuengrosso">
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
@@ -296,7 +296,7 @@
             <tr>
               <td>Patricia Caicedo</td>
               <td>
-                <a href="https://github.com/blackSamuelBellamy">
+                <a href="https://github.com/patriciacaicedo">
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
@@ -304,7 +304,7 @@
             <tr>
               <td>Edith Escarlon</td>
               <td>
-                <a href="">
+                <a href="https://github.com/editheugenia">
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
