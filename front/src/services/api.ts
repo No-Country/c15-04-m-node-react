@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from 'axios';
 import { NewsletterPayload } from "../types/api"
 import { GlobalConstants } from "@/constants";
 
@@ -20,3 +20,23 @@ api.interceptors.request.use(
 );
 
 export default api;
+
+export const subscribeToNewsletter = async (
+	name: string,
+	email: string,
+
+): Promise<NewsletterPayload> => {
+	try {
+		const response: AxiosResponse<NewsletterPayload> = await api.post(
+			'/newsletter',
+			{
+				nombre: name,
+				correo: email,
+			}
+		);
+		return response.data;
+	} catch (error) {
+		console.error('Error subscribing to newsletter:', error);
+		throw error;
+	}
+};
