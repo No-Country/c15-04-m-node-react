@@ -10,17 +10,18 @@ const HeroBannerSection = () => {
 					backgroundImage: `url(${Banner})`,
 				}}
 			></div>
-			<div className="bg-black bg-opacity-60 h-screen md:h-[75vh]">
-				<div className="container mx-auto flex justify-center items-center h-full">
+			<div className="bg-green-950 bg-opacity-80 h-screen md:h-[75vh]">
+				<div className="container mx-auto flex justify-center items-center h-full max-w-5xl">
 					<div className="text-center">
-						<h2 className="text-4xl font-semibold text-white md:text-6xl">
-							Calcula tu Huella <span className="text-green-500">Green Trance</span>
-						</h2>
-						<p className="mt-4 text-white text-lg md:text-xl">
+						<h2 className="text-primary text-4xl font-bold mb-2">Green Trance</h2>
+						<h1 className="text-4xl font-semibold text-white md:text-5xl">
+							Calcula y gestiona tu huella de <span className="text-primary">Carbono</span>
+						</h1>
+						<p className="mt-4 text-white text-md md:text-lg">
 							Descubre tu impacto en el planeta y aprende cómo reducirlo con nuestro asesoramiento experto. Únete a la
 							comunidad que está tomando pasos significativos hacia la sostenibilidad.
 						</p>
-						<Button className="mt-8 bg-green-500 text-white py-3 px-6 text-lg font-medium hover:bg-green-600 transition duration-300 h-auto">
+						<Button className="mt-8 bg-primary text-white py-3 px-6 text-lg font-medium hover:bg-green-600 transition duration-300 h-auto">
 							Evalúa tu Huella Ecológica
 						</Button>
 					</div>

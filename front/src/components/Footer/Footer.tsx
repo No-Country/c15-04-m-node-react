@@ -29,9 +29,15 @@ const Footer = () => {
 						<p className="text-sm">&copy; 2023 Soluciones de tecnologias climaticas</p>
 						<Link to={"/privacy"}>Política de privacidad y Terminos de uso</Link>
 					</div>
-					<div className="flex gap-4">
+					<div className="flex gap-2">
 						{icons.map((icon, index) => (
-							<a key={index} href={`https://${icon.name}.com/`} target="_blank" rel="noopener noreferrer">
+							<a
+								className="bg-black text-white p-2 rounded-full hover:bg-gray-700 dark:bg-white dark:text-black dark:hover:bg-gray-400 dark:hover:text-black transition duration-300"
+								key={index}
+								href={`https://${icon.name}.com/`}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<icon.icon size={24} />
 							</a>
 						))}

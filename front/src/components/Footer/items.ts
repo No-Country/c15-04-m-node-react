@@ -1,5 +1,5 @@
-import { BsTwitterX, BsFacebook, BsInstagram } from "react-icons/bs";
-import { FaLinkedinIn } from "react-icons/fa";
+import { BsTwitterX, BsInstagram } from "react-icons/bs";
+import { FaLinkedinIn, FaFacebookF } from "react-icons/fa";
 
 export const items = [
 	{
@@ -23,7 +23,7 @@ export const items = [
 export const icons = [
 	{
 		name: "facebook",
-		icon: BsFacebook,
+		icon: FaFacebookF,
 	},
 	{
 		name: "twitter",
