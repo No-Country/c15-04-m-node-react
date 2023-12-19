@@ -78,7 +78,7 @@ const Footer = () => {
 						<Icon icon="formkit:facebook" style={{ height: "30px", width: "30px" }} />
 					</a>
 					<a href="https://twitter.com/?lang=es" className="mr-4" target="_blank" rel="noopener noreferrer">
-						<Icon icon="formkit:twitter" style={{ height: "30px", width: "30px" }} />
+						<Icon icon="ri:twitter-x-fill" style={{ height: "30px", width: "30px" }} />
 					</a>
 					<a href="https://www.instagram.com/" className="mr-4 rounded-full" target="_blank" rel="noopener noreferrer">
 						<Icon icon="uil:instagram-alt" style={{ height: "34px", width: "34px" }} />
