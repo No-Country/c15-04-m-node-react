@@ -25,14 +25,13 @@ export interface UserLogin {
 	correo: string;
 	password: string;
 }
-
 export interface UserLoginResponse {
 	message: string;
 	usuario: User;
 	token: string;
 }
 
-export interface UserSignUp {
+export interface UserSignUpPayload {
 	nombre: string;
 	correo: string;
 	password: string;
@@ -45,7 +44,7 @@ export interface UserSignUpResponse {
 	token: string;
 }
 
-export type UserUpdate = Partial<User>;
+export type UserUpdatePayload = Partial<User>;
 
 export interface UserUpdateResponse {
 	message: string;
@@ -178,7 +177,6 @@ export interface CarbonFootprintResponse {
 	energia_renovable: boolean;
 	carbon_footprint?: number;
 }
-
 export interface NewsletterPayload {
 	name: string,
 	email: string, 

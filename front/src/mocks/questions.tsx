@@ -260,7 +260,7 @@ export const questions: Question[] = [
 						type: "select",
 						label: "Seleccione una opción",
 						options: [
-							{ value: "therms", label: "Termias" },
+							{ value: "therm", label: "Termias" },
 							{ value: "cubic_meter", label: "Metros cúbicos" },
 						],
 					},

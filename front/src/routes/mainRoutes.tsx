@@ -3,6 +3,8 @@ import React from "react";
 import { RouteObject } from "react-router-dom";
 
 import Loadable from "@/components/Loadable";
+import Privacy from "@/pages/Privacy";
+import { Routes } from "@/constants";
 
 const MainLayout = Loadable(React.lazy(() => import("@/layout/MainLayout/MainLayout")));
 const Home = Loadable(React.lazy(() => import("@/pages/Home")));
@@ -15,25 +17,30 @@ const mainRoutes: RouteObject = {
 	element: <MainLayout />,
 	children: [
 		{
-			path: "/",
+			path: Routes.MAIN,
 			element: <Home />,
 		},
 		{
-			path: "/calculator",
+			path: Routes.CALCULATOR,
 			element: <CalculatorPage />,
 		},
 
 		{
-			path: "/footprint",
+			path: Routes.FOOTPRINT,
 			element: <FootprintPage />,
 		},
 		{
-			path: "/faq",
+			path: Routes.FAQ,
 			element: <FAQPage />,
 		},
 		{
-			path: "/quiz",
+			path: Routes.QUIZ,
 			element: <QuizPage />,
+		},
+
+		{
+			path: Routes.PRIVACY,
+			element: <Privacy />,
 		},
 	],
 };
