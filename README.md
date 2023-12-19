@@ -194,7 +194,11 @@
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
-              <td></td>
+              <td>
+                <a href="">
+                  <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+                </a>
+              </td>
             </tr>
             <tr>
               <td>Agustin Lucentini</td>
@@ -203,7 +207,11 @@
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
-              <td></td>
+              <td>
+                <a href="">
+                  <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+                </a>
+              </td>
             </tr>
             <tr>
               <td>Michael Gonzalez</td>
@@ -212,7 +220,11 @@
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
-              <td></td>
+              <td>
+                <a href="">
+                  <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+                </a>
+              </td>
             </tr>
             <tr>
               <td>Maribel Mena</td>
@@ -221,7 +233,11 @@
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
-              <td></td>
+              <td>
+                <a href="">
+                  <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -249,7 +265,7 @@
                 </a>
               </td>
               <td>
-                <a href="https://www.linkedin.com/in/alejandro-quinones-arenas/" target="_blank">
+                <a href="https://www.linkedin.com/in/alejandro-quinones-arenas/">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
@@ -262,7 +278,7 @@
                 </a>
               </td>
               <td>
-                <a href="https://www.linkedin.com/in/brandon-sánchez-47b2a3267" target="_blank">
+                <a href="https://www.linkedin.com/in/brandon-sánchez-47b2a3267">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
@@ -292,7 +308,11 @@
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
-              <td></td>
+              <td>
+                <a href="">
+                  <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -320,7 +340,7 @@
                 </a>
               </td>
               <td>
-                <a href="https://www.linkedin.com/in/patricia-caicedo" target="_blank">
+                <a href="https://www.linkedin.com/in/patricia-caicedo">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
@@ -332,7 +352,11 @@
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
-              <td></td>
+              <td>
+                <a href="">
+                  <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
