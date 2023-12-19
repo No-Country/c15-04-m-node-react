@@ -70,18 +70,18 @@ const Footer = () => {
 					<p>&copy; 2023 Soluciones de tecnologias climaticas</p>
 					<Link to={"/privacy"}>Política de privacidad y Terminos de uso</Link>
 				</div>
-				<div className="flex container mx-auto justify-center">
+				<div className="flex container mx-auto justify-center items-center">
 					<a href="https://co.linkedin.com/" className="mr-4" target="_blank" rel="noopener noreferrer">
-						<Icon icon="entypo-social:linkedin-with-circle" style={{ height: "30px", width: "30px" }} />
+						<Icon icon="entypo-social:linkedin-with-circle" style={{ height: "32px", width: "32px" }} />
 					</a>
 					<a href="https://www.facebook.com/?locale=es_LA" className="mr-4" target="_blank" rel="noopener noreferrer">
-						<Icon icon="formkit:facebook" style={{ height: "30px", width: "30px" }} />
+						<Icon icon="formkit:facebook" style={{ height: "34px", width: "34px" }} />
 					</a>
-					<a href="https://twitter.com/?lang=es" className="mr-4" target="_blank" rel="noopener noreferrer">
-						<Icon icon="ri:twitter-x-fill" style={{ height: "30px", width: "30px" }} />
+					<a href="https://x.com/?lang=es" className="mr-4 dark:invert" target="_blank" rel="noopener noreferrer">
+						<img src="src/assets/img/socials/xcom.svg" width={"50px"} alt="x-com" />
 					</a>
-					<a href="https://www.instagram.com/" className="mr-4 rounded-full" target="_blank" rel="noopener noreferrer">
-						<Icon icon="uil:instagram-alt" style={{ height: "34px", width: "34px" }} />
+					<a href="https://www.instagram.com/" className="mr-4 dark:invert" target="_blank" rel="noopener noreferrer">
+						<img src="src/assets/img/socials/ig.svg" width={"32px"} alt="x-com" />
 					</a>
 				</div>
 			</div>
