@@ -15,23 +15,21 @@ const NewsLetter: React.FC = () => {
     
 
     try {
-      
+      console.log('Name:', name);
+      console.log('Email:', email);
+
       const response = await subscribeToNewsletter(name, email);
 
-     
       if (response) {
         setSubscribed(true);
         setName('');
         setEmail('');
-        console.log(name, email);
-        console.log('Successfully subscribed:', response)
+        console.log('Successfully subscribed:', response);
       } else {
-    
         console.error('Invalid response from the server');
       }
     } catch (error) {
       console.error('Error subscribing to newsletter:', error);
-     
     }
   };
  

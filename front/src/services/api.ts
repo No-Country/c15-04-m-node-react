@@ -70,8 +70,4 @@ export const subscribeToNewsletter = async (
 
 
 
-
-
-
-
 export default api;
