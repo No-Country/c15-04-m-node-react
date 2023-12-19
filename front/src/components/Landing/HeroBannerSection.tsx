@@ -10,7 +10,7 @@ const HeroBannerSection = () => {
 					backgroundImage: `url(${Banner})`,
 				}}
 			></div>
-			<div className="bg-black bg-opacity-50 h-screen md:h-[75vh]">
+			<div className="bg-black bg-opacity-60 h-screen md:h-[75vh]">
 				<div className="container mx-auto flex justify-center items-center h-full">
 					<div className="text-center">
 						<h2 className="text-4xl font-semibold text-white md:text-6xl">
