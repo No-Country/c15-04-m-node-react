@@ -3,6 +3,7 @@ import { X } from "lucide-react";
 import Avatar from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useUserContext } from "@/hooks/useExample/useUserContext";
 
 interface ChangePasswordPanelProps {
 	isOpen: boolean;
@@ -10,6 +11,7 @@ interface ChangePasswordPanelProps {
 }
 
 const ChangePasswordPanel: React.FC<ChangePasswordPanelProps> = ({ isOpen, onClose }) => {
+	const { user } = useUserContext();
 	isOpen = true;
 	return (
 		<div
@@ -32,7 +34,7 @@ const ChangePasswordPanel: React.FC<ChangePasswordPanelProps> = ({ isOpen, onClo
 					<Avatar imagesize={100} />
 				</div>
 				<div className="flex flex-col items-center justify-center p-2 font-semibold">
-					<h3 className="text-bold text-xl">John Doe</h3>
+					<h3 className="text-bold text-xl">{user?.nombre}</h3>
 				</div>
 				<div className="flex flex-col items-center justify-center gap-6 pt-6 px-6">
 					<Input type="text" placeholder="Contraseña actual" />
@@ -41,7 +43,7 @@ const ChangePasswordPanel: React.FC<ChangePasswordPanelProps> = ({ isOpen, onClo
 				</div>
 				<div className="flex items-center justify-center pt-10">
 					<Button className="bg-emerald-500" type="submit">
-						Actualizar Nombre
+						Actualizar Contraseña
 					</Button>
 				</div>
 			</div>
