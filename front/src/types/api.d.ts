@@ -178,7 +178,36 @@ export interface CarbonFootprintResponse {
 	carbon_footprint?: number;
 }
 export interface NewsletterPayload {
-	name: string,
-	email: string, 
-	
+	name: string;
+	email: string;
+}
+
+export interface WelcomeResponse {
+	message: string;
+}
+
+export interface GetAvatarsResponse {
+	avatars: Avatar[];
+}
+
+export interface ITransport {
+	id: number;
+}
+
+export interface CalculateTransportFootprintPayload {
+	transport: ITransport;
+	distance: number;
+}
+
+export interface CalculateTransportFootprintResponse {
+	transport: ITransport;
+	footprint: number;
+}
+
+export interface CalculateCarbonFootprintPayload {
+	electricidad: {
+		kwh: number;
+		pais: string;
+		energia_renovable: boolean;
+	};
 }
