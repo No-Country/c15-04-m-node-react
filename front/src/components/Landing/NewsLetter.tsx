@@ -32,7 +32,7 @@ const NewsLetter: React.FC = () => {
 	return (
 		<div className="flex flex-col justify-center mx-auto md:w-2/3">
 			<h2 className="text-xl font-bold mb-4 px-10 pt-4 text-center md:text-2xl">
-				Subscribete a nuestro <br /> newsletter
+				Suscríbete a nuestro <br /> newsletter:
 			</h2>
 			<form onSubmit={handleSubmit} className="p-4 flex flex-col items-center md:flex-row gap-4">
 				<Input
