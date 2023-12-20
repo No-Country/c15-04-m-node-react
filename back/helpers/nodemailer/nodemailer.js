@@ -23,7 +23,7 @@ const transport = {
   tls: { rejectUnauthorized: false }
 }
 
-const mailOptions = (email, name, type, token) => {
+const mailOptions = (email, type, name, token) => {
   let message = ''
   const url = process.env.EMAIL_PATH
 
@@ -77,13 +77,13 @@ const cronUpdateToken = async () => {
 
 cron.schedule('0 17 * * *', cronUpdateToken)
 
-const sendingMail = async (email, name, type, token = '') => {
+const sendingMail = async (email, type, name = '', token = '') => {
   try {
     const state = '2.0.0 OK'
     const transporter = nodemailer.createTransport(transport)
     const accessToken = await getUpdatedAccessToken()
     transport.auth.accessToken = accessToken
-    const info = await transporter.sendMail(mailOptions(email, name, type, token))
+    const info = await transporter.sendMail(mailOptions(email, type, name, token))
     if (info.accepted.length > 0 && info.response.includes(state))
       return true
     else return info.rejected
