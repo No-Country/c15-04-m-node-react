@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
-import { useUserContext } from "@/hooks/useExample/useUserContext";
+import { useUserContext } from "@/hooks/useUserContext";
 
 import GreenTraceLogo from "@/assets/img/greentracelogo.png";
 import { Routes } from "@/constants";

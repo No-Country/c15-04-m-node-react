@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 import Avatar from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useUserContext } from "@/hooks/useExample/useUserContext";
+import { useUserContext } from "@/hooks/useUserContext";
 
 interface ChangeNamePanelProps {
 	isOpen: boolean;

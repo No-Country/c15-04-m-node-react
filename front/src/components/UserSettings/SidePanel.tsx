@@ -5,7 +5,7 @@ import { User, Palette, ShieldAlert, LogOut } from "lucide-react";
 import Avatar from "../ui/avatar";
 import HeaderPanel from "./HeaderPanel";
 import { useTheme } from "@/components/theme-provider";
-import { useUserContext } from "@/hooks/useExample/useUserContext";
+import { useUserContext } from "@/hooks/useUserContext";
 import ChangeNamePanel from "./ConfigPanels/ChangeNamePanel";
 import ChangeEmailPanel from "./ConfigPanels/ChangeEmailPanel";
 import ChangePasswordPanel from "./ConfigPanels/ChangePaswordPanel";
