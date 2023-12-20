@@ -9,8 +9,9 @@ import { useUserContext } from "@/hooks/useUserContext";
 import ChangeNamePanel from "./ConfigPanels/ChangeNamePanel";
 import ChangeEmailPanel from "./ConfigPanels/ChangeEmailPanel";
 import ChangePasswordPanel from "./ConfigPanels/ChangePaswordPanel";
-import { links } from "@/constants/links";
+import { LinkOption, links } from "@/constants/links";
 import { useNavigate } from "react-router-dom";
+import { DialogPortal, Dialog, DialogContent, DialogClose } from "../ui/dialog";
 
 type SidePanelProps = {
 	isOpen: boolean;
@@ -21,14 +22,15 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 	const [showChangeName, setShowChangeName] = useState(false);
 	const [showChangePassword, setShowChangePassword] = useState(false);
 	const [showChangeEmail, setShowChangeEmail] = useState(false);
-	const { user, setPanelOpen, getAvatars } = useUserContext();
+	const { user, setPanelOpen, getAvatars, getCarbonData } = useUserContext();
 	const { theme, setTheme } = useTheme();
 	const handleLogout = () => {
 		localStorage.clear();
 		window.location.reload();
 	};
-	const navigate = useNavigate();
+	const [modalOpen, setModalOpen] = useState(false);
 
+	const navigate = useNavigate();
 	const closeAllPanels = () => {
 		setShowChangeName(false);
 		setShowChangePassword(false);
@@ -63,9 +65,18 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 			theme: theme,
 		},
 	];
-	const handleClick = (path: string) => {
-		navigate(path);
-		onClose();
+	const handleClick = async (option: LinkOption) => {
+		let success = true;
+		switch (option.case) {
+			case "footprint":
+				success = await getCarbonData();
+				break;
+		}
+
+		if (success) {
+			navigate(option.path);
+			onClose();
+		}
 	};
 
 	const support = [
@@ -73,15 +84,15 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 			icon: <ShieldAlert size={20} />,
 			label: "FAQ",
 			useSwitch: false,
-			onClick: () => handleClick("/faq"),
+			onClick: () => navigate("/faq"),
 		},
 	];
 	const username = user?.nombre ?? "John Doe";
 
 	return (
 		<div
-			className={`fixed inset-y-0 z-40 right-0 w-full lg:w-1/4 md:w-1/3 dark:bg-[#020817] bg-white shadow-lg flex flex-col ${
-				isOpen ? "translate-x" : "translate-x-full  "
+			className={`fixed inset-y-0 z-40 right-0 w-full lg:w-1/4 md:w-1/3 dark:bg-[#020817] bg-white shadow-lg flex flex-col border-l-2 ${
+				isOpen ? "translate-x" : "translate-x-full "
 			} transition-transform duration-300 ease-in-out`}
 		>
 			{showChangeName && <ChangeNamePanel isOpen={showChangeName} onClose={() => setShowChangeName(false)} />}
@@ -106,13 +117,13 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 					<h3 className="text-bold text-xl">{username}</h3>
 				</div>
 				<div>
-					<div className="md:hidden">
+					<div>
 						<SettingsCard
 							title="Links"
 							items={links.map((e) => {
 								return {
 									...e,
-									onClick: () => handleClick(e.path),
+									onClick: () => handleClick(e),
 								};
 							})}
 						/>
@@ -135,6 +146,27 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 					</Button>
 				</div>
 			</div>
+			<Dialog open={modalOpen} onOpenChange={setModalOpen}>
+				<DialogPortal>
+					<DialogContent>
+						<h1>
+							Deseas calcular tu huella de carbono? <br />
+						</h1>
+						<div className="flex gap-2 mx-auto">
+							<DialogClose
+								onClick={() => {
+									navigate("/quiz");
+								}}
+							>
+								<Button variant="default">Si</Button>
+							</DialogClose>
+							<DialogClose>
+								<Button variant="destructive">No</Button>
+							</DialogClose>
+						</div>
+					</DialogContent>
+				</DialogPortal>
+			</Dialog>
 		</div>
 	);
 };

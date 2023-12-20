@@ -3,12 +3,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 export default function FAQ() {
 	return (
 		<>
-			<div className="pt-20 ">
+			<div className="pt-28">
 				<div className="flex justify-center">
 					<h2 className="text-xl font-bold py-5 items-center">Preguntas Frecuentes</h2>
 				</div>
-				<div className="m-auto px-10 flex justify-between">
-					<Accordion type="single" collapsible>
+				<div className="m-auto px-2 flex justify-between text-center">
+					<Accordion type="single" collapsible className="w-full max-w-5xl mx-auto">
 						<AccordionItem value="item-1">
 							<div className="flex justify-center">
 								<AccordionTrigger
@@ -64,7 +64,7 @@ export default function FAQ() {
 								</AccordionTrigger>
 							</div>
 							<AccordionContent className="px-6">
-								<ul className="list-disc ml-6 py-3">
+								<ul className="list-disc ml-6 py-3 text-start">
 									<li className="py-2">
 										<strong>Dióxido de carbono (CO2):</strong> El más importante y asociado principalmente a las
 										actividades humanas. Se debe al uso de la quema de combustibles fósiles en medios de transporte y
@@ -96,7 +96,7 @@ export default function FAQ() {
 									Tipos o niveles de emisiones de CO2
 								</AccordionTrigger>
 							</div>
-							<AccordionContent className="px-10">
+							<AccordionContent className="px-2">
 								Cuando se calcula la huella de carbono se tienen en cuenta varios niveles de medición del CO2 emitido.
 								El Alcance 1 hace referencia a los combustibles fósiles generados de manera directa. El Alcance 2 mide
 								la energía emitida de manera indirecta por las instalaciones o por la producción. El Alcance 3 tiene en
@@ -112,7 +112,7 @@ export default function FAQ() {
 									¿Qué es la regla de las tres erres? (Reducir, Reciclar, Reutilizar)
 								</AccordionTrigger>
 							</div>
-							<AccordionContent className="px-10">
+							<AccordionContent className="px-2">
 								Es una iniciativa para fomentar la participación ciudadana con el objetivo de alargar la vida útil de
 								los productos y promover el reciclaje. Este tipo de acciones logran reducir la huella de carbono
 								individual y la generación de residuos.

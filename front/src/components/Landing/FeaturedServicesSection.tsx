@@ -5,7 +5,7 @@ const FeaturedServicesSection = () => {
 				<div className="lg:w-1/3 md:w-1/2 p-2 group cursor-pointer">
 					<div className="border-2 p-6 rounded-lg group-hover:border-green-500 transition-colors">
 						<div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-500 mb-4">
-							<i className="bi bi-laptop"></i>
+							<img src="src/assets/img/eco-fuel-fuel-svgrepo-com.svg" alt="" />
 						</div>
 						<h2 className="text-lg font-medium title-font mb-2 group-hover:text-green-500 transition-colors">
 							Evalúa tu Impacto
@@ -19,7 +19,7 @@ const FeaturedServicesSection = () => {
 				<div className="lg:w-1/3 md:w-1/2 p-2 group cursor-pointer">
 					<div className="border-2 p-6 rounded-lg group-hover:border-green-500 transition-colors">
 						<div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-500 mb-4">
-							<i className="bi bi-briefcase"></i>
+							<img src="src/assets/img/light-bulb-idea-svgrepo-com.svg" alt="" />
 						</div>
 						<h2 className="text-lg font-medium title-font mb-2 group-hover:text-green-500 transition-colors">
 							Consejos Prácticos
@@ -33,7 +33,7 @@ const FeaturedServicesSection = () => {
 				<div className="lg:w-1/3 md:w-1/2 p-2 group cursor-pointer">
 					<div className="border-2 p-6 rounded-lg group-hover:border-green-500 transition-colors">
 						<div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-500 mb-4">
-							<i className="bi bi-calendar4-week"></i>
+							<img src="src/assets/img/planet-earth-environment-svgrepo-com.svg" alt="" />
 						</div>
 						<h2 className="text-lg font-medium title-font mb-2 group-hover:text-green-500 transition-colors">
 							Reduce y Compensa

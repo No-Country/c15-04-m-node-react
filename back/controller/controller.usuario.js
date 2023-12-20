@@ -40,7 +40,7 @@ const signUp = async (req = request, res = response) => {
         }
         id = usuario._id
         const token = await emailJWT(id)
-        const mail = await sendingMail(correo, nombre, 'welcome', token)
+        const mail = await sendingMail(correo, 'welcome', nombre, token)
 
         if (mail) return res.status(201).json({
             message: `Gracias por Inscribirte ${nombre}. Debes verificar tu correo como último paso, revisa tu bandeja de entrada por favor.`,
@@ -147,7 +147,7 @@ const update = async (req = request, res = response) => {
             if (noActivo) {
                 await Usuario.findByIdAndUpdate(noActivo._id, { correo: `changed${correo}` })
             }
-            const mail = await sendingMail(correo, usuario.nombre, 'update', token)
+            const mail = await sendingMail(correo, 'update', usuario.nombre, token)
 
             if (mail) return res.status(200).json({
                 message: `${usuario.nombre}, Debemos validar tu correo para poder cambiarlo, favor ve a tu bandeja de entrada para terminar el proceso.`,
@@ -233,20 +233,20 @@ const carbonData = async (req = request, res = response) => {
         if (!usuario) return res.status(404).json({
             message: 'No existe este usuario'
         })
-        
-        if(typeof usuario.transporteAereo === 'undefined' 
-        	&& typeof usuario.transporteTerrestre === 'undefined'
-        		&& typeof usuario.gas === 'undefined'
-        			&& typeof usuario.electricidad === 'undefined') return res.status(404).json({
-            message: 'El usuario no posee registro de la huella de carbono'
-        })
+
+        if (typeof usuario.transporteAereo === 'undefined'
+            && typeof usuario.transporteTerrestre === 'undefined'
+            && typeof usuario.gas === 'undefined'
+            && typeof usuario.electricidad === 'undefined') return res.status(404).json({
+                message: 'El usuario no posee registro de la huella de carbono'
+            })
 
         const transport_cfp = {
-        	land: usuario.transporteTerrestre,
-        	air: usuario.transporteAereo,
-        	total: (usuario.transporteTerrestre + usuario.transporteAereo)
+            land: usuario.transporteTerrestre,
+            air: usuario.transporteAereo,
+            total: (usuario.transporteTerrestre + usuario.transporteAereo)
         }
-       	const data = carbonFP.getCarbonOffset(transport_cfp, usuario.gas, usuario.electricidad, null, null, null);
+        const data = carbonFP.getCarbonOffset(transport_cfp, usuario.gas, usuario.electricidad, null, null, null);
 
         res.status(200).json({
             message: 'request successful',
