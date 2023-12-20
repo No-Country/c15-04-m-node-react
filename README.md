@@ -195,7 +195,7 @@
                 </a>
               </td>
               <td>
-                <a href="">
+                <a href="https://www.linkedin.com/in/santiagoarielv">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
@@ -208,7 +208,7 @@
                 </a>
               </td>
               <td>
-                <a href="">
+                <a href="https://www.linkedin.com/in/agustín-lucentini-055832276">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
@@ -221,7 +221,7 @@
                 </a>
               </td>
               <td>
-                <a href="">
+                <a href="https://www.linkedin.com/in/michael-steven-gonzalez-5a6518122">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
