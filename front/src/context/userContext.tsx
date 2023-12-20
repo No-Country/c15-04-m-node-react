@@ -10,12 +10,15 @@ export type UserContextProps = {
 	loading?: boolean;
 	user: User | null;
 	avatars: Avatar[];
+	modalOpen: boolean;
 	logIn: (correo: string, password: string) => Promise<void>;
 	signUp: (options: UserSignUpPayload) => Promise<boolean>;
 	deleteUser: () => Promise<void>;
 	updateUser: (options: UserUpdatePayload) => Promise<boolean>;
 	getAvatars: () => Promise<void>;
 	setPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	getCarbonData: () => Promise<boolean>;
 } | null;
 
 export const UserContext = React.createContext<UserContextProps>(null);
@@ -25,6 +28,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	const [avatars, setAvatars] = React.useState<Avatar[]>([]);
 	const [loading, setLoading] = React.useState(false);
 	const [panelOpen, setPanelOpen] = React.useState<boolean>(false);
+	const [modalOpen, setModalOpen] = React.useState(false);
 
 	const isUserAvatar = user !== null ? user.img && user.img.length > 0 : true;
 
@@ -110,6 +114,22 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 		setAvatars(avatars);
 	}, []);
 
+	const getCarbonData = async () => {
+		try {
+			const footprint = await userService.getCarbonFootprint();
+			return footprint;
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				toast({
+					title: error.response?.data?.message,
+					variant: "destructive",
+				});
+				setModalOpen(true);
+			}
+			return false;
+		}
+	};
+
 	React.useEffect(() => {
 		setLoading(true);
 		userService
@@ -147,12 +167,15 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 				loading,
 				user,
 				avatars,
+				modalOpen,
 				logIn,
 				signUp,
 				deleteUser,
 				updateUser,
 				getAvatars,
 				setPanelOpen,
+				setModalOpen,
+				getCarbonData,
 			}}
 		>
 			{children}

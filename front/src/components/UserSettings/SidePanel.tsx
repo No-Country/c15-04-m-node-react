@@ -11,9 +11,6 @@ import ChangeEmailPanel from "./ConfigPanels/ChangeEmailPanel";
 import ChangePasswordPanel from "./ConfigPanels/ChangePaswordPanel";
 import { LinkOption, links } from "@/constants/links";
 import { useNavigate } from "react-router-dom";
-import { getCarbonFootprint } from "@/services/userService";
-import { useToast } from "../ui/use-toast";
-import { AxiosError } from "axios";
 import { DialogPortal, Dialog, DialogContent, DialogClose } from "../ui/dialog";
 
 type SidePanelProps = {
@@ -25,7 +22,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 	const [showChangeName, setShowChangeName] = useState(false);
 	const [showChangePassword, setShowChangePassword] = useState(false);
 	const [showChangeEmail, setShowChangeEmail] = useState(false);
-	const { user, setPanelOpen, getAvatars } = useUserContext();
+	const { user, setPanelOpen, getAvatars, getCarbonData } = useUserContext();
 	const { theme, setTheme } = useTheme();
 	const handleLogout = () => {
 		localStorage.clear();
@@ -34,7 +31,6 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 	const [modalOpen, setModalOpen] = useState(false);
 
 	const navigate = useNavigate();
-	const { toast } = useToast();
 	const closeAllPanels = () => {
 		setShowChangeName(false);
 		setShowChangePassword(false);
@@ -73,7 +69,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 		let success = true;
 		switch (option.case) {
 			case "footprint":
-				success = await getData();
+				success = await getCarbonData();
 				break;
 		}
 
@@ -83,21 +79,6 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 		}
 	};
 
-	const getData = async () => {
-		try {
-			const footprint = await getCarbonFootprint();
-			return footprint;
-		} catch (error) {
-			if (error instanceof AxiosError) {
-				toast({
-					title: error.response?.data?.message,
-					variant: "destructive",
-				});
-				setModalOpen(true);
-			}
-			return false;
-		}
-	};
 	const support = [
 		{
 			icon: <ShieldAlert size={20} />,
