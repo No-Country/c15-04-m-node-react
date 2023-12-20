@@ -5,7 +5,7 @@ const HeroSection = () => {
 		<div className="flex flex-wrap items-center justify-center max-lg:text-center mt-4">
 			<div className="lg:w-1/2 md:pr-8">
 				<h1 className="text-3xl font-bold">
-					Calcula y gestiona tu huella de <span className="text-emerald-500">carbono</span>
+					Calcula y gestiona tu huella de <span className="text-emerald-500 ">carbono</span>
 				</h1>
 				<p className="text-md pt-6 mr-10 font-semibold">
 					Desarrolla la habilidad de conocer tu huella de carbono y sigue nuestros consejos para reducirla. ¡Juntos
