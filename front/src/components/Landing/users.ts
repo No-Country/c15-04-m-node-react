@@ -1,5 +1,5 @@
-import { BsGithub, BsTwitterX, BsInstagram } from "react-icons/bs";
-import { FaLinkedinIn, FaFacebookF } from "react-icons/fa";
+import { BsGithub, BsBehance } from "react-icons/bs";
+import { FaLinkedinIn } from "react-icons/fa";
 
 export const team = [
 	{
@@ -68,6 +68,11 @@ export const team = [
 				icon: BsGithub,
 				url: "https://github.com/Mike2020x",
 			},
+			{
+				name: "linkedin",
+				icon: FaLinkedinIn,
+				url: "https://www.linkedin.com/in/michael-steven-gonzalez-5a6518122/",
+			},
 		],
 	},
 	{
@@ -80,6 +85,11 @@ export const team = [
 				name: "github",
 				icon: BsGithub,
 				url: "https://github.com/marycib",
+			},
+			{
+				name: "linkedin",
+				icon: FaLinkedinIn,
+				url: "www.linkedin.com/in/maribel-mena",
 			},
 		],
 	},
@@ -141,9 +151,9 @@ export const team = [
 		img: "https://avatars.githubusercontent.com/u/106565638?v=4",
 		social: [
 			{
-				name: "github",
-				icon: BsGithub,
-				url: "https://github.com/Nehuengrosso",
+				name: "behance",
+				icon: BsBehance,
+				url: "https://www.behance.net/nehuengrosso",
 			},
 			{
 				name: "linkedin",

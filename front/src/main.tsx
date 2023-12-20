@@ -1,12 +1,12 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
+import { Toaster } from "./components/ui/toaster.tsx";
+import { ModalProvider } from "./context/modalContext.tsx";
+import { UserProvider } from "./context/userContext.tsx";
 import "./index.css";
 import router from "./routes/index.tsx";
-import { UserProvider } from "./context/userContext.tsx";
-import { Toaster } from "./components/ui/toaster.tsx";
-import { ThemeProvider } from "@/components/theme-provider";
-import { ModalContext, ModalProvider } from "./context/modalContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
