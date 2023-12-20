@@ -1,6 +1,7 @@
 require('colors')
 const nodemailer = require('nodemailer')
 const { google } = require('googleapis')
+const cron = require('node-cron')
 const {
   newsletter,
   updateMail,
@@ -28,7 +29,7 @@ const mailOptions = (email, name, type, token) => {
 
   switch (type) {
     case 'newsletter':
-      message = newsletter(name)
+      message = newsletter()
       break
     case 'update':
       message = updateMail(name, token, url)
@@ -65,6 +66,16 @@ const getUpdatedAccessToken = async () => {
     throw error
   }
 }
+
+const cronUpdateToken = async () => {
+  try {
+    transport.auth.accessToken = await getUpdatedAccessToken()
+  } catch (e) {
+    console.log('ERROR! AL RENOVAR EL TOKEN '.red, e)
+  }
+}
+
+cron.schedule('0 17 * * *', cronUpdateToken)
 
 const sendingMail = async (email, name, type, token = '') => {
   try {
