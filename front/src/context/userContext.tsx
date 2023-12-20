@@ -111,6 +111,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	}, []);
 
 	React.useEffect(() => {
+		setLoading(true);
 		userService
 			.getAuth()
 			.then(() => {
@@ -126,6 +127,9 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 						variant: "destructive",
 					});
 				}
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	}, [toast]);
 

@@ -1,23 +1,23 @@
 import { Question } from "@/types/quiz";
 
 const countriesOptions = [
-	{ value: "mexico", label: "México" },
-	{ value: "costa_rica", label: "Costa Rica" },
-	{ value: "guatemala", label: "Guatemala" },
-	{ value: "honduras", label: "Honduras" },
-	{ value: "nicaragua", label: "Nicaragua" },
-	{ value: "panama", label: "Panamá" },
-	{ value: "republica_dominicana", label: "República Dominicana" },
-	{ value: "salvador", label: "El Salvador" },
 	{ value: "argentina", label: "Argentina" },
 	{ value: "bolivia", label: "Bolivia" },
 	{ value: "brasil", label: "Brasil" },
 	{ value: "chile", label: "Chile" },
 	{ value: "colombia", label: "Colombia" },
-	{ value: "peru", label: "Perú" },
-	{ value: "uruguay", label: "Uruguay" },
+	{ value: "costa_rica", label: "Costa Rica" },
 	{ value: "ecuador", label: "Ecuador" },
+	{ value: "el_salvador", label: "El Salvador" },
+	{ value: "guatemala", label: "Guatemala" },
+	{ value: "honduras", label: "Honduras" },
+	{ value: "mexico", label: "México" },
+	{ value: "nicaragua", label: "Nicaragua" },
+	{ value: "panama", label: "Panamá" },
 	{ value: "paraguay", label: "Paraguay" },
+	{ value: "peru", label: "Perú" },
+	{ value: "republica_dominicana", label: "República Dominicana" },
+	{ value: "uruguay", label: "Uruguay" },
 	{ value: "venezuela", label: "Venezuela" },
 ];
 

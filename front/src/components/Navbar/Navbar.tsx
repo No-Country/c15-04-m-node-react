@@ -13,7 +13,7 @@ type NavbarProps = {
 };
 
 function Navbar({ onToggleSidePanel }: NavbarProps) {
-	const { user } = useUserContext();
+	const { user, loading } = useUserContext();
 
 	return (
 		<nav className="bg-white fixed top-0 py-1 z-20 w-full drop-shadow dark:bg-[#020817] shadow-xl">
@@ -41,7 +41,7 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 								))}
 							{user?.nombre === undefined && <LoginDialog />}
 						</div>
-						<button className="px-4 cursor-pointer" onClick={onToggleSidePanel}>
+						<button disabled={loading} className="px-4 cursor-pointer" onClick={onToggleSidePanel}>
 							{user?.nombre !== undefined && <Avatar imagesize={32} />}
 						</button>
 					</div>
