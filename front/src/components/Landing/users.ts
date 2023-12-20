@@ -1,4 +1,4 @@
-import { BsGithub, BsBehance } from "react-icons/bs";
+import { BsGithub, BsBehance, BsGlobe } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 
 export const team = [
@@ -17,6 +17,11 @@ export const team = [
 				name: "linkedin",
 				icon: FaLinkedinIn,
 				url: "https://www.linkedin.com/in/alejandro-quinones-arenas/ ",
+			},
+			{
+				name: "portfolio",
+				icon: BsGlobe,
+				url: "https://alejandro-quinones.com/",
 			},
 		],
 	},
