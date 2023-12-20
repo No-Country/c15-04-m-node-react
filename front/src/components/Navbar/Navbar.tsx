@@ -6,14 +6,13 @@ import { useUserContext } from "@/hooks/useUserContext";
 import GreenTraceLogo from "../../assets/img/greentracelogo.png";
 import GreenTraceLogoDesktop from "../../assets/img/greentracelogo_desktop.png";
 import { Link } from "react-router-dom";
-import { links } from "@/constants/links";
 
 type NavbarProps = {
 	onToggleSidePanel: () => void;
 };
 
 function Navbar({ onToggleSidePanel }: NavbarProps) {
-	const { user } = useUserContext();
+	const { user, loading } = useUserContext();
 
 	return (
 		<nav className="bg-white fixed top-0 py-1 z-20 w-full drop-shadow dark:bg-[#020817] shadow-xl">
@@ -28,20 +27,8 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 						</div>
 					</div>
 					<div className="hidden md:flex justify-center items-center">
-						<div className="space-x-4 text-lg">
-							{user?.nombre !== undefined &&
-								links.map(({ name, path }) => (
-									<Link
-										key={name}
-										to={path}
-										className="dark:text-white px-3 py-2 rounded-md text-base font-medium hover:underline"
-									>
-										{name}
-									</Link>
-								))}
-							{user?.nombre === undefined && <LoginDialog />}
-						</div>
-						<button className="px-4 cursor-pointer" onClick={onToggleSidePanel}>
+						<div className="space-x-4 text-lg">{user?.nombre === undefined && <LoginDialog />}</div>
+						<button disabled={loading} className="px-4 cursor-pointer" onClick={onToggleSidePanel}>
 							{user?.nombre !== undefined && <Avatar imagesize={32} />}
 						</button>
 					</div>

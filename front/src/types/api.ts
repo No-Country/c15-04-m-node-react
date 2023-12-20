@@ -176,8 +176,7 @@ export interface CarbonFootprintResponse {
 	carbon_footprint?: number;
 }
 export interface NewsletterPayload {
-	name: string;
-	email: string;
+	correo: string;
 }
 
 export interface WelcomeResponse {
@@ -208,4 +207,8 @@ export interface CalculateCarbonFootprintPayload {
 		pais: string;
 		energia_renovable: boolean;
 	};
+}
+
+export interface NewsletterResponse {
+	message: string;
 }
