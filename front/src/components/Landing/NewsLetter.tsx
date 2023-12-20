@@ -1,30 +1,31 @@
 import React, { useState } from "react";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { useToast } from "../ui/use-toast";
+import { suscribeNewsletter } from "@/services/newsletter";
 
 const NewsLetter: React.FC = () => {
-	const [name, setName] = useState<string>("");
 	const [email, setEmail] = useState<string>("");
+	const { toast } = useToast();
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(email)) {
-			toast.error("Por favor, ingresa un correo electrónico válido.");
+			toast({ title: "Por favor, ingresa un correo electrónico válido", variant: "destructive" });
 			return;
 		}
 
-		if (!name.trim()) {
-			toast.error("Por favor, ingresa un nombre válido.");
-			return;
+		try {
+			await suscribeNewsletter({ email });
+			setEmail("");
+			toast({ title: "Subscripciónn exitosa" });
+		} catch (error) {
+			console.log(error);
+			toast({ title: "Ingresa un correo electrónico válido" });
 		}
-
-		setName("");
-		setEmail("");
-		console.log(name, email);
 	};
 
 	return (
