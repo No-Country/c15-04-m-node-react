@@ -52,6 +52,11 @@ export const getAuth = async (): Promise<AuthResponse> => {
 	return response.data;
 };
 
+export const getCarbonFootprint = async (): Promise<any> => {
+	const response = await api.get<any>("/usuario/footprint");
+	return response.data;
+};
+
 const setToken = (token: string) => {
 	localStorage.setItem(GlobalConstants.TOKEN, token);
 	api.defaults.headers.common["Authorization"] = `Bearer ${token}`;

@@ -1,10 +1,6 @@
 const { Schema, model } = require('mongoose')
 
 const newsLetterSchema = Schema({
-  nombre: {
-    type: String,
-    required: [true, 'Debe ingresar un nombre de usuario']
-  },
   correo: {
     type: String,
     required: [true, 'Debe Ingresar un correo electrónico'],

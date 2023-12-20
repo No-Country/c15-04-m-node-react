@@ -1,7 +1,29 @@
+import { useUserContext } from "@/hooks/useUserContext";
 import Banner from "../../assets/img/banner-2.png";
 import { Button } from "../ui/button";
+import useModalContext from "@/hooks/useModalContext";
+import { useToast } from "../ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const HeroBannerSection = () => {
+	const { user } = useUserContext();
+	const { setModalLogin } = useModalContext();
+	const { toast } = useToast();
+	const navigate = useNavigate();
+
+	const handleClick = async () => {
+		if (!user) {
+			setModalLogin(true);
+			toast({
+				title: "Inicia sesión para calcular tu huella de carbono",
+				variant: "destructive",
+			});
+			return;
+		} else {
+			navigate("/quiz");
+		}
+	};
+
 	return (
 		<div className="relative">
 			<div
@@ -21,7 +43,10 @@ const HeroBannerSection = () => {
 							Descubre tu impacto en el planeta y aprende cómo reducirlo con nuestro asesoramiento experto. Únete a la
 							comunidad que está tomando pasos significativos hacia la sostenibilidad.
 						</p>
-						<Button className="mt-8 bg-primary dark:bg-green-600 py-3 px-6 text-lg font-medium dark:hover:bg-green-600 hover:bg-green-600 transition duration-300 h-auto text-white">
+						<Button
+							className="mt-8 bg-primary dark:bg-green-600 py-3 px-6 text-lg font-medium dark:hover:bg-green-600 hover:bg-green-600 transition duration-300 h-auto text-white"
+							onClick={handleClick}
+						>
 							Evalúa tu Huella Ecológica
 						</Button>
 					</div>

@@ -1,23 +1,23 @@
 import { Question } from "@/types/quiz";
 
 const countriesOptions = [
-	{ value: "mexico", label: "México" },
-	{ value: "costa_rica", label: "Costa Rica" },
-	{ value: "guatemala", label: "Guatemala" },
-	{ value: "honduras", label: "Honduras" },
-	{ value: "nicaragua", label: "Nicaragua" },
-	{ value: "panama", label: "Panamá" },
-	{ value: "republica_dominicana", label: "República Dominicana" },
-	{ value: "salvador", label: "El Salvador" },
 	{ value: "argentina", label: "Argentina" },
 	{ value: "bolivia", label: "Bolivia" },
 	{ value: "brasil", label: "Brasil" },
 	{ value: "chile", label: "Chile" },
 	{ value: "colombia", label: "Colombia" },
-	{ value: "peru", label: "Perú" },
-	{ value: "uruguay", label: "Uruguay" },
+	{ value: "costa_rica", label: "Costa Rica" },
 	{ value: "ecuador", label: "Ecuador" },
+	{ value: "el_salvador", label: "El Salvador" },
+	{ value: "guatemala", label: "Guatemala" },
+	{ value: "honduras", label: "Honduras" },
+	{ value: "mexico", label: "México" },
+	{ value: "nicaragua", label: "Nicaragua" },
+	{ value: "panama", label: "Panamá" },
 	{ value: "paraguay", label: "Paraguay" },
+	{ value: "peru", label: "Perú" },
+	{ value: "republica_dominicana", label: "República Dominicana" },
+	{ value: "uruguay", label: "Uruguay" },
 	{ value: "venezuela", label: "Venezuela" },
 ];
 
@@ -48,17 +48,17 @@ export const questions: Question[] = [
 					},
 					{
 						name: "transport.bus.kms",
-						title: "¿Cuántos kilómetros ha recorrido usando el bus?",
+						title: "¿Cuántos kilómetros recorre en promedio usando el bus cada mes?",
 						type: "number",
 					},
 					{
 						name: "transport.colectivo.kms",
-						title: "¿Cuántos kilómetros ha recorrido usando taxi?",
+						title: "¿Cuántos kilómetros recorre en promedio usando taxi cada mes?",
 						type: "number",
 					},
 					{
 						name: "transport.metro.kms",
-						title: "¿Cuántos kilómetros ha recorrido usando el metro?",
+						title: "¿Cuántos kilómetros recorre en promedio usando el metro cada mes?",
 						type: "number",
 					},
 				],
@@ -91,7 +91,7 @@ export const questions: Question[] = [
 								questions: [
 									{
 										name: "transport.car.kms",
-										title: "¿Cuántos kilómetros recorre en promedio en automóvil?",
+										title: "¿Cuántos kilómetros recorre aproximadamente con su automóvil al mes?",
 										type: "number",
 									},
 									{
@@ -143,7 +143,7 @@ export const questions: Question[] = [
 								questions: [
 									{
 										name: "transport.motorcycle.kms",
-										title: "¿Cuántos kilómetros recorre en promedio en motocicleta?",
+										title: "¿Cuántos kilómetros viaja en su motocicleta al mes?",
 										type: "number",
 									},
 								],
@@ -168,7 +168,7 @@ export const questions: Question[] = [
 				questions: [
 					{
 						name: "bike.meters",
-						title: "¿Cuántos metros recorre en promedio en bicicleta/monopalín?",
+						title: "¿Cuántos metros recorre en promedio en bicicleta/monopatín al mes?",
 						type: "number",
 					},
 				],
@@ -189,7 +189,7 @@ export const questions: Question[] = [
 				questions: [
 					{
 						name: "walk.meters",
-						title: "¿Cuántos metros caminas?",
+						title: "¿Cuántos kms camina al mes?",
 						type: "number",
 					},
 				],
@@ -275,7 +275,7 @@ export const questions: Question[] = [
 	},
 	{
 		name: "electricity.consumption",
-		title: "¿De acuerdo a su factura eléctrica, cuántos kWh (kilovatios/hora) consumió el ultimo mes?",
+		title: "En promedio, ¿cuántos kWh (kilovatios/hora) de electricidad consume cada mes?",
 		type: "number",
 	},
 	{
