@@ -234,7 +234,7 @@
                 </a>
               </td>
               <td>
-                <a href="">
+                <a href="www.linkedin.com/in/maribel-mena">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
