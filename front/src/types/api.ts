@@ -176,7 +176,7 @@ export interface CarbonFootprintResponse {
 	carbon_footprint?: number;
 }
 export interface NewsletterPayload {
-	email: string;
+	correo: string;
 }
 
 export interface WelcomeResponse {

@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { useToast } from "../ui/use-toast";
 import { suscribeNewsletter } from "@/services/newsletter";
+import { AxiosError } from "axios";
 
 const NewsLetter: React.FC = () => {
 	const [email, setEmail] = useState<string>("");
@@ -19,12 +20,13 @@ const NewsLetter: React.FC = () => {
 		}
 
 		try {
-			await suscribeNewsletter({ email });
+			await suscribeNewsletter({ correo: email });
 			setEmail("");
 			toast({ title: "Subscripciónn exitosa" });
 		} catch (error) {
-			console.log(error);
-			toast({ title: "Ingresa un correo electrónico válido" });
+			if (error instanceof AxiosError) {
+				toast({ title: error.response?.data?.message, variant: "destructive" });
+			}
 		}
 	};
 
