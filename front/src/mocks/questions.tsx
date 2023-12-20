@@ -48,17 +48,17 @@ export const questions: Question[] = [
 					},
 					{
 						name: "transport.bus.kms",
-						title: "¿Cuántos kilómetros ha recorrido usando el bus?",
+						title: "¿Cuántos kilómetros ha recorrido usando el bus al mes?",
 						type: "number",
 					},
 					{
 						name: "transport.colectivo.kms",
-						title: "¿Cuántos kilómetros ha recorrido usando taxi?",
+						title: "¿Cuántos kilómetros ha recorrido usando taxi al mes?",
 						type: "number",
 					},
 					{
 						name: "transport.metro.kms",
-						title: "¿Cuántos kilómetros ha recorrido usando el metro?",
+						title: "¿Cuántos kilómetros ha recorrido usando el metro al mes?",
 						type: "number",
 					},
 				],
@@ -91,7 +91,7 @@ export const questions: Question[] = [
 								questions: [
 									{
 										name: "transport.car.kms",
-										title: "¿Cuántos kilómetros recorre en promedio en automóvil?",
+										title: "¿Cuántos kilómetros recorre en promedio en automóvil al mes?",
 										type: "number",
 									},
 									{
@@ -143,7 +143,7 @@ export const questions: Question[] = [
 								questions: [
 									{
 										name: "transport.motorcycle.kms",
-										title: "¿Cuántos kilómetros recorre en promedio en motocicleta?",
+										title: "¿Cuántos kilómetros recorre en promedio en motocicleta al mes?",
 										type: "number",
 									},
 								],
@@ -168,7 +168,7 @@ export const questions: Question[] = [
 				questions: [
 					{
 						name: "bike.meters",
-						title: "¿Cuántos metros recorre en promedio en bicicleta/monopalín?",
+						title: "¿Cuántos metros recorre en promedio en bicicleta/monopatín al mes?",
 						type: "number",
 					},
 				],
@@ -189,7 +189,7 @@ export const questions: Question[] = [
 				questions: [
 					{
 						name: "walk.meters",
-						title: "¿Cuántos metros caminas?",
+						title: "¿Cuántos kms camina al mes?",
 						type: "number",
 					},
 				],
@@ -275,7 +275,7 @@ export const questions: Question[] = [
 	},
 	{
 		name: "electricity.consumption",
-		title: "¿De acuerdo a su factura eléctrica, cuántos kWh (kilovatios/hora) consumió el ultimo mes?",
+		title: "¿Cuántos kWh (kilovatios/hora) consume en electricidad al mes?",
 		type: "number",
 	},
 	{
