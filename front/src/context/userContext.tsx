@@ -13,7 +13,7 @@ export type UserContextProps = {
 	logIn: (correo: string, password: string) => Promise<void>;
 	signUp: (options: UserSignUpPayload) => Promise<boolean>;
 	deleteUser: () => Promise<void>;
-	updateUser: (options: UserUpdatePayload) => Promise<void>;
+	updateUser: (options: UserUpdatePayload) => Promise<boolean>;
 	getAvatars: () => Promise<void>;
 	setPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
 } | null;
@@ -49,11 +49,11 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 	const logIn = async (correo: string, password: string) => {
 		try {
-			const user = await userService.logIn({ correo, password });
-			setUser(user.usuario);
-			localStorage.setItem(GlobalConstants.USER, JSON.stringify(user.usuario));
+			const data = await userService.logIn({ correo, password });
+			setUser(data.usuario);
+			localStorage.setItem(GlobalConstants.USER, JSON.stringify(data.usuario));
 			toast({
-				title: "Inicio de sesión exitoso",
+				title: data.message,
 			});
 		} catch (error) {
 			if (error instanceof AxiosError) {
@@ -96,10 +96,12 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 			const user = await userService.updateUser(options);
 			setUser(user.usuario);
 			localStorage.setItem(GlobalConstants.USER, JSON.stringify(user.usuario));
+			return true;
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				handleErrors(error);
 			}
+			return false;
 		}
 	};
 

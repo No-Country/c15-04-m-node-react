@@ -7,7 +7,7 @@ import VideoCard from "@/components/Landing/VideoCard";
 
 function Home(): JSX.Element {
 	return (
-		<main className="mt-20">
+		<main className="pt-20">
 			<HeroBannerSection />
 			<div className="pt-20 container max-w-6xl">
 				<FeaturedServicesSection />

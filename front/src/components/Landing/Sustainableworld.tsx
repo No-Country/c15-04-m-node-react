@@ -1,15 +1,15 @@
 const Sustainableworld = () => {
 	return (
 		<div className="flex flex-wrap mt-8 justify-center items-center">
-			<div className="md:w-1/3 order-1 py-4">
+			<div className="md:w-1/2 order-1 py-4">
 				<img
 					src="src/assets/img/hands.jpg"
-					className="object-cover rounded-lg"
+					className="object-cover rounded-xl overflow-hidden"
 					alt="colorfull graphics"
 					width={"500px"}
 				/>
 			</div>
-			<div className="md:w-2/3 order-2">
+			<div className="md:w-1/2">
 				<h3 className="font-bold text-2xl md:text-start md:px-10 py-2">Por un mundo más sustentable</h3>
 				<p className="text-md text-left font-semibold  md:px-10">
 					Nuestra webapp te permite registrar y visualizar tu huella de carbono de forma sencilla. Descubre cuánto CO2

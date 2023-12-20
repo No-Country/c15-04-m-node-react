@@ -7,7 +7,7 @@ const Footer = () => {
 		<footer className="py-10">
 			<div className="container flex flex-col max-lg:text-center">
 				<div className="flex justify-between flex-col lg:flex-row gap-4 my-4 items-center">
-					<div className="flex flex-col max-md:items-center">
+					<div className="flex flex-col max-lg:items-center">
 						<h1 className="font-bold text-5xl">Green trace</h1>
 						<p className="font-semibold text-md py-2">Sirviendo al mundo desde 2023</p>
 						<div className="flex gap-1">

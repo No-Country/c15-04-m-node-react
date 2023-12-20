@@ -3,7 +3,8 @@ import { X } from "lucide-react";
 import Avatar from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useUserContext } from "@/hooks/useExample/useUserContext";
+import { useUserContext } from "@/hooks/useUserContext";
+import { useToast } from "@/components/ui/use-toast";
 
 interface ChangeNamePanelProps {
 	isOpen: boolean;
@@ -14,9 +15,22 @@ const ChangeNamePanel: React.FC<ChangeNamePanelProps> = ({ isOpen, onClose }) =>
 	const [name, setName] = React.useState("");
 	const { user, updateUser } = useUserContext();
 	isOpen = true;
+	const { toast } = useToast();
 
-	const handleSubmit = () => {
-		updateUser({ nombre: name });
+	const handleSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
+		ev.preventDefault();
+		const success = await updateUser({ nombre: name });
+		if (success) {
+			onClose();
+			toast({
+				title: "Nombre actualizado",
+			});
+		} else {
+			toast({
+				title: "Error al actualizar nombre",
+				variant: "destructive",
+			});
+		}
 	};
 
 	React.useEffect(() => {
@@ -27,11 +41,11 @@ const ChangeNamePanel: React.FC<ChangeNamePanelProps> = ({ isOpen, onClose }) =>
 
 	return (
 		<div
-			className={`fixed inset-y-0 right-0 w-full md:w-1/4 dark:bg-[#020817] bg-white shadow-lg ${
+			className={`fixed inset-y-0 right-0 w-full  lg:w-1/4 md:w-1/3  dark:bg-[#020817] bg-white shadow-lg flex flex-col ${
 				isOpen ? "translate-x" : "translate-x-full  "
 			} transition-transform duration-300 ease-in-out`}
 		>
-			<div className="header w-full h-20 flex items-center justify-between shadow-md  ">
+			<div className="header py-11 sticky z-10 w-full h-20 flex items-center justify-between shadow-md">
 				<div className="">
 					<h1 className="text-xl font-bold px-4">Cambiar Nombre</h1>
 				</div>
@@ -41,7 +55,7 @@ const ChangeNamePanel: React.FC<ChangeNamePanelProps> = ({ isOpen, onClose }) =>
 					</a>
 				</div>
 			</div>
-			<div className="content">
+			<form className="content py-4  grow overflow-auto" onSubmit={handleSubmit}>
 				<div className="flex items-center justify-center pt-4 ">
 					<Avatar imagesize={100} />
 				</div>
@@ -59,11 +73,11 @@ const ChangeNamePanel: React.FC<ChangeNamePanelProps> = ({ isOpen, onClose }) =>
 					/>
 				</div>
 				<div className="flex items-center justify-center pt-10">
-					<Button className="bg-emerald-500" type="submit" onClick={handleSubmit}>
+					<Button className="bg-emerald-500" type="submit">
 						Actualizar Nombre
 					</Button>
 				</div>
-			</div>
+			</form>
 		</div>
 	);
 };

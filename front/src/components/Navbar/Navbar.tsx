@@ -1,7 +1,7 @@
 import { LoginDialog } from "../LoginDialog";
 import Avatar from "../ui/avatar";
 import { Menu } from "lucide-react";
-import { useUserContext } from "@/hooks/useExample/useUserContext";
+import { useUserContext } from "@/hooks/useUserContext";
 
 import GreenTraceLogo from "../../assets/img/greentracelogo.png";
 import GreenTraceLogoDesktop from "../../assets/img/greentracelogo_desktop.png";
@@ -57,17 +57,11 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 								<span className="sr-only">Open main menu</span>
 								<Menu size={34} />
 							</button>
-							<Link
-								to="/footprint"
-								className="text-black dark:text-white block px-3 py-6 rounded-md text-xl font-medium"
-							>
-								Mi Huella
-							</Link>
-							<Link to="/quiz" className="text-black dark:text-white block px-3 py-3 rounded-md text-xl font-medium">
-								Calculadora
-							</Link>
-							<div className="flex justify-center">{user?.nombre === undefined && <LoginDialog />} </div>
-						</div>
+						) : (
+							<div className="inline-flex items-center">
+								<LoginDialog />
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

@@ -5,7 +5,7 @@ import { User, Palette, ShieldAlert, LogOut } from "lucide-react";
 import Avatar from "../ui/avatar";
 import HeaderPanel from "./HeaderPanel";
 import { useTheme } from "@/components/theme-provider";
-import { useUserContext } from "@/hooks/useExample/useUserContext";
+import { useUserContext } from "@/hooks/useUserContext";
 import ChangeNamePanel from "./ConfigPanels/ChangeNamePanel";
 import ChangeEmailPanel from "./ConfigPanels/ChangeEmailPanel";
 import ChangePasswordPanel from "./ConfigPanels/ChangePaswordPanel";
@@ -80,7 +80,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 
 	return (
 		<div
-			className={`fixed inset-y-0 z-40 right-0 w-full md:w-1/4 dark:bg-[#020817] bg-white shadow-lg flex flex-col ${
+			className={`fixed inset-y-0 z-40 right-0 w-full lg:w-1/4 md:w-1/3 dark:bg-[#020817] bg-white shadow-lg flex flex-col ${
 				isOpen ? "translate-x" : "translate-x-full  "
 			} transition-transform duration-300 ease-in-out`}
 		>
@@ -91,7 +91,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 			{showChangeEmail && <ChangeEmailPanel isOpen={showChangeEmail} onClose={() => setShowChangeEmail(false)} />}
 
 			<HeaderPanel onClose={onClose} panelName="Perfil" goback={false} />
-			<div className="overflow-auto grow-1 py-4">
+			<div className="overflow-auto grow py-4">
 				<div className="flex items-center justify-center pt-4 ">
 					<button
 						onClick={() => {

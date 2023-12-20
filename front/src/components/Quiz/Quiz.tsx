@@ -147,7 +147,7 @@ const Quiz = ({ questions = [], onSubmit }: QuizProps) => {
 						<div className="w-full h-3/4 z-10 flex justify-center items-center">
 							<div
 								key={question.name}
-								className="flex justify-center dark:bg-[#161f2c] bg-gray-100 rounded-lg items-center flex-col h-full w-full md:w-1/4 p-6 shadow-xl mx-4"
+								className="flex justify-center dark:bg-[#161f2c] bg-gray-100 rounded-lg items-center flex-col h-full w-full  lg:w-1/4 md:w-1/3  p-6 shadow-xl mx-4"
 							>
 								<h2 className="text-2xl font-bold text-center p-4">{question.title}</h2>
 								{renderInputField(question)}
