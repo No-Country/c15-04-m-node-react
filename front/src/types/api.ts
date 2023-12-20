@@ -4,10 +4,12 @@ export interface User {
 	password: string;
 	edad: number;
 	electricidad: number;
-	gas: string;
+	gas: number;
 	transporte: string;
 	estado: boolean;
 	img: string;
+	transporteAereo: number;
+	transporteTerrestre: number;
 }
 
 export interface UserResponse {
@@ -211,4 +213,15 @@ export interface CalculateCarbonFootprintPayload {
 
 export interface NewsletterResponse {
 	message: string;
+}
+
+export interface CarbonFootprintResponse2 {
+	message: string;
+	data: CarbonData;
+}
+
+export interface CarbonData {
+	offsets: Offset[];
+	statistics: Statistics;
+	offset_by_user: string[];
 }
