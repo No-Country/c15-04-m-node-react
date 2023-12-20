@@ -22,13 +22,12 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 	const [showChangeName, setShowChangeName] = useState(false);
 	const [showChangePassword, setShowChangePassword] = useState(false);
 	const [showChangeEmail, setShowChangeEmail] = useState(false);
-	const { user, setPanelOpen, getAvatars, getCarbonData } = useUserContext();
+	const { user, setPanelOpen, getAvatars, getCarbonData, modalOpen, setModalOpen } = useUserContext();
 	const { theme, setTheme } = useTheme();
 	const handleLogout = () => {
 		localStorage.clear();
 		window.location.reload();
 	};
-	const [modalOpen, setModalOpen] = useState(false);
 
 	const navigate = useNavigate();
 	const closeAllPanels = () => {

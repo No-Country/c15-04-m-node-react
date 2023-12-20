@@ -1,16 +1,16 @@
+import { CarbonOffsetResponse } from "@/types/carbon";
 import api from "./api";
 
 import {
-	CarbonFootprintResponse,
-	CarbonOffsetCalculatorPayload,
-	CarbonOffsetCalculatorResponse,
+	CalculateCarbonFootprintPayload,
 	CalculateTransportFootprintPayload,
 	CalculateTransportFootprintResponse,
-	CalculateCarbonFootprintPayload,
+	CarbonFootprintResponse,
+	CarbonOffsetCalculatorPayload,
 } from "@/types/api";
 
 export const carbonOffsetCalculator = async (data: CarbonOffsetCalculatorPayload) => {
-	const response = await api.post<CarbonOffsetCalculatorResponse>("/usuario/calculadora/offset", data);
+	const response = await api.post<CarbonOffsetResponse>("/usuario/calculadora/offset", data);
 	return response.data;
 };
 

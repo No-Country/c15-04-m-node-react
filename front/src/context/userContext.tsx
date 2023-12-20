@@ -4,6 +4,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Avatar, User, UserResponseError, UserSignUpPayload, UserUpdatePayload } from "@/types/api";
 import { AxiosError } from "axios";
 import { GlobalConstants } from "@/constants";
+import { CarbonOffsetResponse } from "@/types/carbon";
 
 export type UserContextProps = {
 	panelOpen?: boolean;
@@ -11,6 +12,7 @@ export type UserContextProps = {
 	user: User | null;
 	avatars: Avatar[];
 	modalOpen: boolean;
+	carbonData: CarbonOffsetResponse | null;
 	logIn: (correo: string, password: string) => Promise<void>;
 	signUp: (options: UserSignUpPayload) => Promise<boolean>;
 	deleteUser: () => Promise<void>;
@@ -29,6 +31,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	const [loading, setLoading] = React.useState(false);
 	const [panelOpen, setPanelOpen] = React.useState<boolean>(false);
 	const [modalOpen, setModalOpen] = React.useState(false);
+	const [carbonData, setCarbonData] = React.useState<CarbonOffsetResponse | null>(null);
 
 	const isUserAvatar = user !== null ? user.img && user.img.length > 0 : true;
 
@@ -116,8 +119,9 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 	const getCarbonData = async () => {
 		try {
-			const footprint = await userService.getCarbonFootprint();
-			return footprint;
+			const data = await userService.getCarbonFootprint();
+			setCarbonData(data);
+			return true;
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				toast({
@@ -168,6 +172,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 				user,
 				avatars,
 				modalOpen,
+				carbonData,
 				logIn,
 				signUp,
 				deleteUser,

@@ -134,7 +134,7 @@ export const team = [
 		name: "Edith Escarlon",
 		role: "Tester / QA",
 		description: "I'm a Full Stack Developer with a passion for learning and sharing my knowledge with others.",
-		img: "https://media.licdn.com/dms/image/C4E03AQGqPuXXGb9dgQ/profile-displayphoto-shrink_400_400/0/1558060228148?e=1708560000&v=beta&t=-VzV4w4e-KVzqnVDP63xOXfoG8jsgncNuFK6KQsiilU",
+		img: "https://avatars.githubusercontent.com/u/150487299?v=4",
 		social: [
 			{
 				name: "github",
