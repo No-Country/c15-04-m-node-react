@@ -1,7 +1,7 @@
 import { LoginDialog } from "../LoginDialog";
 import Avatar from "../ui/avatar";
 import { Menu } from "lucide-react";
-import { useUserContext } from "@/hooks/useExample/useUserContext";
+import { useUserContext } from "@/hooks/useUserContext";
 
 import GreenTraceLogo from "../../assets/img/greentracelogo.png";
 import GreenTraceLogoDesktop from "../../assets/img/greentracelogo_desktop.png";

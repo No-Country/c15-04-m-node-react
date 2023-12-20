@@ -1,8 +1,13 @@
 const Presentation = () => {
 	return (
 		<div className="mt-4">
-			<div className="bg-gradient-to-r from-sky-950 bg-slate-500 shadow-lg rounded-lg flex flex-col border border-gray-200 text-center w-full md:py-20 md:px-10 px-5 py-5">
-				<h1 className="text-2xl text-zinc-200 font-bold mb-4 py-4 ">
+			<div
+				className="shadow-lg rounded-lg flex flex-col text-center w-full md:py-20 md:px-10 px-5 py-5"
+				style={{
+					background: "linear-gradient(275deg, #24434F 3.48%, #0F2334 75.96%)",
+				}}
+			>
+				<h1 className="text-4xl text-zinc-200 font-bold mb-4 py-4 ">
 					¿Qué es <span className="text-emerald-500">Green Trace</span>?
 				</h1>
 				<p className="text-md text-zinc-200 font-semibold pb-4">
