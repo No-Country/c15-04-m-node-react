@@ -15,11 +15,11 @@ const ChangePasswordPanel: React.FC<ChangePasswordPanelProps> = ({ isOpen, onClo
 	isOpen = true;
 	return (
 		<div
-			className={`fixed inset-y-0 right-0 w-full md:w-1/4 dark:bg-[#020817] bg-white shadow-lg ${
+			className={`fixed inset-y-0 right-0 w-full  lg:w-1/4 md:w-1/3  dark:bg-[#020817] bg-white shadow-lg  flex flex-col ${
 				isOpen ? "translate-x" : "translate-x-full  "
 			} transition-transform duration-300 ease-in-out`}
 		>
-			<div className="header w-full h-20 flex items-center justify-between shadow-md  ">
+			<div className="header py-11 w-full h-20 flex items-center justify-between shadow-md">
 				<div className="">
 					<h1 className="text-xl font-bold px-4">Cambiar Contraseña</h1>
 				</div>
@@ -29,7 +29,7 @@ const ChangePasswordPanel: React.FC<ChangePasswordPanelProps> = ({ isOpen, onClo
 					</a>
 				</div>
 			</div>
-			<div className="content">
+			<div className="content py-4  grow overflow-auto">
 				<div className="flex items-center justify-center pt-4 ">
 					<Avatar imagesize={100} />
 				</div>

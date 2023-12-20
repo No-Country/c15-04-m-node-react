@@ -49,11 +49,11 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 	const logIn = async (correo: string, password: string) => {
 		try {
-			const user = await userService.logIn({ correo, password });
-			setUser(user.usuario);
-			localStorage.setItem(GlobalConstants.USER, JSON.stringify(user.usuario));
+			const data = await userService.logIn({ correo, password });
+			setUser(data.usuario);
+			localStorage.setItem(GlobalConstants.USER, JSON.stringify(data.usuario));
 			toast({
-				title: "Inicio de sesión exitoso",
+				title: data.message,
 			});
 		} catch (error) {
 			if (error instanceof AxiosError) {
