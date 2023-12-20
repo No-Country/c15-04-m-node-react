@@ -1,4 +1,4 @@
-import { useUserContext } from "@/hooks/useExample/useUserContext";
+import { useUserContext } from "@/hooks/useUserContext";
 import { Navigate, Outlet } from "react-router-dom";
 
 const AuthLayout = () => {

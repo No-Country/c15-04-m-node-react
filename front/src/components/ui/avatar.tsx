@@ -1,4 +1,4 @@
-import { useUserContext } from "@/hooks/useExample/useUserContext";
+import { useUserContext } from "@/hooks/useUserContext";
 
 type AvatarProps = {
 	imagesize: number;

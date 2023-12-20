@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useUserContext } from "@/hooks/useExample/useUserContext";
+import { useUserContext } from "@/hooks/useUserContext";
 import { Avatar } from "@/types/api";
 
 const AvatarSelector: React.FC = () => {
