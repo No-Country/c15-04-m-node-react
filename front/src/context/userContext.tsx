@@ -13,7 +13,7 @@ export type UserContextProps = {
 	logIn: (correo: string, password: string) => Promise<void>;
 	signUp: (options: UserSignUpPayload) => Promise<boolean>;
 	deleteUser: () => Promise<void>;
-	updateUser: (options: UserUpdatePayload) => Promise<void>;
+	updateUser: (options: UserUpdatePayload) => Promise<boolean>;
 	getAvatars: () => Promise<void>;
 	setPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
 } | null;
@@ -96,10 +96,12 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 			const user = await userService.updateUser(options);
 			setUser(user.usuario);
 			localStorage.setItem(GlobalConstants.USER, JSON.stringify(user.usuario));
+			return true;
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				handleErrors(error);
 			}
+			return false;
 		}
 	};
 
