@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import SidePanel from "../../components/UserSettings/SidePanel";
 import { useState } from "react";
 import AvatarSelector from "@/components/AvatarSelector/AvatarSelector";
-import Footer from "@/components/Footer/Footer";
+
 const MainLayout = () => {
 	const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
@@ -15,7 +15,6 @@ const MainLayout = () => {
 		<div>
 			<Navbar onToggleSidePanel={toggleSidePanel} />
 			<AvatarSelector />
-
 			<SidePanel
 				{...{
 					isOpen: isSidePanelOpen,
@@ -25,7 +24,6 @@ const MainLayout = () => {
 				}}
 			/>
 			<Outlet />
-			<Footer />
 		</div>
 	);
 };

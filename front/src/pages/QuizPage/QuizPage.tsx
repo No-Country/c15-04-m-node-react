@@ -7,6 +7,7 @@ import { carbonOffsetCalculator } from "@/services/calculatorServices";
 import { CarbonOffsetCalculatorPayload } from "@/types/api";
 import { CarbonOffset, CarbonOffsetResponse } from "@/types/carbon";
 import { NestedObject } from "@/types/quiz";
+
 const QuizPage = () => {
 	const { updateUser } = useUserContext();
 	const [result, setResult] = React.useState<CarbonOffsetResponse | null>(null);
@@ -23,9 +24,11 @@ const QuizPage = () => {
 		});
 	};
 	return (
-		<div className="pt-40">
-			{result === null && <Quiz questions={questions} onSubmit={handleQuizSubmit} />}
-			{result !== null && <CarbonOffsetCalculator carbonOffset={result.carbonOffset} />}
+		<div className="pt-20 h-screen">
+			<div className="flex flex-col h-full justify-center p-4">
+				{result === null && <Quiz questions={questions} onSubmit={handleQuizSubmit} />}
+				{result !== null && <CarbonOffsetCalculator carbonOffset={result.carbonOffset} />}
+			</div>
 		</div>
 	);
 };

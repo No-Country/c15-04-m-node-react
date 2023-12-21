@@ -1,7 +1,7 @@
 const Privacy = () => {
 	return (
 		<>
-			<div className="pt-20 flex flex-col w-full items-center px-10 gap-6">
+			<div className="py-20 flex flex-col w-full items-center px-10 gap-6">
 				<h2 className="text-xl font-bold py-6">Política de privacidad y Términos de uso</h2>
 				<p>
 					Esta política de privacidad revela las prácticas de privacidad de TheGreenTrace.com. Aplica únicamente a la
