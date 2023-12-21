@@ -113,7 +113,7 @@ export const team = [
 			{
 				name: "linkedin",
 				icon: FaLinkedinIn,
-				url: "https://www.linkedin.com/in/agust%C3%ADn-lucentini-055832276//",
+				url: "https://www.linkedin.com/in/agust%C3%ADn-lucentini-055832276/",
 			},
 		],
 	},
