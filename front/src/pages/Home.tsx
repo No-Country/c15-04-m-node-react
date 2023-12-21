@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer/Footer";
 import FeaturedServicesSection from "@/components/Landing/FeaturedServicesSection";
 import HeroBannerSection from "@/components/Landing/HeroBannerSection";
 import Presentation from "@/components/Landing/Presentation";
@@ -16,6 +17,7 @@ function Home(): JSX.Element {
 				<Sustainableworld />
 				<TeamSection />
 			</div>
+			<Footer />
 		</main>
 	);
 }

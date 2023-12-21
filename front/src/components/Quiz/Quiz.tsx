@@ -83,10 +83,6 @@ const Quiz = ({ questions = [], onSubmit }: QuizProps) => {
 						<Input
 							type="number"
 							onChange={(e) => {
-								// check if value is a number
-								if (isNaN(Number(e.target.value))) {
-									return;
-								}
 								handleAnswerChange(question, Number(e.target.value));
 							}}
 						/>
@@ -102,6 +98,7 @@ const Quiz = ({ questions = [], onSubmit }: QuizProps) => {
 								} else {
 									handleAnswerChange(question, value);
 								}
+								handleNext();
 							}}
 						>
 							{question.options?.map((option) => (
@@ -118,7 +115,7 @@ const Quiz = ({ questions = [], onSubmit }: QuizProps) => {
 							<SelectTrigger className="w-[180px]">
 								<SelectValue placeholder={question.label} />
 							</SelectTrigger>
-							<SelectContent>
+							<SelectContent className="max-h-64">
 								<SelectGroup>
 									{question.options?.map((option) => (
 										<SelectItem key={option.value as string} value={option.value as string}>
@@ -140,14 +137,17 @@ const Quiz = ({ questions = [], onSubmit }: QuizProps) => {
 		const condition = question.conditions?.find((condition) => condition.triggerAnswer === answers[question.name]);
 		const isLastQuestion = isEnd && !condition;
 
+		const answer = answers[question.name];
+		const answersType = typeof answer;
+
 		return (
 			<React.Fragment key={question.name}>
 				<SwiperSlide key={question.name}>
 					{
-						<div className="w-full h-3/4 z-10 flex justify-center items-center">
+						<div className="w-full h-full z-10 flex justify-center items-center">
 							<div
 								key={question.name}
-								className="flex justify-center dark:bg-[#161f2c] bg-gray-100 rounded-lg items-center flex-col h-full w-full  lg:w-1/3 md:w-1/2  p-6 shadow-xl mx-4"
+								className="flex justify-center dark:bg-[#161f2c] bg-gray-100 rounded-lg items-center flex-col h-full w-full lg:w-1/3 md:w-1/2 p-6 shadow-xl"
 							>
 								<h2 className="text-2xl font-bold text-center p-4">{question.title}</h2>
 								{renderInputField(question)}
@@ -177,7 +177,11 @@ const Quiz = ({ questions = [], onSubmit }: QuizProps) => {
 											<Button
 												className="bg-emerald-500 text-white hover:bg-emerald-400"
 												onClick={handleNext}
-												disabled={typeof answers[question.name] === "boolean" ? false : !answers[question.name]}
+												disabled={
+													question.type === "number"
+														? isNaN(Number.parseInt(answer as string, 10)) || Number(answer) < 0
+														: answersType === "undefined"
+												}
 											>
 												Siguiente
 											</Button>
@@ -200,7 +204,7 @@ const Quiz = ({ questions = [], onSubmit }: QuizProps) => {
 	}, [answers, swiper]);
 
 	return (
-		<div className="bg-white-500 h-screen">
+		<div className="bg-white-500">
 			<Swiper
 				simulateTouch={false}
 				allowTouchMove={false}

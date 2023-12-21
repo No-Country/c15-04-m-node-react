@@ -128,6 +128,11 @@ export const team = [
 				icon: BsGithub,
 				url: "https://github.com/patriciacaicedo",
 			},
+			{
+				name: "linkedin",
+				icon: FaLinkedinIn,
+				url: "https://www.linkedin.com/in/patricia-caicedo",
+			},
 		],
 	},
 	{

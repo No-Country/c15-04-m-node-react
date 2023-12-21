@@ -1,13 +1,10 @@
+import Hands from "../../assets/img/hands.jpg";
+
 const Sustainableworld = () => {
 	return (
 		<div className="flex flex-wrap mt-8 justify-center items-center">
-			<div className="md:w-1/2 order-1 py-4">
-				<img
-					src="src/assets/img/hands.jpg"
-					className="object-cover rounded-xl overflow-hidden"
-					alt="colorfull graphics"
-					width={"500px"}
-				/>
+			<div className="md:w-1/2 md:order-1 py-4">
+				<img src={Hands} className="object-cover rounded-xl overflow-hidden" alt="colorfull graphics" width={"500px"} />
 			</div>
 			<div className="md:w-1/2">
 				<h3 className="font-bold text-2xl md:text-start md:px-10 py-2">Por un mundo más sustentable</h3>
