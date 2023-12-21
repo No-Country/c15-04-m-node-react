@@ -3,6 +3,10 @@ import React from "react";
 import { Flame, Plug, Car, Plane } from "lucide-react";
 import { useUserContext } from "@/hooks/useUserContext";
 
+import Tree from "@/assets/img/tree-svgrepo-com 2.svg";
+import Tree2 from "@/assets/img/tree-svgrepo-com.svg";
+import CarImage from "@/assets/img/car-transport-svgrepo-com.svg";
+
 const defaultData = {
 	labels: [],
 	datasets: [
@@ -132,12 +136,12 @@ const DashboardCard = ({ data }: { data: Array<string | number> }) => {
 				Se requiere plantar {data[4]} arboles para compensar tu huella de carbono.
 			</h3>
 			<div className="flex justify-center items-center w-full ">
-				<img src="src/assets/img/tree-svgrepo-com 2.svg" width={80} height={20} alt="tree" />
-				<img src="src/assets/img/tree-svgrepo-com.svg" width={80} height={20} alt="tree" />
+				<img src={Tree} width={80} height={20} alt="tree" />
+				<img src={Tree2} width={80} height={20} alt="tree" />
 			</div>
 			<h3 className="text-lg font-bold text-center py-4">Tu huella equivale a recorrer {data[5]}km en auto.</h3>
 			<div className="flex justify-center items-center w-full ">
-				<img src="src/assets/img/car-transport-svgrepo-com.svg" width={80} height={20} alt="car" />
+				<img src={CarImage} width={80} height={20} alt="car" />
 			</div>
 		</div>
 	);
