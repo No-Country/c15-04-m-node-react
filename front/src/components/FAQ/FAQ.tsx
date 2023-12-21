@@ -58,7 +58,7 @@ export default function FAQ() {
 	return (
 		<div className="pt-32 min-h-[95vh]">
 			<div className="flex justify-center">
-				<h2 className="text-4xl font-bold py-5 items-center text-emerald-500">Preguntas Frecuentes</h2>
+				<h2 className="text-4xl font-bold py-5 items-center text-emerald-500 text-center">Preguntas Frecuentes</h2>
 			</div>
 			<div className="m-auto px-2 flex justify-between text-center pt-8">
 				<Accordion type="single" collapsible className="w-full max-w-5xl mx-auto">
