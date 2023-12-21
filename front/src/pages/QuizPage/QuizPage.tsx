@@ -9,7 +9,7 @@ import { NestedObject } from "@/types/quiz";
 import { useNavigate } from "react-router-dom";
 
 const QuizPage = () => {
-	const { updateUser } = useUserContext();
+	const { updateUser, setCarbonData } = useUserContext();
 	const { toast } = useToast();
 	const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const QuizPage = () => {
 				transporteTerrestre: response.carbonOffset.statistics.carbon_footprint.transport.land,
 				gas: response.carbonOffset.statistics.carbon_footprint.gas,
 			});
-
+			setCarbonData(null);
 			toast({
 				title: "Tu huella de carbono ha sido calculada",
 			});
