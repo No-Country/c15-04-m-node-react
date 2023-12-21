@@ -45,7 +45,8 @@ const RegisterForm = () => {
 			nombre: values.username,
 		});
 		if (success) {
-			navigate(Routes.LOGIN);
+			navigate(Routes.MAIN);
+			setModalLogin(true);
 		}
 	};
 

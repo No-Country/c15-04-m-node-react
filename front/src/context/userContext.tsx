@@ -18,6 +18,7 @@ export type UserContextProps = {
 	deleteUser: () => Promise<void>;
 	updateUser: (options: UserUpdatePayload) => Promise<boolean>;
 	getAvatars: () => Promise<void>;
+	setCarbonData: React.Dispatch<React.SetStateAction<CarbonOffsetResponse | null>>;
 	setPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	getCarbonData: () => Promise<boolean>;
@@ -181,6 +182,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 				setPanelOpen,
 				setModalOpen,
 				getCarbonData,
+				setCarbonData,
 			}}
 		>
 			{children}
