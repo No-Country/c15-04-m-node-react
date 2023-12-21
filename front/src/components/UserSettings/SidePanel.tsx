@@ -74,8 +74,8 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose }) => {
 
 		if (success) {
 			navigate(option.path);
-			onClose();
 		}
+		onClose();
 	};
 
 	const support = [

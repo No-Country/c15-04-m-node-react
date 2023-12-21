@@ -115,7 +115,7 @@ const FootprintPage: React.FC = () => {
 				</div>
 				<h3 className="text-lg font-bold text-center py-4">Tu huella equivale a recorrer {carDistance}km en auto</h3>
 				<div className="flex justify-center items-center w-full md:w-3/4">
-					<img src="src/assets/img/car-transport-svgrepo-com.svg" width={80} height={20} alt="car"></img>
+					<img src="src/assets/img/car-transport-svgrepo-com.svg" width={80} height={20} alt="car" />
 				</div>
 			</div>
 		</div>
