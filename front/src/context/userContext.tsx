@@ -1,10 +1,16 @@
 import React from "react";
 import * as userService from "@/services/userService";
 import { useToast } from "@/components/ui/use-toast";
-import { Avatar, User, UserResponseError, UserSignUpPayload, UserUpdatePayload } from "@/types/api";
+import {
+	Avatar,
+	CarbonFootprintData,
+	User,
+	UserResponseError,
+	UserSignUpPayload,
+	UserUpdatePayload,
+} from "@/types/api";
 import { AxiosError } from "axios";
 import { GlobalConstants } from "@/constants";
-import { CarbonOffsetResponse } from "@/types/carbon";
 
 export type UserContextProps = {
 	panelOpen?: boolean;
@@ -12,13 +18,13 @@ export type UserContextProps = {
 	user: User | null;
 	avatars: Avatar[];
 	modalOpen: boolean;
-	carbonData: CarbonOffsetResponse | null;
+	carbonData: CarbonFootprintData | null;
 	logIn: (correo: string, password: string) => Promise<void>;
 	signUp: (options: UserSignUpPayload) => Promise<boolean>;
 	deleteUser: () => Promise<void>;
 	updateUser: (options: UserUpdatePayload) => Promise<boolean>;
 	getAvatars: () => Promise<void>;
-	setCarbonData: React.Dispatch<React.SetStateAction<CarbonOffsetResponse | null>>;
+	setCarbonData: React.Dispatch<React.SetStateAction<CarbonFootprintData | null>>;
 	setPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	getCarbonData: () => Promise<boolean>;
@@ -32,7 +38,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	const [loading, setLoading] = React.useState(false);
 	const [panelOpen, setPanelOpen] = React.useState<boolean>(false);
 	const [modalOpen, setModalOpen] = React.useState(false);
-	const [carbonData, setCarbonData] = React.useState<CarbonOffsetResponse | null>(null);
+	const [carbonData, setCarbonData] = React.useState<CarbonFootprintData | null>(null);
 
 	const isUserAvatar = user !== null ? user.img && user.img.length > 0 : true;
 

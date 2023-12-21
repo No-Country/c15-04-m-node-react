@@ -12,6 +12,51 @@ export interface User {
 	transporteTerrestre: number;
 }
 
+export interface OffsetItem {
+	minTrees: number;
+	message: string;
+}
+
+export interface EquivalenceItem {
+	carDistance: number;
+	message: string;
+}
+
+export interface CarbonFootprintData {
+	data: {
+		offsets: OffsetItem[];
+		statistics: {
+			carbonWeight: number;
+			equivalences: EquivalenceItem[];
+			carbon_footprint: {
+				electricity: number;
+				gas: number;
+				total: number;
+			};
+			transport: {
+				land: number;
+				air: number;
+				total: number;
+			};
+			emission_percentage: {
+				electricity_perc: number; // Assuming 0 is a number, not a string
+				gas_perc: string; // Changed from number to string
+				higher_emission: {
+					category: string;
+					value: string;
+				};
+				transport_perc: {
+					air_perc: number;
+					land_perc: number;
+					total: string;
+				};
+			};
+		};
+		equivalences: EquivalenceItem[]; // Changed from any[] to EquivalenceItem[]
+	};
+	message: string;
+}
+
 export interface UserResponse {
 	message: string;
 	usuario: User;

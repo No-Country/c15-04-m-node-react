@@ -23,7 +23,7 @@ const QuizPage = () => {
 				transporteTerrestre: response.carbonOffset.statistics.carbon_footprint.transport.land,
 				gas: response.carbonOffset.statistics.carbon_footprint.gas,
 			});
-			setCarbonData(response);
+			setCarbonData(null);
 			toast({
 				title: "Tu huella de carbono ha sido calculada",
 			});

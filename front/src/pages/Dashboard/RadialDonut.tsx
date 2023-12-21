@@ -1,17 +1,16 @@
 import { Chart as ChartJS, ArcElement } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
+import { Doughnut, ChartProps } from "react-chartjs-2";
 
 ChartJS.register(ArcElement);
 
 type RadialDonutProps = {
-	data: any;
-	options: any;
+	data: ChartProps<"doughnut">["data"];
 };
 
-const RadialDonut: React.FC<RadialDonutProps> = ({ data, options }) => {
+const RadialDonut: React.FC<RadialDonutProps> = ({ data }) => {
 	return (
 		<div className="" style={{ width: "350px", height: "350px" }}>
-			<Doughnut data={data} options={options}></Doughnut>
+			<Doughnut data={data}></Doughnut>
 		</div>
 	);
 };

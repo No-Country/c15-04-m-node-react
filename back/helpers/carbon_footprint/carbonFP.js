@@ -134,7 +134,7 @@ const carbonFP = {
 
             if(car_data != null){
                const bike_offset = car(km_traveled, car_data.size, car_data.gasoline);
-               message = bike_offset > 0 ? `De acuerdo a la cantidad de metros que has recorrido en bicicleta/monopatín y a las especificaciones de tu automóvil, has logrado compensar ${walk_offset} kgCo2 equivalente por usar tu automóvil 👏` : 'Has hecho uso de la bicicleta y/o monopatín, pero esto no ha sido suficiente para compensar parte de las emisiones de tú automóvil. Pero vemos que es un gran paso para reducir tus emisiones, es por eso que te recomendamos que hagas un mayor uso de ellos.';
+               message = bike_offset > 0 ? `De acuerdo a la cantidad de metros que has recorrido en bicicleta/monopatín y a las especificaciones de tu automóvil, has logrado compensar ${bike_offset} kgCo2 equivalente por usar tu automóvil 👏` : 'Has hecho uso de la bicicleta y/o monopatín, pero esto no ha sido suficiente para compensar parte de las emisiones de tú automóvil. Pero vemos que es un gran paso para reducir tus emisiones, es por eso que te recomendamos que hagas un mayor uso de ellos.';
                car_emission_offset += bike_offset;
             } else {
                const bike_offset_average = (car(km_traveled, 'small', true) + car(km_traveled, 'small', false) + car(km_traveled, 'medium', true) + car(km_traveled, 'medium', false) + car(km_traveled, 'big', true) + car(km_traveled, 'big', false)) / 6;
@@ -174,11 +174,17 @@ const carbonFP = {
    	}
 
       if(car_km_equivalent > 0){
-         statistics.equivalences.push(`Tu Huella de Carbono equivale a recorrer ${car_km_equivalent} Km en automóvil.`);
+         statistics.equivalences.push({
+            carDistance: car_km_equivalent,
+            message: `Tu Huella de Carbono equivale a recorrer ${car_km_equivalent} Km en automóvil.`
+         });
       }
 
       if (equivalent_houses > 0) {
-         statistics.equivalences.push('Tu Huella de Carbono equivale al promedio de emisiones del consumo electrico de ' + equivalent_houses + (equivalent_houses > 1 ? ' casas.' : ' casa.'));
+         statistics.equivalences.push({
+            equivalent_houses,
+            message: 'Tu Huella de Carbono equivale al promedio de emisiones del consumo electrico de ' + equivalent_houses + (equivalent_houses > 1 ? ' casas.' : ' casa.')
+         });
       }
          
 
