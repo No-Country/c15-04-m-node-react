@@ -174,11 +174,17 @@ const carbonFP = {
    	}
 
       if(car_km_equivalent > 0){
-         statistics.equivalences.push(`Tu Huella de Carbono equivale a recorrer ${car_km_equivalent} Km en automóvil.`);
+         statistics.equivalences.push({
+            carDistance: car_km_equivalent,
+            message: `Tu Huella de Carbono equivale a recorrer ${car_km_equivalent} Km en automóvil.`
+         });
       }
 
       if (equivalent_houses > 0) {
-         statistics.equivalences.push('Tu Huella de Carbono equivale al promedio de emisiones del consumo electrico de ' + equivalent_houses + (equivalent_houses > 1 ? ' casas.' : ' casa.'));
+         statistics.equivalences.push({
+            equivalent_houses,
+            message: 'Tu Huella de Carbono equivale al promedio de emisiones del consumo electrico de ' + equivalent_houses + (equivalent_houses > 1 ? ' casas.' : ' casa.')
+         });
       }
          
 
