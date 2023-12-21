@@ -21,8 +21,8 @@ function Navbar({ onToggleSidePanel }: NavbarProps) {
 					<div className="flex items-center">
 						<div className="flex-shrink-0">
 							<Link to="/">
-								<img className="block md:hidden" src={GreenTraceLogo} width={"80px"} alt="" />
-								<img className="hidden md:block" src={GreenTraceLogoDesktop} width={"200px"} alt="" />
+								<img className="block md:hidden" src={GreenTraceLogo} width={"80px"} alt="logo" />
+								<img className="hidden md:block" src={GreenTraceLogoDesktop} width={"200px"} alt="logo" />
 							</Link>
 						</div>
 					</div>
