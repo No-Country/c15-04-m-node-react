@@ -36,6 +36,7 @@ const FootprintPage: React.FC = () => {
 	const { carbonOffset } = carbonData;
 
 	const gas = carbonOffset?.statistics?.carbon_footprint?.gas ?? 0;
+	console.log(gas);
 	const electricity = carbonOffset?.statistics?.carbon_footprint?.electricity ?? 0;
 	const landTransport = carbonOffset?.statistics?.carbon_footprint?.transport?.land ?? 0;
 	const plane = carbonOffset?.statistics?.carbon_footprint?.transport?.air ?? 0;
