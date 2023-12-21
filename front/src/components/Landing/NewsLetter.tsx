@@ -20,8 +20,9 @@ const NewsLetter: React.FC = () => {
 		}
 
 		try {
-			await suscribeNewsletter({ correo: email });
+			const data = await suscribeNewsletter({ correo: email });
 			setEmail("");
+			console.log(data);
 			toast({ title: "Subscripciónn exitosa" });
 		} catch (error) {
 			if (error instanceof AxiosError) {

@@ -35,7 +35,7 @@ const HeroBannerSection = () => {
 			<div className="bg-opacity-80 h-screen">
 				<div className="container mx-auto flex justify-center items-start h-full max-w-5xl">
 					<div className="text-center mt-16">
-						<h2 className="text-emerald-500 text-4xl font-bold mb-2">Green Trance</h2>
+						<h2 className="text-emerald-500 text-4xl font-bold mb-2">Green Trace</h2>
 						<h1 className="text-4xl font-semibold text-black md:text-5xl">
 							Calcula y gestiona tu huella de <span className="text-emerald-500">Carbono</span>
 						</h1>
