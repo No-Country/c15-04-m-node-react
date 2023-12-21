@@ -4,16 +4,17 @@ import AuthLayout from "@/layout/MainLayout/AuthLayout";
 
 import Signup from "@/pages/Signup";
 import Login from "@/pages/Login";
+import { Routes } from "@/constants";
 
 const authRoutes: RouteObject = {
 	element: <AuthLayout />,
 	children: [
 		{
-			path: "/signup",
+			path: Routes.SIGNUP,
 			element: <Signup />,
 		},
 		{
-			path: "/login",
+			path: Routes.LOGIN,
 			element: <Login />,
 		},
 	],

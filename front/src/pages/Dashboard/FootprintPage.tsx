@@ -1,6 +1,7 @@
 import RadialDonut from "./RadialDonut";
 import React from "react";
 import { Flame, Plug, Car, Plane } from "lucide-react";
+import { useUserContext } from "@/hooks/useUserContext";
 
 const gas = 25;
 const electricity = 25;
@@ -26,6 +27,19 @@ const options = {};
 // const currentMonth = "Noviembre";
 
 const FootprintPage: React.FC = () => {
+	const { carbonData } = useUserContext();
+
+	if (carbonData === null) {
+		return null;
+	}
+
+	const { carbonOffset } = carbonData;
+
+	const gas = carbonOffset?.statistics?.carbon_footprint?.gas ?? 0;
+	const electricity = carbonOffset?.statistics?.carbon_footprint?.electricity ?? 0;
+	const landTransport = carbonOffset?.statistics?.carbon_footprint?.transport?.land ?? 0;
+	const plane = carbonOffset?.statistics?.carbon_footprint?.transport?.air ?? 0;
+
 	return (
 		<div className="pt-20 flex flex-col  w-full items-center">
 			<div className="shadow-lg rounded-lg w-3/4 md:w-1/2 text-center mt-10 p-10 border-solid border-2 border-emerald-500">
@@ -101,7 +115,7 @@ const FootprintPage: React.FC = () => {
 				</div>
 				<h3 className="text-lg font-bold text-center py-4">Tu huella equivale a recorrer {carDistance}km en auto</h3>
 				<div className="flex justify-center items-center w-full md:w-3/4">
-					<img src="src/assets/img/car-transport-svgrepo-com.svg" width={80} height={20} alt="car"></img>
+					<img src="src/assets/img/car-transport-svgrepo-com.svg" width={80} height={20} alt="car" />
 				</div>
 			</div>
 		</div>

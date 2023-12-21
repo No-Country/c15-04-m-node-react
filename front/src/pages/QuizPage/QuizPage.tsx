@@ -1,68 +1,44 @@
-import React from "react";
-
 import Quiz from "@/components/Quiz/Quiz";
+import { useToast } from "@/components/ui/use-toast";
+import { Routes } from "@/constants";
+import { useUserContext } from "@/hooks/useUserContext";
 import { questions } from "@/mocks/questions";
-import { CarbonOffsetCalculatorPayload, CarbonOffsetCalculatorResponse, CarbonOffset } from "@/types/api";
-import { NestedObject } from "@/types/quiz";
 import { carbonOffsetCalculator } from "@/services/calculatorServices";
+import { CarbonOffsetCalculatorPayload } from "@/types/api";
+import { NestedObject } from "@/types/quiz";
+import { useNavigate } from "react-router-dom";
+
 const QuizPage = () => {
-	const [result, setResult] = React.useState<CarbonOffsetCalculatorResponse | null>(null);
+	const { updateUser, setCarbonData } = useUserContext();
+	const { toast } = useToast();
+	const navigate = useNavigate();
 
 	const handleQuizSubmit = async (data: NestedObject) => {
-		const response = await carbonOffsetCalculator(data as unknown as CarbonOffsetCalculatorPayload);
-		setResult(response);
+		try {
+			const response = await carbonOffsetCalculator(data as unknown as CarbonOffsetCalculatorPayload);
+
+			await updateUser({
+				electricidad: response.carbonOffset.statistics?.carbon_footprint?.electricity,
+				transporteAereo: response.carbonOffset.statistics?.carbon_footprint.transport?.air ?? 0,
+				transporteTerrestre: response.carbonOffset.statistics.carbon_footprint.transport.land,
+				gas: response.carbonOffset.statistics.carbon_footprint.gas,
+			});
+			setCarbonData(response);
+			toast({
+				title: "Tu huella de carbono ha sido calculada",
+			});
+			navigate(Routes.FOOTPRINT);
+		} catch (error) {
+			toast({
+				title: "No se pudo calcular tu huella de carbono",
+				variant: "destructive",
+			});
+		}
 	};
 	return (
-		<div className="pt-40">
-			{result === null && <Quiz questions={questions} onSubmit={handleQuizSubmit} />}
-			{result !== null && <CarbonOffsetCalculator carbonOffset={result?.carbonOffset} />}
-		</div>
-	);
-};
-
-interface CarbonOffsetCalculatorProps {
-	carbonOffset: CarbonOffset | null;
-}
-
-const CarbonOffsetCalculator = ({ carbonOffset }: CarbonOffsetCalculatorProps) => {
-	return (
-		<div>
-			<div>
-				{carbonOffset?.offset_by_user?.map((item) => (
-					<div>
-						<p>{item?.message}</p>
-						<p>{item?.car_emission_offset}</p>
-						<p>{item?.minTrees}</p>
-					</div>
-				))}
-			</div>
-			<div>
-				{carbonOffset?.offsets?.map((item) => (
-					<div>
-						<p>{item?.message}</p>
-						<p>{item?.car_emission_offset}</p>
-						<p>{item?.minTrees}</p>
-					</div>
-				))}
-			</div>
-			<div>
-				{carbonOffset?.statistics?.map((item) => (
-					<div>
-						<p>{item?.carbon_footprint.electricity}</p>
-						<p>{item?.carbon_footprint.gas}</p>
-						<p>{item?.carbon_footprint.transport.air}</p>
-						<p>{item?.carbon_footprint.transport.land}</p>
-						<p>{item?.carbon_footprint.transport.total}</p>
-						<p>{item?.carbon_footprint.total}</p>
-						<p>{item?.emission_percentage.electricity_perc}</p>
-						<p>{item?.emission_percentage.gas_perc}</p>
-						<p>{item?.emission_percentage.higher_emission.category}</p>
-						<p>{item?.emission_percentage.higher_emission.value}</p>
-						<p>{item?.emission_percentage.transport_perc.air_perc}</p>
-						<p>{item?.emission_percentage.transport_perc.land_perc}</p>
-						<p>{item?.emission_percentage.transport_perc.total}</p>
-					</div>
-				))}
+		<div className="pt-20 h-screen">
+			<div className="flex flex-col h-full justify-center p-4">
+				<Quiz questions={questions} onSubmit={handleQuizSubmit} />
 			</div>
 		</div>
 	);

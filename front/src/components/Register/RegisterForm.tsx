@@ -5,10 +5,12 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
-import { useUserContext } from "@/hooks/useExample/useUserContext";
+import { Link, useNavigate } from "react-router-dom";
+import { useUserContext } from "@/hooks/useUserContext";
 
 import GreenTraceLogo from "@/assets/img/greentracelogo.png";
+import { Routes } from "@/constants";
+import useModalContext from "@/hooks/useModalContext";
 
 const formSchema = z.object({
 	username: z.string().min(2, {
@@ -26,6 +28,8 @@ const formSchema = z.object({
 });
 const RegisterForm = () => {
 	const { signUp } = useUserContext();
+	const { setModalLogin } = useModalContext();
+	const navigate = useNavigate();
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -33,23 +37,29 @@ const RegisterForm = () => {
 			username: "",
 		},
 	});
-	// 2. Define a submit handler.
-	async function onSubmit(values: z.infer<typeof formSchema>) {
-		// Do something with the form values.
-		// ✅ This will be type-safe and validated.
-		await signUp({
+
+	const onSubmit = async (values: z.infer<typeof formSchema>) => {
+		const success = await signUp({
 			correo: values.email,
 			password: values.password,
 			nombre: values.username,
 		});
-	}
+		if (success) {
+			navigate(Routes.MAIN);
+			setModalLogin(true);
+		}
+	};
+
+	const handleClick = () => {
+		setModalLogin(true);
+	};
 
 	return (
 		<div className="flex items-center">
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:w-[347px] md:[802px]"
+					className="p-6 text-lg dark:border-slate-600 dark:bg-[#020817] rounded-lgw-[347px] md:[802px]"
 				>
 					<img className="w-[50%] m-auto" src={GreenTraceLogo} alt="logo" />
 					<FormField
@@ -112,7 +122,7 @@ const RegisterForm = () => {
 					</div>
 					<div className="flex flex-col items-center pt-4">
 						<p className="p-4">¿Ya tienes cuenta?</p>
-						<Link className="hover:underline" to="/">
+						<Link className="hover:underline" to="/" onClick={handleClick}>
 							Iniciar Sesión
 						</Link>
 					</div>

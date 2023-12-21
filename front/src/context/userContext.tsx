@@ -1,21 +1,27 @@
 import React from "react";
 import * as userService from "@/services/userService";
 import { useToast } from "@/components/ui/use-toast";
-import { Avatar, User, UserResponseError, UserSignUp, UserUpdate } from "@/types/api";
+import { Avatar, User, UserResponseError, UserSignUpPayload, UserUpdatePayload } from "@/types/api";
 import { AxiosError } from "axios";
 import { GlobalConstants } from "@/constants";
+import { CarbonOffsetResponse } from "@/types/carbon";
 
 export type UserContextProps = {
 	panelOpen?: boolean;
 	loading?: boolean;
 	user: User | null;
 	avatars: Avatar[];
+	modalOpen: boolean;
+	carbonData: CarbonOffsetResponse | null;
 	logIn: (correo: string, password: string) => Promise<void>;
-	signUp: (options: UserSignUp) => Promise<User | null>;
+	signUp: (options: UserSignUpPayload) => Promise<boolean>;
 	deleteUser: () => Promise<void>;
-	updateUser: (options: UserUpdate) => Promise<void>;
+	updateUser: (options: UserUpdatePayload) => Promise<boolean>;
 	getAvatars: () => Promise<void>;
+	setCarbonData: React.Dispatch<React.SetStateAction<CarbonOffsetResponse | null>>;
 	setPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	getCarbonData: () => Promise<boolean>;
 } | null;
 
 export const UserContext = React.createContext<UserContextProps>(null);
@@ -25,6 +31,8 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 	const [avatars, setAvatars] = React.useState<Avatar[]>([]);
 	const [loading, setLoading] = React.useState(false);
 	const [panelOpen, setPanelOpen] = React.useState<boolean>(false);
+	const [modalOpen, setModalOpen] = React.useState(false);
+	const [carbonData, setCarbonData] = React.useState<CarbonOffsetResponse | null>(null);
 
 	const isUserAvatar = user !== null ? user.img && user.img.length > 0 : true;
 
@@ -49,11 +57,11 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 	const logIn = async (correo: string, password: string) => {
 		try {
-			const user = await userService.logIn({ correo, password });
-			setUser(user.usuario);
-			localStorage.setItem(GlobalConstants.USER, JSON.stringify(user.usuario));
+			const data = await userService.logIn({ correo, password });
+			setUser(data.usuario);
+			localStorage.setItem(GlobalConstants.USER, JSON.stringify(data.usuario));
 			toast({
-				title: "Inicio de sesión exitoso",
+				title: data.message,
 			});
 		} catch (error) {
 			if (error instanceof AxiosError) {
@@ -62,25 +70,22 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 		}
 	};
 
-	const signUp = async (options: UserSignUp) => {
-		let user: User | null = null;
+	const signUp = async (options: UserSignUpPayload) => {
 		try {
 			setLoading(true);
 			const data = await userService.signUp(options);
-			setUser(data.usuario);
-			localStorage.setItem(GlobalConstants.USER, JSON.stringify(data.usuario));
-			user = data.usuario;
 			toast({
-				title: "Registro exitoso",
+				title: data.message,
 			});
+			return true;
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				handleErrors(error);
 			}
+			return false;
 		} finally {
 			setLoading(false);
 		}
-		return user;
 	};
 
 	const deleteUser = async () => {
@@ -94,24 +99,44 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 		}
 	};
 
-	const updateUser = async (options: UserUpdate) => {
+	const updateUser = async (options: UserUpdatePayload) => {
 		try {
 			const user = await userService.updateUser(options);
 			setUser(user.usuario);
 			localStorage.setItem(GlobalConstants.USER, JSON.stringify(user.usuario));
+			return true;
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				handleErrors(error);
 			}
+			return false;
 		}
 	};
 
 	const getAvatars = React.useCallback(async () => {
-		const avatars = await userService.getAvatars();
+		const { avatars } = await userService.getAvatars();
 		setAvatars(avatars);
 	}, []);
 
+	const getCarbonData = async () => {
+		try {
+			const data = await userService.getCarbonFootprint();
+			setCarbonData(data);
+			return true;
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				toast({
+					title: error.response?.data?.message,
+					variant: "destructive",
+				});
+				setModalOpen(true);
+			}
+			return false;
+		}
+	};
+
 	React.useEffect(() => {
+		setLoading(true);
 		userService
 			.getAuth()
 			.then(() => {
@@ -127,6 +152,9 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 						variant: "destructive",
 					});
 				}
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	}, [toast]);
 
@@ -144,12 +172,17 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 				loading,
 				user,
 				avatars,
+				modalOpen,
+				carbonData,
 				logIn,
 				signUp,
 				deleteUser,
 				updateUser,
 				getAvatars,
 				setPanelOpen,
+				setModalOpen,
+				getCarbonData,
+				setCarbonData,
 			}}
 		>
 			{children}

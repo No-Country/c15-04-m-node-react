@@ -3,3 +3,14 @@ export const GlobalConstants = {
 	TOKEN: "token",
 	USER: "user",
 };
+
+export const Routes = {
+	MAIN: "/",
+	SIGNUP: "/signup",
+	LOGIN: "/login",
+	CALCULATOR: "/calculator",
+	FOOTPRINT: "/footprint",
+	FAQ: "/faq",
+	QUIZ: "/quiz",
+	PRIVACY: "/privacy",
+};

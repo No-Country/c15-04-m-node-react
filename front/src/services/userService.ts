@@ -1,29 +1,30 @@
 import { GlobalConstants } from "@/constants";
 import {
-	Avatar,
-	AvatarResponse,
+	AuthResponse,
+	GetAvatarsResponse,
 	UserDeleteResponse,
 	UserLogin,
 	UserLoginResponse,
-	UserSignUp,
+	UserSignUpPayload,
 	UserSignUpResponse,
-	UserUpdate,
+	UserUpdatePayload,
 	UserUpdateResponse,
-	AuthResponse,
+	WelcomeResponse,
 } from "../types/api";
 import api from "./api";
+import { CarbonOffsetResponse } from "@/types/carbon";
 
-export const getWelcome = async (): Promise<string> => {
-	const response = await api.get<string>("/");
+export const getWelcome = async (): Promise<WelcomeResponse> => {
+	const response = await api.get<WelcomeResponse>("/");
 	return response.data;
 };
 
-export const getAvatars = async (): Promise<Avatar[]> => {
-	const response = await api.get<AvatarResponse>("/usuario/sign-up");
-	return response.data?.avatars || [];
+export const getAvatars = async (): Promise<GetAvatarsResponse> => {
+	const response = await api.get<GetAvatarsResponse>("/usuario/sign-up");
+	return response.data;
 };
 
-export const signUp = async (data: UserSignUp): Promise<UserSignUpResponse> => {
+export const signUp = async (data: UserSignUpPayload): Promise<UserSignUpResponse> => {
 	const response = await api.post<UserSignUpResponse>("/usuario/sign-up", data);
 	const { token } = response.data;
 	setToken(token);
@@ -37,7 +38,7 @@ export const logIn = async (data: UserLogin): Promise<UserLoginResponse> => {
 	return response.data;
 };
 
-export const updateUser = async (data: UserUpdate): Promise<UserUpdateResponse> => {
+export const updateUser = async (data: UserUpdatePayload): Promise<UserUpdateResponse> => {
 	const response = await api.put<UserUpdateResponse>("/usuario/actualizar", data);
 	return response.data;
 };
@@ -49,6 +50,11 @@ export const deleteUser = async (): Promise<UserDeleteResponse> => {
 
 export const getAuth = async (): Promise<AuthResponse> => {
 	const response = await api.get<AuthResponse>("/usuario/auth");
+	return response.data;
+};
+
+export const getCarbonFootprint = async (): Promise<CarbonOffsetResponse> => {
+	const response = await api.get<CarbonOffsetResponse>("/usuario/footprint");
 	return response.data;
 };
 
