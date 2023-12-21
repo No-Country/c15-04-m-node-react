@@ -1,6 +1,7 @@
 import { GlobalConstants } from "@/constants";
 import {
 	AuthResponse,
+	CarbonFootprintData,
 	GetAvatarsResponse,
 	UserDeleteResponse,
 	UserLogin,
@@ -12,7 +13,6 @@ import {
 	WelcomeResponse,
 } from "../types/api";
 import api from "./api";
-import { CarbonOffsetResponse } from "@/types/carbon";
 
 export const getWelcome = async (): Promise<WelcomeResponse> => {
 	const response = await api.get<WelcomeResponse>("/");
@@ -53,8 +53,8 @@ export const getAuth = async (): Promise<AuthResponse> => {
 	return response.data;
 };
 
-export const getCarbonFootprint = async (): Promise<CarbonOffsetResponse> => {
-	const response = await api.get<CarbonOffsetResponse>("/usuario/footprint");
+export const getCarbonFootprint = async (): Promise<CarbonFootprintData> => {
+	const response = await api.get<CarbonFootprintData>("/usuario/footprint");
 	return response.data;
 };
 
