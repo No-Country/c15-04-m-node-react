@@ -31,15 +31,15 @@ const FootprintPage = () => {
 		if (isMounted) {
 			getCarbonData();
 		} else if (carbonData !== null) {
-			const value = Number.parseInt(carbonData.data.statistics.emission_percentage.gas_perc, 10);
+			const value = Number.parseInt(carbonData?.data?.statistics?.emission_percentage?.gas_perc, 10);
 			const parsedGas = !isNaN(value) ? value : 0;
 
-			const gas = carbonData.data.statistics.emission_percentage.gas_perc ?? 0;
-			const electricity = carbonData.data.statistics.emission_percentage.electricity_perc ?? 0;
-			const land = carbonData.data.statistics.emission_percentage.transport_perc.land_perc ?? 0;
-			const plane = carbonData.data.statistics.emission_percentage.transport_perc.air_perc ?? 0;
-			const trees = carbonData.data.offsets[0]?.minTrees ?? 0;
-			const carDistance = carbonData.data.statistics.equivalences[0].carDistance ?? 0;
+			const gas = carbonData?.data?.statistics?.emission_percentage?.gas_perc ?? 0;
+			const electricity = carbonData?.data?.statistics?.emission_percentage?.electricity_perc ?? 0;
+			const land = carbonData?.data?.statistics?.emission_percentage?.transport_perc.land_perc ?? 0;
+			const plane = carbonData?.data?.statistics?.emission_percentage?.transport_perc.air_perc ?? 0;
+			const trees = carbonData?.data?.offsets[0]?.minTrees ?? 0;
+			const carDistance = carbonData?.data?.statistics?.equivalences[0]?.carDistance ?? 0;
 
 			setGraphData((prev) => ({
 				...prev,
@@ -52,7 +52,7 @@ const FootprintPage = () => {
 			}));
 
 			setData([gas, electricity, land, plane, trees, carDistance]);
-			setCarbonWeight((carbonData.data.statistics.carbon_footprint.total / 1000).toFixed(2));
+			setCarbonWeight((carbonData?.data?.statistics.carbon_footprint.total / 1000).toFixed(2));
 		}
 		return () => {
 			mounted = false;

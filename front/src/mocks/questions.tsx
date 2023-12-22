@@ -43,7 +43,7 @@ export const questions: Question[] = [
 				questions: [
 					{
 						name: "transport.public",
-						title: "¿Cuántas veces utiliza el transporte público?",
+						title: "¿Cuántas veces utiliza el transporte público al mes?",
 						type: "number",
 					},
 					{
